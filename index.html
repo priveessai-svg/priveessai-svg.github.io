@@ -15,16 +15,28 @@ text-align:center;
 padding:20px;
 }
 
+nav {
+background:#083B7A;
+padding:12px;
+text-align:center;
+}
+
+nav a {
+color:white;
+margin:12px;
+text-decoration:none;
+font-weight:bold;
+}
+
 .hero {
-background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
-url('https://images.unsplash.com/photo-1581090700227-4c4c3d3d7b0b');
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('img1.jpg');
 background-size:cover;
 color:white;
 text-align:center;
-padding:100px 20px;
+padding:120px 20px;
 }
 
-.section {padding:50px;text-align:center;}
+.section {padding:60px;text-align:center;}
 
 .services {
 display:flex;
@@ -35,11 +47,14 @@ gap:20px;
 
 .card {
 background:white;
-padding:20px;
-width:250px;
+padding:25px;
+width:260px;
 border-radius:10px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
 }
+
+.card:hover {transform:scale(1.05);}
 
 .gallery {
 display:flex;
@@ -56,7 +71,7 @@ border-radius:10px;
 .contact {
 background:#0A4DA2;
 color:white;
-padding:40px;
+padding:50px;
 }
 
 .whatsapp {
@@ -70,6 +85,13 @@ border-radius:50%;
 font-size:20px;
 text-decoration:none;
 }
+
+footer {
+background:#083B7A;
+color:white;
+padding:15px;
+text-align:center;
+}
 </style>
 
 </head>
@@ -81,12 +103,19 @@ text-decoration:none;
 <p>Société Marocaine d'Eau et Réseaux d'Assainissement Variés</p>
 </header>
 
+<nav>
+<a href="#">Accueil</a>
+<a href="#services">Services</a>
+<a href="#projets">Projets</a>
+<a href="#contact">Contact</a>
+</nav>
+
 <section class="hero">
-<h2>Solutions complètes pour l’eau et l’assainissement</h2>
-<p>Qualité • Expertise • Respect des délais</p>
+<h2>Experts en réseaux d’eau et assainissement</h2>
+<p>Qualité • Rapidité • Professionnalisme</p>
 </section>
 
-<section class="section">
+<section id="services" class="section">
 <h2>Nos Services</h2>
 <div class="services">
 <div class="card">Réseaux d’eau potable</div>
@@ -97,21 +126,26 @@ text-decoration:none;
 </div>
 </section>
 
-<section class="section">
+<section id="projets" class="section">
 <h2>Nos Réalisations</h2>
 <div class="gallery">
-<img src="https://images.unsplash.com/photo-1581091870622-9e3e4b4cfa2d">
-<img src="https://images.unsplash.com/photo-1590496793929-36417d3117de">
-<img src="https://images.unsplash.com/photo-1581090700227-4c4c3d3d7b0b">
+<img src="img2.jpg">
+<img src="img3.jpg">
+<img src="img4.jpg">
+<img src="img5.jpg">
 </div>
 </section>
 
-<section class="contact">
-<h2>Contact</h2>
+<section id="contact" class="contact">
+<h2>Contactez-nous</h2>
 <p>📍 Fès, Maroc</p>
 <p>📞 +212 6 61 80 88 94</p>
 <p>📧 sarl.smerav@gmail.com</p>
 </section>
+
+<footer>
+<p>© 2026 SMERAV</p>
+</footer>
 
 <a class="whatsapp" href="https://wa.me/212661808894">💬</a>
 
