@@ -7,9 +7,47 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+/* VIDEO BACKGROUND */
+.video-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
+overflow:hidden;
+}
 
+.video-bg video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.video-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(
+to top,
+rgba(255,255,255,0.95) 40%,
+rgba(255,255,255,0.7) 70%,
+rgba(255,255,255,1) 100%
+);
+z-index:-1;
+}
 /* ===== BACKGROUND IMAGE ===== */
 body{
+  <!-- VIDEO BACKGROUND -->
+<div class="video-bg">
+  <video autoplay muted loop playsinline>
+    <source src="water.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="video-overlay"></div>
 background:
 linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)),
 url("background.jpg");
