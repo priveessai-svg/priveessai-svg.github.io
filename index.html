@@ -3,26 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>SMERAV - Travaux & Réseaux</title>
+<title>SMERAV</title>
 
 <style>
 body{margin:0;font-family:Arial;background:#f4f6f9}
 
-/* HERO */
+/* HERO VIDEO */
 .hero{
-height:100vh;
-background:url('réseaux-d'eaux-potable.jpg') center/cover;
+height:90vh;
+position:relative;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 color:white;
-position:relative;
 }
 
-.hero::after{
-content:"";
+video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+top:0;
+left:0;
+}
+
+.overlay{
 position:absolute;
 width:100%;
 height:100%;
@@ -31,126 +37,68 @@ top:0;
 left:0;
 }
 
-.hero-content{
+.content{
 position:relative;
 z-index:1;
 }
 
-.hero h1{font-size:45px;margin:0}
-.hero p{font-size:20px;margin-top:10px}
+h1{font-size:40px;margin:0}
+p{font-size:18px}
 
-/* MENU BUTTON */
-.menu-btn{
-position:absolute;
-top:20px;
-right:20px;
-font-size:30px;
-color:white;
-cursor:pointer;
-z-index:2;
-}
-
-/* SIDE MENU */
-.menu{
-position:fixed;
-top:0;
-right:-100%;
-width:75%;
-height:100%;
-background:black;
-color:white;
-padding:40px;
-transition:0.4s;
-z-index:3;
-}
-
-.menu a{
-display:block;
-margin:20px 0;
+.btn{
+display:inline-block;
+margin-top:15px;
+padding:10px 20px;
+background:#ff7a00;
 color:white;
 text-decoration:none;
-font-size:22px;
-}
-
-.menu.active{
-right:0;
+border-radius:5px;
 }
 
 /* SECTION */
 .section{
-padding:60px 20px;
+padding:50px 20px;
 text-align:center;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
-max-width:1100px;
-margin:auto
+max-width:1000px;
+margin:auto;
 }
 
 .card{
 background:white;
-padding:25px;
+padding:20px;
 border-radius:10px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-5px)
 }
 
 /* PROJECTS */
-.project{
-position:relative;
-overflow:hidden;
+.project img{
+width:100%;
 border-radius:10px;
 }
 
-.project img{
-width:100%;
-transition:0.5s;
-}
-
-.project:hover img{
-transform:scale(1.1)
-}
-
-.overlay{
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-background:rgba(0,0,0,0.6);
+/* WHATSAPP */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
 color:white;
 padding:15px;
-opacity:0;
-transition:0.5s;
+border-radius:50px;
+text-decoration:none;
 }
 
-.project:hover .overlay{
-opacity:1;
-}
-
-/* CONTACT */
 footer{
 background:#004080;
 color:white;
 padding:20px;
 text-align:center;
-}
-
-/* ANIMATION */
-.fade{
-opacity:0;
-transform:translateY(20px);
-transition:0.6s;
-}
-.show{
-opacity:1;
-transform:translateY(0);
 }
 </style>
 
@@ -160,97 +108,65 @@ transform:translateY(0);
 
 <!-- HERO -->
 <div class="hero">
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-<div class="hero-content">
+<video autoplay muted loop playsinline>
+<source src="video.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<div class="content">
 <h1>SMERAV</h1>
-<p>Notre expertise, votre réussite</p>
-</div>
+<p>Travaux • Eau potable • Assainissement</p>
+<a class="btn" href="https://wa.me/212661808894">Demander un devis</a>
 </div>
 
-<!-- MENU -->
-<div class="menu" id="menu">
-<a href="#services">Services</a>
-<a href="#projects">Projets</a>
-<a href="#contact">Contact</a>
 </div>
 
 <!-- SERVICES -->
-<section class="section fade" id="services">
+<section class="section">
 <h2>Nos Services</h2>
 
 <div class="grid">
-<div class="card">
-<h3>Réseaux d’eau potable</h3>
-<p>Installation, maintenance, détection de fuites</p>
-</div>
-
-<div class="card">
-<h3>Assainissement</h3>
-<p>Travaux et réseaux complets</p>
-</div>
-
-<div class="card">
-<h3>Génie civil</h3>
-<p>Travaux professionnels</p>
-</div>
+<div class="card">Réseaux d’eau potable</div>
+<div class="card">Assainissement</div>
+<div class="card">Génie civil</div>
 </div>
 </section>
 
 <!-- PROJECTS -->
-<section class="section fade" id="projects">
+<section class="section">
 <h2>Nos Réalisations</h2>
 
 <div class="grid">
 
 <div class="project">
 <img src="réseaux-d'eaux-potable.jpg">
-<div class="overlay">
-<h3>Eau potable</h3>
-</div>
 </div>
 
 <div class="project">
 <img src="réseaux-d'assainissement.jpg">
-<div class="overlay">
-<h3>Assainissement</h3>
-</div>
 </div>
 
 <div class="project">
 <img src="genie-civil.jpg">
-<div class="overlay">
-<h3>Génie civil</h3>
-</div>
 </div>
 
 </div>
 </section>
 
 <!-- CONTACT -->
-<section class="section fade" id="contact">
+<section class="section">
 <h2>Contact</h2>
 <p>📍 Fès, Maroc</p>
 <p>📞 +212 661 80 88 94</p>
 </section>
 
+<a class="whatsapp" href="https://wa.me/212661808894">💬</a>
+
 <footer>
 © 2026 SMERAV
 </footer>
-
-<script>
-function toggleMenu(){
-document.getElementById("menu").classList.toggle("active");
-}
-
-window.addEventListener("scroll",()=>{
-document.querySelectorAll(".fade").forEach(el=>{
-if(el.getBoundingClientRect().top < window.innerHeight){
-el.classList.add("show")
-}
-})
-})
-</script>
 
 </body>
 </html>
