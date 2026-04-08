@@ -6,8 +6,6 @@
 <title>SMERAV</title>
 
 <style>
-
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
 body{background:#f5f5f5;scroll-behavior:smooth;}
 
@@ -22,7 +20,6 @@ color:white;
 text-align:center;
 position:relative;
 }
-
 .hero::after{
 content:"";
 position:absolute;
@@ -30,10 +27,7 @@ width:100%;
 height:100%;
 background:rgba(0,0,0,0.5);
 }
-
 .hero-content{position:relative;z-index:2;}
-.hero h1{font-size:40px;}
-.hero p{margin-top:10px;}
 
 /* LOGO */
 .logo{
@@ -42,12 +36,9 @@ top:20px;
 left:20px;
 z-index:5;
 }
+.logo img{width:60px;}
 
-.logo img{
-width:60px;
-}
-
-/* MENU BUTTON */
+/* MENU */
 .menu-btn{
 position:absolute;
 top:20px;
@@ -58,7 +49,6 @@ cursor:pointer;
 z-index:5;
 }
 
-/* MENU PRO */
 .menu{
 position:fixed;
 top:0;
@@ -66,7 +56,6 @@ left:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,0.95);
-backdrop-filter:blur(10px);
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -76,21 +65,16 @@ transition:0.6s;
 z-index:9999;
 }
 
-.menu.active{
-transform:translateY(0);
-}
+.menu.active{transform:translateY(0);}
 
 .menu a{
-font-size:32px;
+font-size:28px;
 color:white;
-text-decoration:none;
-margin:20px 0;
-transition:0.3s;
+margin:15px;
+cursor:pointer;
 }
 
-.menu a:hover{
-color:#ff7a00;
-}
+.menu a:hover{color:#ff7a00;}
 
 /* SERVICES */
 .services{
@@ -100,60 +84,71 @@ text-align:center;
 
 .service{
 background:white;
-margin:15px;
+margin:20px;
 padding:20px;
 border-radius:10px;
-cursor:pointer;
 box-shadow:0 5px 10px rgba(0,0,0,0.1);
+}
+
+.service ul{
+margin-top:15px;
+text-align:left;
+max-width:400px;
+margin:auto;
+}
+
+.service li{
+margin:8px 0;
+font-size:14px;
+}
+
+/* SLIDER */
+.slider{
+position:relative;
+height:200px;
+overflow:hidden;
+border-radius:10px;
+}
+
+.slider img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+animation:slide 9s infinite;
+}
+
+.slider img:nth-child(1){animation-delay:0s;}
+.slider img:nth-child(2){animation-delay:3s;}
+.slider img:nth-child(3){animation-delay:6s;}
+
+@keyframes slide{
+0%{opacity:0;}
+10%{opacity:1;}
+30%{opacity:1;}
+40%{opacity:0;}
+100%{opacity:0;}
 }
 
 /* MODAL */
 .modal{
+display:none;
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.95);
-display:none;
-flex-direction:column;
-align-items:center;
+background:black;
 justify-content:center;
-color:white;
-z-index:2000;
+align-items:center;
+z-index:3000;
 }
 
-.slider{
+.modal img{
 width:90%;
-max-width:400px;
-}
-
-.slider img{
-width:100%;
+max-width:500px;
 border-radius:10px;
-}
-
-.slide-title{
-margin-top:10px;
-font-size:18px;
-}
-
-button{
-padding:10px;
-margin:5px;
-border:none;
-background:#ff7a00;
-color:white;
-border-radius:5px;
-cursor:pointer;
-}
-
-.close{
-position:absolute;
-top:20px;
-right:20px;
-font-size:30px;
-cursor:pointer;
 }
 
 /* WHATSAPP */
@@ -170,25 +165,13 @@ align-items:center;
 justify-content:center;
 font-size:28px;
 color:white;
-text-decoration:none;
 animation:pulse 1.5s infinite;
-z-index:3000;
 }
 
 @keyframes pulse{
 0%{transform:scale(1);}
 50%{transform:scale(1.1);}
 100%{transform:scale(1);}
-}
-
-.whatsapp-box{
-position:fixed;
-bottom:90px;
-right:20px;
-background:white;
-padding:15px;
-border-radius:10px;
-display:none;
 }
 
 </style>
@@ -207,31 +190,94 @@ display:none;
 
 <div class="hero-content">
 <h1>SMERAV</h1>
-<p>Notre expertise, votre réussite</p>
+<p>Travaux • Eau potable • Assainissement</p>
 </div>
 
 </div>
 
 <!-- MENU -->
 <div class="menu" id="menu">
-
-<div onclick="openMenu()" style="position:absolute;top:20px;right:20px;font-size:35px;cursor:pointer;">✕</div>
-
-<img src="logo.png" style="width:80px;margin-bottom:40px;">
+<div onclick="openMenu()" style="position:absolute;top:20px;right:20px;font-size:35px;">✕</div>
 
 <a onclick="goSection('top')">Accueil</a>
 <a onclick="goSection('services')">Services</a>
+<a onclick="openOffre()">Offre de Services</a>
 <a onclick="goSection('contact')">Contact</a>
-
 </div>
 
 <!-- SERVICES -->
 <div class="services" id="services">
+
 <h2>Nos Services</h2>
 
-<div class="service" onclick="openService('eau')">Réseaux d'eau potable</div>
-<div class="service" onclick="openService('assainissement')">Assainissement</div>
-<div class="service" onclick="openService('genie')">Génie civil</div>
+<div class="service">
+<h3>Réseaux d'eau potable</h3>
+<div class="slider">
+<img src="réseaux-d'eaux-potable.jpg">
+<img src="detection-des-fuites.jpg">
+</div>
+<ul>
+<li>✔ Installation des conduites</li>
+<li>✔ Détection des fuites</li>
+<li>✔ Maintenance</li>
+<li>✔ Branchement réseau</li>
+</ul>
+</div>
+
+<div class="service">
+<h3>Assainissement</h3>
+<div class="slider">
+<img src="réseaux-d'assainissement.jpg">
+<img src="local.png">
+</div>
+<ul>
+<li>✔ Réseaux d’évacuation</li>
+<li>✔ Canalisations</li>
+<li>✔ Regards</li>
+<li>✔ Travaux complets</li>
+</ul>
+</div>
+
+<div class="service">
+<h3>Génie civil</h3>
+<div class="slider">
+<img src="genie-civil.jpg">
+</div>
+<ul>
+<li>✔ Terrassement</li>
+<li>✔ Béton</li>
+<li>✔ Construction</li>
+<li>✔ Infrastructure</li>
+</ul>
+</div>
+
+<div class="service">
+<h3>Forage et équipement</h3>
+<div class="slider">
+<img src="forage.jpg">
+<img src="pompage.jpg">
+</div>
+<ul>
+<li>✔ Forage</li>
+<li>✔ Pompes</li>
+<li>✔ Équipements</li>
+<li>✔ Installation</li>
+</ul>
+</div>
+
+<div class="service">
+<h3>Vente pièces eau potable</h3>
+<div class="slider">
+<img src="pieces1.jpg">
+<img src="pieces2.jpg">
+</div>
+<ul>
+<li>✔ Tuyaux</li>
+<li>✔ Vannes</li>
+<li>✔ Raccords</li>
+<li>✔ Matériel hydraulique</li>
+</ul>
+</div>
 
 </div>
 
@@ -242,34 +288,16 @@ display:none;
 <p>+212 661 80 88 94</p>
 </div>
 
-<!-- MODAL -->
-<div class="modal" id="modal">
-<div class="close" onclick="closeModal()">✖</div>
-
-<h2 id="modal-title"></h2>
-<p id="modal-text"></p>
-
-<div class="slider">
-<img id="slide-img">
-<div class="slide-title" id="slide-title"></div>
-</div>
-
-<button onclick="prev()">⬅</button>
-<button onclick="next()">➡</button>
-
+<!-- OFFRE -->
+<div class="modal" id="offreModal" onclick="closeOffre()">
+<img src="offre.jpg">
 </div>
 
 <!-- WHATSAPP -->
-<div class="whatsapp-box" id="wbox">
-<p>Besoin d’un devis ?</p>
-<button onclick="goWhatsApp()">Contact</button>
-</div>
-
-<a class="whatsapp" onclick="goWhatsApp()">💬</a>
+<a class="whatsapp" href="https://wa.me/212661808894">💬</a>
 
 <script>
 
-/* MENU */
 function openMenu(){
 document.getElementById("menu").classList.toggle("active");
 }
@@ -279,61 +307,14 @@ openMenu();
 document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-/* SLIDER */
-let images=[],titles=[],current=0,autoSlide;
-
-function openService(type){
-
-current=0;
-
-if(type==="eau"){
-images=["réseaux-d'eaux-potable.jpg","detection-des-fuites.jpg"];
-titles=["Réseaux eau","Détection fuites"];
-document.getElementById("modal-title").innerText="Réseaux d'eau potable";
-document.getElementById("modal-text").innerText="Installation + maintenance.";
+function openOffre(){
+document.getElementById("offreModal").style.display="flex";
+openMenu();
 }
 
-if(type==="assainissement"){
-images=["réseaux-d'assainissement.jpg"];
-titles=["Assainissement"];
-document.getElementById("modal-title").innerText="Assainissement";
+function closeOffre(){
+document.getElementById("offreModal").style.display="none";
 }
-
-if(type==="genie"){
-images=["genie-civil.jpg"];
-titles=["Génie civil"];
-document.getElementById("modal-title").innerText="Génie civil";
-}
-
-document.getElementById("modal").style.display="flex";
-showSlide();
-
-clearInterval(autoSlide);
-autoSlide=setInterval(next,3000);
-}
-
-function showSlide(){
-document.getElementById("slide-img").src=images[current];
-document.getElementById("slide-title").innerText=titles[current];
-}
-
-function next(){current=(current+1)%images.length;showSlide();}
-function prev(){current=(current-1+images.length)%images.length;showSlide();}
-
-function closeModal(){
-document.getElementById("modal").style.display="none";
-clearInterval(autoSlide);
-}
-
-/* WHATSAPP */
-function goWhatsApp(){
-window.open("https://wa.me/212661808894?text=Bonjour%20SMERAV%2C%20je%20veux%20un%20devis");
-}
-
-/* POPUP */
-setTimeout(()=>{
-document.getElementById("wbox").style.display="block";
-},3000);
 
 </script>
 
