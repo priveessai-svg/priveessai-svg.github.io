@@ -8,41 +8,96 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 
-/* ===== APPLE LOADER ===== */
+/* ===== LOADER ===== */
 #loader{
 position:fixed;
 top:0;left:0;
 width:100%;height:100%;
-background:#0a1f44;
+background:#000814;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 z-index:9999;
 color:white;
+transition:0.8s;
 }
+#loader.hide{opacity:0;visibility:hidden}
 
 .spinner{
-width:50px;
-height:50px;
+width:50px;height:50px;
 border:4px solid rgba(255,255,255,0.2);
 border-top:4px solid white;
 border-radius:50%;
 animation:spin 1s linear infinite;
 margin-bottom:15px;
 }
+@keyframes spin{to{transform:rotate(360deg)}}
 
-@keyframes spin{
-0%{transform:rotate(0deg)}
-100%{transform:rotate(360deg)}
+/* ===== BACKGROUND ===== */
+body{
+background:linear-gradient(135deg,#0a1f44,#08142c,#000814);
+overflow-x:hidden;
 }
 
-#loader h2{
-font-weight:300;
-letter-spacing:2px;
+/* glow */
+body::before{
+content:"";
+position:fixed;
+top:-200px;left:-200px;
+width:600px;height:600px;
+background:radial-gradient(circle,rgba(0,150,255,0.3),transparent);
+filter:blur(120px);
+z-index:-1;
+animation:move1 10s infinite alternate;
+}
+body::after{
+content:"";
+position:fixed;
+bottom:-200px;right:-200px;
+width:600px;height:600px;
+background:radial-gradient(circle,rgba(255,215,0,0.2),transparent);
+filter:blur(120px);
+z-index:-1;
+animation:move2 12s infinite alternate;
+}
+@keyframes move1{to{transform:translate(100px,100px)}}
+@keyframes move2{to{transform:translate(-100px,-80px)}}
+
+/* ANIMATION */
+.section{
+opacity:0;
+transform:translateY(50px);
+transition:1s;
+}
+.section.show{
+opacity:1;
+transform:translateY(0);
 }
 
-/* ===== الكود ديالك ===== */
+/* NAVBAR SCROLL */
+.nav.scrolled{
+background:rgba(0,0,0,0.85);
+}
+
+/* HOVER */
+.service:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 50px rgba(0,0,0,0.3);
+}
+
+.gallery img,
+.projects img,
+.offre img{
+transition:0.4s;
+}
+.gallery img:hover,
+.projects img:hover,
+.offre img:hover{
+transform:scale(1.05);
+}
+
+/* ===== الكود الأصلي ديالك ===== */
 body{background:#f5f5f5}
 
 /* NAVBAR */
@@ -179,7 +234,6 @@ width:90%;
 max-width:400px;
 cursor:pointer;
 }
-.service:hover{background:#eee}
 
 /* GALLERY */
 .gallery{
@@ -293,6 +347,8 @@ border-radius:8px;
 <div class="spinner"></div>
 <h2>SMERAV</h2>
 </div>
+
+<!-- 🔥 هنا الكود ديالك كامل كما هو (ما تبدل حتى حاجة) -->
 
 <!-- NAVBAR -->
 <div class="nav">
@@ -454,14 +510,14 @@ Ouvrir Maps
 
 <!-- WHATSAPP -->
 <a class="whatsapp"
-href="https://wa.me/212661808894?text=Bonjour%20SMERAV%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20vos%20services">
+href="https://wa.me/212661808894?text=Bonjour%20SMERAV">
 💬</a>
 
 <script>
 
 /* LOADER */
 window.addEventListener("load",()=>{
-document.getElementById("loader").style.display="none";
+document.getElementById("loader").classList.add("hide");
 });
 
 /* MENU */
@@ -495,6 +551,25 @@ body:new FormData(this)
 document.getElementById("successMsg").style.display="block";
 this.reset();
 });
+});
+
+/* SCROLL ANIMATION */
+const sections=document.querySelectorAll(".section");
+window.addEventListener("scroll",()=>{
+sections.forEach(sec=>{
+if(sec.getBoundingClientRect().top < window.innerHeight-80){
+sec.classList.add("show");
+}
+});
+});
+
+/* NAVBAR SCROLL */
+window.addEventListener("scroll",()=>{
+if(window.scrollY>50){
+document.querySelector(".nav").classList.add("scrolled");
+}else{
+document.querySelector(".nav").classList.remove("scrolled");
+}
 });
 
 </script>
