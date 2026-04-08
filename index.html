@@ -9,7 +9,7 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#f5f5f5}
 
-/* NAVBAR */
+/* NAV */
 .nav{
 position:fixed;
 top:0;
@@ -20,44 +20,98 @@ align-items:center;
 padding:12px 20px;
 background:rgba(0,0,0,0.5);
 backdrop-filter:blur(10px);
-z-index:999;
+z-index:1000;
 }
 
 .logo{height:50px}
 
-/* MENU BUTTON */
 .menu-btn{
 font-size:28px;
 color:white;
-background:rgba(0,0,0,0.5);
-padding:8px 12px;
-border-radius:8px;
 cursor:pointer;
 }
 
-/* MENU */
+/* OVERLAY */
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+opacity:0;
+visibility:hidden;
+transition:0.3s;
+z-index:900;
+}
+.overlay.active{
+opacity:1;
+visibility:visible;
+}
+
+/* SIDE MENU */
 .menu{
 position:fixed;
 top:0;
-right:-100%;
-width:100%;
+right:-280px;
+width:260px;
 height:100%;
 background:black;
+padding:30px 20px;
+transition:0.4s;
+z-index:1000;
 display:flex;
 flex-direction:column;
-justify-content:center;
-align-items:center;
-transition:0.5s;
-}
-
-.menu a{
-color:white;
-font-size:28px;
-margin:20px;
-text-decoration:none;
 }
 
 .menu.active{right:0}
+
+.close-btn{
+color:white;
+font-size:26px;
+align-self:flex-end;
+cursor:pointer;
+margin-bottom:20px;
+}
+
+/* LINKS */
+.menu a{
+color:white;
+font-size:20px;
+margin:10px 0;
+text-decoration:none;
+}
+
+/* DROPDOWN */
+.dropdown-title{
+color:white;
+font-size:20px;
+display:flex;
+justify-content:space-between;
+cursor:pointer;
+margin:10px 0;
+}
+
+.dropdown-content{
+max-height:0;
+overflow:hidden;
+transition:0.4s;
+}
+
+.dropdown-content a{
+display:block;
+color:#ccc;
+font-size:17px;
+margin:5px 0;
+}
+
+.dropdown.active .dropdown-content{
+max-height:300px;
+}
+
+.dropdown.active .arrow{
+transform:rotate(180deg);
+}
 
 /* HERO */
 .hero{
@@ -65,10 +119,9 @@ height:100vh;
 position:relative;
 overflow:hidden;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 color:white;
-text-align:center;
 }
 
 .slide{
@@ -83,18 +136,14 @@ transition:1s;
 .slide.active{opacity:1}
 
 .hero-text{
-position:relative;
-z-index:2;
 background:rgba(0,0,0,0.5);
 padding:20px;
 border-radius:10px;
+z-index:2;
 }
 
 /* SECTION */
-.section{
-padding:70px 20px;
-text-align:center;
-}
+.section{padding:70px 20px;text-align:center}
 
 /* SERVICES */
 .service{
@@ -106,14 +155,10 @@ width:90%;
 max-width:400px;
 cursor:pointer;
 }
-.service:hover{background:#eee}
-
-/* GALLERY */
 .gallery{
 display:none;
 grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
 gap:10px;
-margin-top:10px;
 }
 .gallery.active{display:grid}
 
@@ -124,35 +169,11 @@ object-fit:cover;
 border-radius:10px;
 }
 
-/* OFFRE */
-.offre img{
-width:90%;
-max-width:800px;
-border-radius:10px;
-}
-
-/* PROJECT */
-.projects img{
-width:90%;
-margin:10px;
-border-radius:10px;
-}
-
-/* CONTACT */
-input,textarea{
-width:90%;
-margin:10px;
-padding:12px;
-border:none;
-background:#eee;
-border-radius:10px;
-}
-
-button{
-background:gold;
-padding:12px 20px;
-border:none;
-border-radius:10px;
+/* MAP */
+.map-box{
+height:350px;
+border-radius:20px;
+overflow:hidden;
 }
 
 /* WHATSAPP */
@@ -164,79 +185,63 @@ background:#25D366;
 color:white;
 padding:15px;
 border-radius:50%;
-text-decoration:none;
-}
-
-/* MAP */
-.map-box{
-position:relative;
-height:350px;
-border-radius:20px;
-overflow:hidden;
-margin-top:20px;
-}
-
-.map-box iframe{
-width:100%;
-height:100%;
-border:0;
-}
-
-.map-info{
-position:absolute;
-bottom:15px;
-left:15px;
-background:white;
-padding:15px;
-border-radius:12px;
-}
-
-/* ANIMATION */
-.fade{
-opacity:0;
-transform:translateY(20px);
-transition:0.6s;
-}
-.fade.show{
-opacity:1;
-transform:translateY(0);
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <div class="nav">
-<img src="logo-transparent.png?v=5" class="logo">
+<img src="logo-transparent.png" class="logo">
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </div>
 
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
 <!-- MENU -->
 <div class="menu" id="menu">
-<a href="#home" onclick="closeMenu()">Accueil</a>
-<a href="#services" onclick="closeMenu()">Services</a>
-<a href="#offre" onclick="closeMenu()">Offre</a>
-<a href="#projects" onclick="closeMenu()">Projets</a>
+
+<div class="close-btn" onclick="closeMenu()">✕</div>
+
+<div class="dropdown">
+<div class="dropdown-title" onclick="toggleDropdown(this)">
+Services <span class="arrow">⌄</span>
+</div>
+<div class="dropdown-content">
+<a href="#services">Réseaux eau potable</a>
+<a href="#services">Assainissement</a>
+<a href="#services">Génie civil</a>
+<a href="#services">Forage</a>
+</div>
+</div>
+
+<a href="#projects" onclick="closeMenu()">Projects</a>
+
+<div class="dropdown">
+<div class="dropdown-title" onclick="toggleDropdown(this)">
+About <span class="arrow">⌄</span>
+</div>
+<div class="dropdown-content">
+<a href="#home">Entreprise</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+
 <a href="#contact" onclick="closeMenu()">Contact</a>
+
 </div>
 
 <!-- HERO -->
 <section class="hero" id="home">
-<img src="local.png?v=5" class="slide active">
-<img src="projet1.jpg?v=5" class="slide">
-<img src="projet3.jpg?v=5" class="slide">
+<img src="local.png" class="slide active">
+<img src="projet1.jpg" class="slide">
+<img src="projet3.jpg" class="slide">
 
 <div class="hero-text">
 <h1>SMERAV</h1>
-<p>Notre expertise, votre réussite</p>
+<p>Votre expertise, notre réussite</p>
 </div>
-</section>
-
-<!-- ABOUT -->
-<section class="section fade">
-<h2>About</h2>
-<p>SMERAV entreprise basée à Fès spécialisée en travaux publics.</p>
 </section>
 
 <!-- SERVICES -->
@@ -245,47 +250,58 @@ transform:translateY(0);
 
 <div class="service" onclick="show('eau')">Réseaux d'eau potable</div>
 <div id="eau" class="gallery">
-<img src="reseaux-eaux-potable.jpg?v=5">
-<img src="branchement-eaux.jpg?v=5">
-<img src="raccordement-eau.jpg?v=5">
+<img src="reseaux-eaux-potable.jpg">
+<img src="raccordement-eau.jpg">
 </div>
 
-<div class="service" onclick="show('assainissement')">Assainissement</div>
-<div id="assainissement" class="gallery">
-<img src="reseaux-assainissement1.jpg?v=5">
-<img src="branchement-assainesement.jpg?v=5">
-</div>
+</section>
 
+<!-- PROJECT -->
+<section class="section" id="projects">
+<h2>Nos Projets</h2>
+<img src="projet1.jpg" style="width:90%">
 </section>
 
 <!-- MAP -->
 <section class="section">
 <h2>Localisation</h2>
 <div class="map-box">
-<iframe src="https://www.google.com/maps?q=Fes,Morocco&output=embed"></iframe>
-<div class="map-info">
-<p>📍 Fès</p>
-</div>
+<iframe src="https://www.google.com/maps?q=Fes,Morocco&output=embed" width="100%" height="100%"></iframe>
 </div>
 </section>
 
-<!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/212661808894">💬</a>
+<!-- CONTACT -->
+<section class="section" id="contact">
+<h2>Contact</h2>
+<input placeholder="Nom">
+<input placeholder="Email">
+<textarea placeholder="Message"></textarea>
+<button>Envoyer</button>
+</section>
+
+<a href="#" class="whatsapp">💬</a>
 
 <script>
 document.addEventListener("DOMContentLoaded", function(){
 
-const menu = document.getElementById("menu");
+const menu=document.getElementById("menu");
+const overlay=document.getElementById("overlay");
 
-window.toggleMenu = function(){
+window.toggleMenu=function(){
 menu.classList.toggle("active");
+overlay.classList.toggle("active");
 }
 
-window.closeMenu = function(){
+window.closeMenu=function(){
 menu.classList.remove("active");
+overlay.classList.remove("active");
 }
 
-window.show = function(id){
+window.toggleDropdown=function(el){
+el.parentElement.classList.toggle("active");
+}
+
+window.show=function(id){
 document.getElementById(id).classList.toggle("active");
 }
 
@@ -297,16 +313,6 @@ slides[i].classList.remove("active");
 i=(i+1)%slides.length;
 slides[i].classList.add("active");
 },4000);
-
-/* SCROLL */
-const elements=document.querySelectorAll('.fade');
-window.addEventListener('scroll',()=>{
-elements.forEach(el=>{
-if(el.getBoundingClientRect().top < window.innerHeight-50){
-el.classList.add('show');
-}
-});
-});
 
 });
 </script>
