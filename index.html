@@ -3,32 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SMERAV</title>
+<title>SMERAV - Travaux & Réseaux</title>
 
 <style>
 body{margin:0;font-family:Arial;background:#f4f6f9}
 
-/* HERO VIDEO */
+/* HERO */
 .hero{
-height:90vh;
-position:relative;
+height:100vh;
+background:url('local.png') center/cover no-repeat;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 color:white;
+position:relative;
 }
 
-video{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-top:0;
-left:0;
-}
-
-.overlay{
+.hero::after{
+content:"";
 position:absolute;
 width:100%;
 height:100%;
@@ -37,27 +30,107 @@ top:0;
 left:0;
 }
 
-.content{
+.hero-content{
 position:relative;
 z-index:1;
 }
 
-h1{font-size:40px;margin:0}
-p{font-size:18px}
+.hero h1{font-size:45px;margin:0}
+.hero p{font-size:20px;margin-top:10px}
 
-.btn{
-display:inline-block;
-margin-top:15px;
-padding:10px 20px;
-background:#ff7a00;
-color:white;
-text-decoration:none;
-border-radius:5px;
+/* TOP BAR */
+.topbar{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
+z-index:3;
 }
 
-/* SECTION */
+.logo{height:40px}
+
+.menu-btn{
+font-size:30px;
+color:white;
+cursor:pointer;
+}
+
+/* MENU */
+.menu-full{
+position:fixed;
+top:0;
+right:0;
+width:100%;
+height:100%;
+background:black;
+color:white;
+padding:60px 30px;
+transform:translateX(100%);
+opacity:0;
+transition:0.5s ease;
+z-index:999;
+}
+
+.menu-full.active{
+transform:translateX(0);
+opacity:1;
+}
+
+.menu-full a{
+display:block;
+font-size:28px;
+margin:25px 0;
+color:white;
+text-decoration:none;
+opacity:0;
+transform:translateY(20px);
+transition:0.5s;
+}
+
+.menu-full a:hover{color:#ff7a00}
+
+.menu-full.active a{
+opacity:1;
+transform:translateY(0);
+}
+
+.menu-full.active a:nth-child(2){transition-delay:0.1s;}
+.menu-full.active a:nth-child(3){transition-delay:0.2s;}
+.menu-full.active a:nth-child(4){transition-delay:0.3s;}
+.menu-full.active a:nth-child(5){transition-delay:0.4s;}
+.menu-full.active a:nth-child(6){transition-delay:0.5s;}
+.menu-full.active a:nth-child(7){transition-delay:0.6s;}
+
+.close-btn{
+position:absolute;
+top:20px;
+right:20px;
+font-size:35px;
+cursor:pointer;
+}
+
+.lang{
+margin-top:40px;
+color:#ff7a00;
+font-size:22px;
+opacity:0;
+transform:translateY(20px);
+transition:0.5s;
+}
+
+.menu-full.active .lang{
+opacity:1;
+transform:translateY(0);
+transition-delay:0.7s;
+}
+
+/* SECTIONS */
 .section{
-padding:50px 20px;
+padding:60px 20px;
 text-align:center;
 }
 
@@ -65,22 +138,28 @@ text-align:center;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
-max-width:1000px;
+max-width:1100px;
 margin:auto;
 }
 
 .card{
 background:white;
-padding:20px;
+padding:25px;
 border-radius:10px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
 }
+
+.card:hover{transform:translateY(-5px)}
 
 /* PROJECTS */
 .project img{
 width:100%;
 border-radius:10px;
+transition:0.4s;
 }
+
+.project img:hover{transform:scale(1.05)}
 
 /* WHATSAPP */
 .whatsapp{
@@ -94,33 +173,44 @@ border-radius:50px;
 text-decoration:none;
 }
 
+/* FOOTER */
 footer{
 background:#004080;
 color:white;
-padding:20px;
 text-align:center;
+padding:20px;
 }
 </style>
-
 </head>
 
 <body>
 
-<!-- HERO -->
-<div class="hero">
-
-<video autoplay muted loop playsinline>
-<source src="video.mp4" type="video/mp4">
-</video>
-
-<div class="overlay"></div>
-
-<div class="content">
-<h1>SMERAV</h1>
-<p>Travaux • Eau potable • Assainissement</p>
-<a class="btn" href="https://wa.me/212661808894">Demander un devis</a>
+<!-- TOP BAR -->
+<div class="topbar">
+<img src="logo.png" class="logo">
+<div class="menu-btn" onclick="openMenu()">☰</div>
 </div>
 
+<!-- MENU -->
+<div class="menu-full" id="menu">
+<div class="close-btn" onclick="closeMenu()">✕</div>
+
+<a href="#">Areas of Expertise</a>
+<a href="#projects">Projects</a>
+<a href="#">About</a>
+<a href="#">News</a>
+<a href="#">Careers</a>
+<a href="#contact">Contact</a>
+
+<div class="lang">EN ⌄</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+<div class="hero-content">
+<h1>SMERAV</h1>
+<p>Notre expertise, votre réussite</p>
+</div>
 </div>
 
 <!-- SERVICES -->
@@ -135,7 +225,7 @@ text-align:center;
 </section>
 
 <!-- PROJECTS -->
-<section class="section">
+<section class="section" id="projects">
 <h2>Nos Réalisations</h2>
 
 <div class="grid">
@@ -156,17 +246,28 @@ text-align:center;
 </section>
 
 <!-- CONTACT -->
-<section class="section">
+<section class="section" id="contact">
 <h2>Contact</h2>
 <p>📍 Fès, Maroc</p>
 <p>📞 +212 661 80 88 94</p>
+<p>📧 contact@smerav.ma</p>
 </section>
 
+<!-- WHATSAPP -->
 <a class="whatsapp" href="https://wa.me/212661808894">💬</a>
 
 <footer>
 © 2026 SMERAV
 </footer>
+
+<script>
+function openMenu(){
+document.getElementById("menu").classList.add("active");
+}
+function closeMenu(){
+document.getElementById("menu").classList.remove("active");
+}
+</script>
 
 </body>
 </html>
