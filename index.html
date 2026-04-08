@@ -9,7 +9,7 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#f5f5f5}
 
-/* NAVBAR */
+/* NAV */
 .nav{
 position:fixed;
 top:0;
@@ -22,9 +22,7 @@ background:rgba(0,0,0,0.5);
 backdrop-filter:blur(10px);
 z-index:999;
 }
-
 .logo{height:50px}
-
 .menu-btn{
 font-size:28px;
 color:white;
@@ -45,14 +43,10 @@ background:rgba(0,0,0,0.5);
 opacity:0;
 visibility:hidden;
 transition:0.3s;
-z-index:998;
 }
-.overlay.active{
-opacity:1;
-visibility:visible;
-}
+.overlay.active{opacity:1;visibility:visible}
 
-/* MENU */
+/* MENU SIDE */
 .menu{
 position:fixed;
 top:0;
@@ -60,70 +54,42 @@ right:-280px;
 width:260px;
 height:100%;
 background:black;
-display:flex;
-flex-direction:column;
-padding:30px 20px;
+padding:30px;
 transition:0.4s;
 z-index:999;
 }
 .menu.active{right:0}
 
-.close-btn{
-color:white;
-font-size:26px;
-align-self:flex-end;
-cursor:pointer;
-margin-bottom:20px;
-}
-
 .menu a{
+display:block;
 color:white;
-font-size:20px;
-margin:10px 0;
+margin:15px 0;
 text-decoration:none;
 }
 
-/* DROPDOWN */
-.dropdown-title{
+.close-btn{
 color:white;
-font-size:20px;
-display:flex;
-justify-content:space-between;
+font-size:24px;
 cursor:pointer;
-margin:10px 0;
 }
 
+/* DROPDOWN */
 .dropdown-content{
-max-height:0;
-overflow:hidden;
-transition:0.4s;
+display:none;
 }
-
-.dropdown-content a{
-display:block;
-color:#ccc;
-margin:5px 0;
-}
-
 .dropdown.active .dropdown-content{
-max-height:300px;
-}
-
-.dropdown.active .arrow{
-transform:rotate(180deg);
+display:block;
 }
 
 /* HERO */
 .hero{
 height:100vh;
-background:url("local.png?v=6") center/cover no-repeat;
+background:url("local.png?v=7") center/cover no-repeat;
 display:flex;
 justify-content:center;
 align-items:center;
 color:white;
-text-align:center;
 }
-
 .hero-text{
 background:rgba(0,0,0,0.5);
 padding:20px;
@@ -146,9 +112,6 @@ width:90%;
 max-width:400px;
 cursor:pointer;
 }
-.service:hover{background:#eee}
-
-/* GALLERY */
 .gallery{
 display:none;
 grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
@@ -156,7 +119,6 @@ gap:10px;
 margin-top:10px;
 }
 .gallery.active{display:grid}
-
 .gallery img{
 width:100%;
 height:180px;
@@ -187,46 +149,35 @@ border:none;
 background:#eee;
 border-radius:10px;
 }
-
 button{
 background:gold;
 padding:12px 20px;
 border:none;
 border-radius:10px;
+cursor:pointer;
+}
+
+/* SUCCESS */
+#successMsg{
+display:none;
+color:white;
+background:green;
+padding:10px;
+border-radius:8px;
+margin-top:10px;
 }
 
 /* MAP */
 .map-box{
-position:relative;
 height:350px;
 border-radius:20px;
 overflow:hidden;
 margin-top:20px;
 }
-
 .map-box iframe{
 width:100%;
 height:100%;
 border:0;
-}
-
-.map-info{
-position:absolute;
-bottom:15px;
-left:15px;
-background:white;
-padding:15px;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-
-.map-info a{
-display:inline-block;
-margin-top:8px;
-padding:8px 12px;
-background:gold;
-border-radius:8px;
-text-decoration:none;
 }
 
 /* WHATSAPP */
@@ -245,54 +196,34 @@ text-decoration:none;
 
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <div class="nav">
-<img src="logo-transparent.png?v=6" class="logo">
+<img src="logo-transparent.png?v=7" class="logo">
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </div>
 
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
-<!-- MENU -->
 <div class="menu" id="menu">
-
 <div class="close-btn" onclick="closeMenu()">✕</div>
 
-<div class="dropdown">
-<div class="dropdown-title" onclick="toggleDropdown(this)">
-Services <span class="arrow">⌄</span>
-</div>
+<div onclick="toggleDropdown(this)">Services</div>
 <div class="dropdown-content">
-<a href="#services" onclick="closeMenu()">Réseaux d'eau potable</a>
-<a href="#services" onclick="closeMenu()">Assainissement</a>
-<a href="#services" onclick="closeMenu()">Génie civil</a>
-<a href="#services" onclick="closeMenu()">Forage et équipement</a>
-<a href="#services" onclick="closeMenu()">Vente pièces réseaux</a>
-</div>
+<a href="#services">Eau potable</a>
+<a href="#services">Assainissement</a>
 </div>
 
-<a href="#offre" onclick="closeMenu()">Offre</a>
-<a href="#projects" onclick="closeMenu()">Projets</a>
-<a href="#contact" onclick="closeMenu()">Contact</a>
-
+<a href="#offre">Offre</a>
+<a href="#projects">Projets</a>
+<a href="#contact">Contact</a>
 </div>
 
 <!-- HERO -->
-<section class="hero" id="home">
+<section class="hero">
 <div class="hero-text">
 <h1>SMERAV</h1>
 <p>Notre expertise, votre réussite</p>
 </div>
-</section>
-
-<!-- ABOUT -->
-<section class="section">
-<h2>About</h2>
-<p>
-SMERAV : Société de travaux publics basée à Fès,
-spécialisée en réseaux d’eau, assainissement,
-génie civil et travaux publics.
-</p>
 </section>
 
 <!-- SERVICES -->
@@ -301,35 +232,14 @@ génie civil et travaux publics.
 
 <div class="service" onclick="show('eau')">Réseaux d'eau potable</div>
 <div id="eau" class="gallery">
-<img src="reseaux-eaux-potable.jpg?v=6">
-<img src="branchement-eaux.jpg?v=6">
-<img src="raccordement-eau.jpg?v=6">
-<img src="detection-des-fuites.jpg?v=6">
-<img src="recherche-fuite.jpg?v=6">
-<img src="reparation-fuites.jpg?v=6">
+<img src="reseaux-eaux-potable.jpg">
+<img src="branchement-eaux.jpg">
+<img src="raccordement-eau.jpg">
 </div>
 
-<div class="service" onclick="show('assainissement')">Assainissement</div>
-<div id="assainissement" class="gallery">
-<img src="reseaux-assainissement1.jpg?v=6">
-<img src="branchement-assainesement.jpg?v=6">
-</div>
-
-<div class="service" onclick="show('genie')">Génie civil</div>
-<div id="genie" class="gallery">
-<img src="genie-civil.jpg?v=6">
-<img src="genie-civil4.jpg?v=6">
-</div>
-
-<div class="service" onclick="show('forage')">Forage et équipement</div>
-<div id="forage" class="gallery">
-<img src="equipement.jpg?v=6">
-<img src="equipement1.jpg?v=6">
-</div>
-
-<div class="service" onclick="show('vente')">Vente pièces réseaux</div>
-<div id="vente" class="gallery">
-<img src="cataloge.png?v=6">
+<div class="service" onclick="show('ass')">Assainissement</div>
+<div id="ass" class="gallery">
+<img src="reseaux-assainissement1.jpg">
 </div>
 
 </section>
@@ -337,67 +247,67 @@ génie civil et travaux publics.
 <!-- OFFRE -->
 <section class="section offre" id="offre">
 <h2>Offre de Services</h2>
-<img src="offre.png?v=6">
+<img src="offre.png">
 </section>
 
 <!-- PROJECT -->
 <section class="section projects" id="projects">
 <h2>Nos Projets</h2>
-<img src="projet1.jpg?v=6">
-<img src="projet3.jpg?v=6">
+<img src="projet1.jpg">
+<img src="projet3.jpg">
 </section>
 
 <!-- CONTACT -->
 <section class="section" id="contact">
 <h2>Contact</h2>
-<input placeholder="Nom">
-<input placeholder="Email">
-<textarea placeholder="Message"></textarea>
-<button>Envoyer</button>
+
+<form id="contactForm" action="https://formsubmit.co/sarl.smerav@gmail.com" method="POST">
+<input type="text" name="name" placeholder="Nom" required>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="message" placeholder="Message" required></textarea>
+<button type="submit">Envoyer</button>
+
+<input type="hidden" name="_captcha" value="false">
+</form>
+
+<div id="successMsg">Message envoyé avec succès</div>
+
 <p>📍 Fès Maroc</p>
 <p>📞 +212661808894</p>
 </section>
 
-<!-- GOOGLE MAP -->
+<!-- MAP -->
 <section class="section">
 <h2>Notre Localisation</h2>
-
 <div class="map-box">
 <iframe src="https://www.google.com/maps?q=Fes,Morocco&output=embed"></iframe>
-
-<div class="map-info">
-<h3>SMERAV</h3>
-<p>📍 Fès, Maroc</p>
-<p>📞 +212661808894</p>
-<a href="https://www.google.com/maps?q=Fes,Morocco" target="_blank">
-Ouvrir Maps
-</a>
-</div>
-
 </div>
 </section>
 
-<!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/212661808894">💬</a>
+<a class="whatsapp" href="#">💬</a>
 
 <script>
 function toggleMenu(){
-document.getElementById("menu").classList.toggle("active");
-document.getElementById("overlay").classList.toggle("active");
+menu.classList.toggle("active");
+overlay.classList.toggle("active");
 }
-
 function closeMenu(){
-document.getElementById("menu").classList.remove("active");
-document.getElementById("overlay").classList.remove("active");
+menu.classList.remove("active");
+overlay.classList.remove("active");
 }
-
 function toggleDropdown(el){
-el.parentElement.classList.toggle("active");
+el.nextElementSibling.classList.toggle("active");
 }
-
 function show(id){
 document.getElementById(id).classList.toggle("active");
 }
+
+// success message
+document.getElementById("contactForm").addEventListener("submit", ()=>{
+setTimeout(()=>{
+document.getElementById("successMsg").style.display="block";
+},500);
+});
 </script>
 
 </body>
