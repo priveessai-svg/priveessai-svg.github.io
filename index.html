@@ -7,18 +7,81 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+
 body{background:#f5f5f5}
 
-/* HERO FULL */
+/* NAVBAR */
+.nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 20px;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(10px);
+z-index:999;
+}
+
+.logo{
+height:50px;
+}
+
+/* MENU BUTTON */
+.menu-btn{
+font-size:28px;
+color:white;
+background:rgba(0,0,0,0.5);
+padding:8px 12px;
+border-radius:8px;
+cursor:pointer;
+transition:0.3s;
+}
+
+/* MENU FULL SCREEN */
+.menu{
+position:fixed;
+top:0;
+right:-100%;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+transition:0.5s;
+}
+
+.menu a{
+color:white;
+font-size:28px;
+margin:20px;
+text-decoration:none;
+transition:0.3s;
+}
+
+.menu a:hover{
+color:gold;
+transform:scale(1.1);
+}
+
+.menu.active{
+right:0;
+}
+
+/* HERO */
 .hero{
 height:100vh;
-background:url("local.png?v=2") center/cover no-repeat;
+background:url("local.png?v=3") center/cover no-repeat;
 display:flex;
 justify-content:center;
 align-items:center;
 color:white;
 text-align:center;
 }
+
 .hero-text{
 background:rgba(0,0,0,0.5);
 padding:20px;
@@ -26,7 +89,10 @@ border-radius:10px;
 }
 
 /* SECTION */
-.section{padding:60px 20px;text-align:center}
+.section{
+padding:70px 20px;
+text-align:center;
+}
 
 /* SERVICES */
 .service{
@@ -50,27 +116,25 @@ margin-top:10px;
 }
 .gallery.active{display:grid}
 
-/* صور واضحة */
-.gallery img,
-.projects img,
-.offre img{
+.gallery img{
 width:100%;
-height:200px;
+height:180px;
 object-fit:cover;
 border-radius:10px;
-display:block;
 }
 
 /* OFFRE */
 .offre img{
-height:auto;
+width:90%;
 max-width:800px;
-margin:auto;
+border-radius:10px;
 }
 
 /* PROJECT */
 .projects img{
-height:220px;
+width:90%;
+margin:10px;
+border-radius:10px;
 }
 
 /* CONTACT */
@@ -90,7 +154,7 @@ border:none;
 border-radius:10px;
 }
 
-/* WhatsApp */
+/* WHATSAPP */
 .whatsapp{
 position:fixed;
 bottom:20px;
@@ -100,14 +164,41 @@ color:white;
 padding:15px;
 border-radius:50%;
 font-size:20px;
+text-decoration:none;
+}
+
+/* ANIMATION */
+.fade{
+opacity:0;
+transform:translateY(20px);
+transition:0.6s;
+}
+.fade.show{
+opacity:1;
+transform:translateY(0);
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+<div class="nav">
+<img src="logo-transparent.png?v=3" class="logo">
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+</div>
+
+<!-- MENU -->
+<div class="menu" id="menu">
+<a href="#home" onclick="closeMenu()">Accueil</a>
+<a href="#services" onclick="closeMenu()">Services</a>
+<a href="#offre" onclick="closeMenu()">Offre</a>
+<a href="#projects" onclick="closeMenu()">Projets</a>
+<a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="home">
 <div class="hero-text">
 <h1>SMERAV</h1>
 <p>Notre expertise, votre réussite</p>
@@ -115,69 +206,69 @@ font-size:20px;
 </section>
 
 <!-- ABOUT -->
-<section class="section">
+<section class="section fade">
 <h2>About</h2>
 <p>
-SMERAV : Société de Travaux Publics basée à Fès,
+SMERAV : Société de travaux publics basée à Fès,
 spécialisée en réseaux d’eau, assainissement,
 génie civil et travaux publics.
 </p>
 </section>
 
 <!-- SERVICES -->
-<section class="section">
+<section class="section" id="services">
 <h2>Nos Services</h2>
 
 <div class="service" onclick="show('eau')">Réseaux d'eau potable</div>
 <div id="eau" class="gallery">
-<img src="reseaux-eaux-potable.jpg?v=2" loading="eager">
-<img src="branchement-eaux.jpg?v=2" loading="eager">
-<img src="raccordement-eau.jpg?v=2" loading="eager">
-<img src="detection-des-fuites.jpg?v=2" loading="eager">
-<img src="recherche-fuite.jpg?v=2" loading="eager">
-<img src="reparation-fuites.jpg?v=2" loading="eager">
+<img src="reseaux-eaux-potable.jpg?v=3">
+<img src="branchement-eaux.jpg?v=3">
+<img src="raccordement-eau.jpg?v=3">
+<img src="detection-des-fuites.jpg?v=3">
+<img src="recherche-fuite.jpg?v=3">
+<img src="reparation-fuites.jpg?v=3">
 </div>
 
 <div class="service" onclick="show('assainissement')">Assainissement</div>
 <div id="assainissement" class="gallery">
-<img src="reseaux-assainissement1.jpg?v=2" loading="eager">
-<img src="branchement-assainesement.jpg?v=2" loading="eager">
+<img src="reseaux-assainissement1.jpg?v=3">
+<img src="branchement-assaineseement.jpg?v=3">
 </div>
 
 <div class="service" onclick="show('genie')">Génie civil</div>
 <div id="genie" class="gallery">
-<img src="genie-civil.jpg?v=2" loading="eager">
-<img src="genie-civil4.jpg?v=2" loading="eager">
+<img src="genie-civil.jpg?v=3">
+<img src="genie-civil4.jpg?v=3">
 </div>
 
 <div class="service" onclick="show('forage')">Forage et équipement</div>
 <div id="forage" class="gallery">
-<img src="equipement.jpg?v=2" loading="eager">
-<img src="equipement1.jpg?v=2" loading="eager">
+<img src="equipement.jpg?v=3">
+<img src="equipement1.jpg?v=3">
 </div>
 
 <div class="service" onclick="show('vente')">Vente pièces réseaux</div>
 <div id="vente" class="gallery">
-<img src="cataloge.png?v=2" loading="eager">
+<img src="cataloge.png?v=3">
 </div>
 
 </section>
 
 <!-- OFFRE -->
-<section class="section offre">
+<section class="section offre" id="offre">
 <h2>Offre de Services</h2>
-<img src="offre.png?v=2" loading="eager">
+<img src="offre.png?v=3">
 </section>
 
-<!-- PROJECTS -->
-<section class="section projects">
+<!-- PROJECT -->
+<section class="section projects" id="projects">
 <h2>Nos Projets</h2>
-<img src="projet1.jpg?v=2" loading="eager">
-<img src="projet3.jpg?v=2" loading="eager">
+<img src="projet1.jpg?v=3">
+<img src="projet3.jpg?v=3">
 </section>
 
 <!-- CONTACT -->
-<section class="section">
+<section class="section" id="contact">
 <h2>Contact</h2>
 <input placeholder="Nom">
 <input placeholder="Email">
@@ -187,13 +278,33 @@ génie civil et travaux publics.
 <p>📞 +212661808894</p>
 </section>
 
-<!-- WhatsApp -->
+<!-- WHATSAPP -->
 <a class="whatsapp" href="https://wa.me/212661808894">💬</a>
 
 <script>
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
+
+function closeMenu(){
+document.getElementById("menu").classList.remove("active");
+}
+
 function show(id){
 document.getElementById(id).classList.toggle("active");
 }
+
+/* Animation Scroll */
+const elements = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll',()=>{
+elements.forEach(el=>{
+const top = el.getBoundingClientRect().top;
+if(top < window.innerHeight - 50){
+el.classList.add('show');
+}
+});
+});
 </script>
 
 </body>
