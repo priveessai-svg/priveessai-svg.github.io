@@ -8,10 +8,57 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 
-/* ===== DESIGN عالمي (بدون تغيير الكود) ===== */
-body{
-background:linear-gradient(135deg,#0a1f44,#0f2f6b,#f5f5f5);
+/* ===== ULTIMATE DESIGN ADD ===== */
+
+/* Loader */
+#loader{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-size:24px;
+z-index:9999;
 }
+
+/* Animation */
+.fade{
+opacity:0;
+transform:translateY(50px);
+transition:1s;
+}
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* Navbar scroll */
+.nav.scrolled{
+background:rgba(0,0,0,0.7);
+box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+/* Hover effects */
+.service:hover{
+box-shadow:0 20px 60px rgba(0,0,0,0.3);
+transform:translateY(-5px);
+}
+
+.gallery img:hover,
+.projects img:hover,
+.offre img:hover{
+transform:scale(1.05);
+}
+
+button:hover{
+box-shadow:0 0 20px rgba(255,215,0,0.6);
+}
+
+/* ===== الكود الأصلي ===== */
+body{background:#f5f5f5}
 
 /* NAVBAR */
 .nav{
@@ -22,8 +69,8 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:12px 20px;
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(12px);
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(10px);
 z-index:999;
 }
 
@@ -69,15 +116,50 @@ z-index:999;
 }
 .menu.active{right:0}
 
-.close-btn{color:white;font-size:26px;align-self:flex-end;cursor:pointer;margin-bottom:20px;}
+.close-btn{
+color:white;
+font-size:26px;
+align-self:flex-end;
+cursor:pointer;
+margin-bottom:20px;
+}
 
-.menu a{color:white;font-size:20px;margin:10px 0;text-decoration:none;}
+.menu a{
+color:white;
+font-size:20px;
+margin:10px 0;
+text-decoration:none;
+}
 
 /* DROPDOWN */
-.dropdown-title{color:white;font-size:20px;display:flex;justify-content:space-between;cursor:pointer;margin:10px 0;}
-.dropdown-content{max-height:0;overflow:hidden;transition:0.4s;}
-.dropdown-content a{display:block;color:#ccc;margin:5px 0;}
-.dropdown.active .dropdown-content{max-height:300px;}
+.dropdown-title{
+color:white;
+font-size:20px;
+display:flex;
+justify-content:space-between;
+cursor:pointer;
+margin:10px 0;
+}
+
+.dropdown-content{
+max-height:0;
+overflow:hidden;
+transition:0.4s;
+}
+
+.dropdown-content a{
+display:block;
+color:#ccc;
+margin:5px 0;
+}
+
+.dropdown.active .dropdown-content{
+max-height:300px;
+}
+
+.dropdown.active .arrow{
+transform:rotate(180deg);
+}
 
 /* HERO */
 .hero{
@@ -104,20 +186,13 @@ text-align:center;
 
 /* SERVICES */
 .service{
-background:rgba(255,255,255,0.85);
+background:white;
 margin:10px auto;
 padding:15px;
 border-radius:12px;
 width:90%;
 max-width:400px;
 cursor:pointer;
-backdrop-filter:blur(8px);
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-transition:0.3s;
-}
-.service:hover{
-transform:translateY(-6px);
-box-shadow:0 15px 40px rgba(0,0,0,0.2);
 }
 
 /* GALLERY */
@@ -134,6 +209,7 @@ width:100%;
 height:180px;
 object-fit:cover;
 border-radius:10px;
+transition:0.3s;
 }
 
 /* OFFRE */
@@ -141,6 +217,7 @@ border-radius:10px;
 width:90%;
 max-width:800px;
 border-radius:10px;
+transition:0.3s;
 }
 
 /* PROJECT */
@@ -148,6 +225,7 @@ border-radius:10px;
 width:90%;
 margin:10px;
 border-radius:10px;
+transition:0.3s;
 }
 
 /* CONTACT */
@@ -161,23 +239,11 @@ border-radius:10px;
 }
 
 button{
-background:linear-gradient(45deg,gold,#d4af37);
+background:gold;
 padding:12px 20px;
 border:none;
 border-radius:10px;
-font-weight:bold;
 cursor:pointer;
-transition:0.3s;
-}
-button:hover{transform:scale(1.05)}
-
-#successMsg{
-display:none;
-background:green;
-color:white;
-padding:10px;
-margin-top:10px;
-border-radius:8px;
 }
 
 /* MAP */
@@ -188,9 +254,30 @@ border-radius:20px;
 overflow:hidden;
 margin-top:20px;
 }
+
 .map-box iframe{
 width:100%;
 height:100%;
+border:0;
+}
+
+.map-info{
+position:absolute;
+bottom:15px;
+left:15px;
+background:white;
+padding:15px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.map-info a{
+display:inline-block;
+margin-top:8px;
+padding:8px 12px;
+background:gold;
+border-radius:8px;
+text-decoration:none;
 }
 
 /* WHATSAPP */
@@ -198,17 +285,29 @@ height:100%;
 position:fixed;
 bottom:20px;
 right:20px;
-background:linear-gradient(45deg,#25D366,#128C7E);
+background:#25D366;
 color:white;
 padding:15px;
 border-radius:50%;
-transition:0.3s;
+text-decoration:none;
 }
-.whatsapp:hover{transform:scale(1.1)}
+
+/* SUCCESS */
+#successMsg{
+display:none;
+background:green;
+color:white;
+padding:10px;
+margin-top:10px;
+border-radius:8px;
+}
 </style>
 </head>
 
 <body>
+
+<!-- Loader -->
+<div id="loader">SMERAV</div>
 
 <!-- NAVBAR -->
 <div class="nav">
@@ -228,17 +327,17 @@ transition:0.3s;
 Services <span class="arrow">⌄</span>
 </div>
 <div class="dropdown-content">
-<a href="#services">Réseaux d'eau potable</a>
-<a href="#services">Assainissement</a>
-<a href="#services">Génie civil</a>
-<a href="#services">Forage et équipement</a>
-<a href="#services">Vente pièces réseaux</a>
+<a href="#services" onclick="closeMenu()">Réseaux d'eau potable</a>
+<a href="#services" onclick="closeMenu()">Assainissement</a>
+<a href="#services" onclick="closeMenu()">Génie civil</a>
+<a href="#services" onclick="closeMenu()">Forage et équipement</a>
+<a href="#services" onclick="closeMenu()">Vente pièces réseaux</a>
 </div>
 </div>
 
-<a href="#offre">Offre</a>
-<a href="#projects">Projets</a>
-<a href="#contact">Contact</a>
+<a href="#offre" onclick="closeMenu()">Offre</a>
+<a href="#projects" onclick="closeMenu()">Projets</a>
+<a href="#contact" onclick="closeMenu()">Contact</a>
 
 </div>
 
@@ -251,7 +350,7 @@ Services <span class="arrow">⌄</span>
 </section>
 
 <!-- ABOUT -->
-<section class="section">
+<section class="section fade">
 <h2>About</h2>
 <p>
 SMERAV : Société de travaux publics basée à Fès,
@@ -261,7 +360,7 @@ génie civil et travaux publics.
 </section>
 
 <!-- SERVICES -->
-<section class="section" id="services">
+<section class="section fade" id="services">
 <h2>Nos Services</h2>
 
 <div class="service" onclick="show('eau')">Réseaux d'eau potable</div>
@@ -300,20 +399,20 @@ génie civil et travaux publics.
 </section>
 
 <!-- OFFRE -->
-<section class="section offre" id="offre">
+<section class="section offre fade" id="offre">
 <h2>Offre de Services</h2>
 <img src="offre.png?v=6">
 </section>
 
 <!-- PROJECT -->
-<section class="section projects" id="projects">
+<section class="section projects fade" id="projects">
 <h2>Nos Projets</h2>
 <img src="projet1.jpg?v=6">
 <img src="projet3.jpg?v=6">
 </section>
 
 <!-- CONTACT -->
-<section class="section" id="contact">
+<section class="section fade" id="contact">
 <h2>Contact</h2>
 
 <form id="contactForm">
@@ -330,44 +429,72 @@ génie civil et travaux publics.
 </section>
 
 <!-- GOOGLE MAP -->
-<section class="section">
+<section class="section fade">
 <h2>Notre Localisation</h2>
 
 <div class="map-box">
 <iframe src="https://www.google.com/maps?q=Fes,Morocco&output=embed"></iframe>
+
+<div class="map-info">
+<h3>SMERAV</h3>
+<p>📍 Fès, Maroc</p>
+<p>📞 +212661808894</p>
+<a href="https://www.google.com/maps?q=Fes,Morocco" target="_blank">
+Ouvrir Maps
+</a>
+</div>
+
 </div>
 </section>
 
 <!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/212661808894?text=Bonjour%20SMERAV">💬</a>
+<a class="whatsapp"
+href="https://wa.me/212661808894?text=Bonjour%20SMERAV">
+💬</a>
 
 <script>
+window.addEventListener("load",()=>{
+document.getElementById("loader").style.display="none";
+});
+
 function toggleMenu(){
 document.getElementById("menu").classList.toggle("active");
 document.getElementById("overlay").classList.toggle("active");
 }
+
 function closeMenu(){
 document.getElementById("menu").classList.remove("active");
 document.getElementById("overlay").classList.remove("active");
 }
+
 function toggleDropdown(el){
 el.parentElement.classList.toggle("active");
 }
+
 function show(id){
 document.getElementById(id).classList.toggle("active");
 }
 
-/* CONTACT */
-document.getElementById("contactForm").addEventListener("submit",function(e){
-e.preventDefault();
-fetch("https://formsubmit.co/ajax/sarl.smerav@gmail.com",{
-method:"POST",
-body:new FormData(this)
-})
-.then(()=>{
-document.getElementById("successMsg").style.display="block";
-this.reset();
+const els=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+els.forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight-50){
+el.classList.add('show');
+}
 });
+});
+
+window.addEventListener("scroll",()=>{
+if(window.scrollY>50){
+document.querySelector(".nav").classList.add("scrolled");
+}else{
+document.querySelector(".nav").classList.remove("scrolled");
+}
+});
+
+window.addEventListener("scroll",()=>{
+document.querySelector(".hero").style.backgroundPositionY =
+window.scrollY*0.5+"px";
 });
 </script>
 
