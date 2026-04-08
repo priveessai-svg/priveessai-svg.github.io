@@ -6,149 +6,124 @@
 <title>SMERAV</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
-body{background:#f5f5f5;scroll-behavior:smooth;}
 
-/* HERO */
-.hero{
-height:100vh;
-background:url("local.png") center/cover no-repeat;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-text-align:center;
-position:relative;
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
 }
-.hero::after{
-content:"";
-position:absolute;
+
+/* NAVBAR */
+.nav{
+position:fixed;
+top:0;
 width:100%;
-height:100%;
-background:rgba(0,0,0,0.5);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
+background:rgba(0,0,0,0.7);
+z-index:1000;
 }
-.hero-content{position:relative;z-index:2;}
 
-/* LOGO */
 .logo{
-position:absolute;
-top:20px;
-left:20px;
-z-index:5;
+height:50px;
 }
-.logo img{width:60px;}
 
-/* MENU */
 .menu-btn{
-position:absolute;
-top:20px;
-right:20px;
-font-size:30px;
+font-size:28px;
 color:white;
 cursor:pointer;
-z-index:5;
 }
 
+/* MENU */
 .menu{
 position:fixed;
 top:0;
-left:0;
+right:-100%;
 width:100%;
-height:100%;
-background:rgba(0,0,0,0.95);
+height:100vh;
+background:black;
+color:white;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-transform:translateY(-100%);
-transition:0.6s;
-z-index:9999;
+gap:25px;
+font-size:28px;
+transition:0.5s;
+z-index:2000;
 }
 
-.menu.active{transform:translateY(0);}
+.menu.active{
+right:0;
+}
 
-.menu a{
-font-size:28px;
-color:white;
-margin:15px;
+.close{
+position:absolute;
+top:20px;
+right:20px;
+font-size:30px;
 cursor:pointer;
 }
 
-.menu a:hover{color:#ff7a00;}
+/* HERO */
+.hero{
+height:100vh;
+background:black;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+overflow:hidden;
+}
 
-/* SERVICES */
-.services{
-padding:40px 20px;
+.hero img{
+width:100%;
+height:100%;
+object-fit:contain; /* ✅ الصورة كاملة */
+}
+
+.hero-content{
+position:absolute;
+color:white;
 text-align:center;
 }
 
-.service{
-background:white;
-margin:20px;
+.hero-content h1{
+font-size:40px;
+}
+
+.hero-content p{
+margin-top:10px;
+}
+
+/* SERVICES */
+.section{
+padding:60px 20px;
+text-align:center;
+}
+
+.card{
+background:#f1f1f1;
+margin:15px 0;
 padding:20px;
-border-radius:10px;
-box-shadow:0 5px 10px rgba(0,0,0,0.1);
+border-radius:12px;
+cursor:pointer;
 }
 
-.service ul{
-margin-top:15px;
-text-align:left;
-max-width:400px;
-margin:auto;
-}
-
-.service li{
-margin:8px 0;
-font-size:14px;
-}
-
-/* SLIDER */
-.slider{
-position:relative;
-height:200px;
-overflow:hidden;
-border-radius:10px;
+/* DETAILS */
+.details{
+display:none;
+padding:20px;
 }
 
 .slider img{
-position:absolute;
 width:100%;
-height:100%;
-object-fit:cover;
-opacity:0;
-animation:slide 9s infinite;
-}
-
-.slider img:nth-child(1){animation-delay:0s;}
-.slider img:nth-child(2){animation-delay:3s;}
-.slider img:nth-child(3){animation-delay:6s;}
-
-@keyframes slide{
-0%{opacity:0;}
-10%{opacity:1;}
-30%{opacity:1;}
-40%{opacity:0;}
-100%{opacity:0;}
-}
-
-/* MODAL */
-.modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-justify-content:center;
-align-items:center;
-z-index:3000;
-}
-
-.modal img{
-width:90%;
-max-width:500px;
 border-radius:10px;
+margin-bottom:10px;
 }
 
 /* WHATSAPP */
@@ -157,21 +132,11 @@ position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
-width:60px;
-height:60px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:28px;
 color:white;
-animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.1);}
-100%{transform:scale(1);}
+padding:15px;
+border-radius:50%;
+font-size:22px;
+text-decoration:none;
 }
 
 </style>
@@ -179,141 +144,136 @@ animation:pulse 1.5s infinite;
 
 <body>
 
-<!-- HERO -->
-<div class="hero" id="top">
-
-<div class="logo">
-<a href="#"><img src="logo.png"></a>
-</div>
-
+<!-- NAV -->
+<div class="nav">
+<a href="#"><img src="logo-transparent.png" class="logo"></a>
 <div class="menu-btn" onclick="openMenu()">☰</div>
-
-<div class="hero-content">
-<h1>SMERAV</h1>
-<p>Travaux • Eau potable • Assainissement</p>
-</div>
-
 </div>
 
 <!-- MENU -->
 <div class="menu" id="menu">
-<div onclick="openMenu()" style="position:absolute;top:20px;right:20px;font-size:35px;">✕</div>
+<div class="close" onclick="closeMenu()">✖</div>
+<div onclick="goHome()">Accueil</div>
+<div onclick="scrollToSection('services')">Services</div>
+<div onclick="scrollToSection('contact')">Contact</div>
+</div>
 
-<a onclick="goSection('top')">Accueil</a>
-<a onclick="goSection('services')">Services</a>
-<a onclick="openOffre()">Offre de Services</a>
-<a onclick="goSection('contact')">Contact</a>
+<!-- HERO -->
+<div class="hero">
+
+<img src="local.png">
+
+<div class="hero-content">
+<h1>SMERAV</h1>
+<p>Votre expertise, votre réussite</p>
+</div>
+
 </div>
 
 <!-- SERVICES -->
-<div class="services" id="services">
-
+<div class="section" id="services">
 <h2>Nos Services</h2>
 
-<div class="service">
-<h3>Réseaux d'eau potable</h3>
-<div class="slider">
-<img src="réseaux-d'eaux-potable.jpg">
-<img src="detection-des-fuites.jpg">
-</div>
-<ul>
-<li>✔ Installation des conduites</li>
-<li>✔ Détection des fuites</li>
-<li>✔ Maintenance</li>
-<li>✔ Branchement réseau</li>
-</ul>
+<div class="card" onclick="toggle('eau')">
+Réseaux d'eau potable
 </div>
 
-<div class="service">
-<h3>Assainissement</h3>
+<div id="eau" class="details">
 <div class="slider">
-<img src="réseaux-d'assainissement.jpg">
-<img src="local.png">
+<img src="reseaux-eaux-potable.jpg">
+<img src="branchement-eaux.jpg">
+<img src="raccordement-eau.jpg">
 </div>
-<ul>
-<li>✔ Réseaux d’évacuation</li>
-<li>✔ Canalisations</li>
-<li>✔ Regards</li>
-<li>✔ Travaux complets</li>
-</ul>
+<p>Installation, raccordement, maintenance des réseaux.</p>
 </div>
 
-<div class="service">
-<h3>Génie civil</h3>
+<div class="card" onclick="toggle('assainissement')">
+Assainissement
+</div>
+
+<div id="assainissement" class="details">
+<div class="slider">
+<img src="reseaux-assainissement1.jpg">
+<img src="branchement-assaineseement.jpg">
+<img src="reparation-fuites.jpg">
+</div>
+<p>Travaux d’assainissement complets.</p>
+</div>
+
+<div class="card" onclick="toggle('genie')">
+Génie civil
+</div>
+
+<div id="genie" class="details">
 <div class="slider">
 <img src="genie-civil.jpg">
+<img src="genie-civil4.jpg">
+<img src="construction.jpg">
 </div>
-<ul>
-<li>✔ Terrassement</li>
-<li>✔ Béton</li>
-<li>✔ Construction</li>
-<li>✔ Infrastructure</li>
-</ul>
+<p>Travaux professionnels.</p>
 </div>
 
-<div class="service">
-<h3>Forage et équipement</h3>
-<div class="slider">
-<img src="forage.jpg">
-<img src="pompage.jpg">
-</div>
-<ul>
-<li>✔ Forage</li>
-<li>✔ Pompes</li>
-<li>✔ Équipements</li>
-<li>✔ Installation</li>
-</ul>
+<div class="card" onclick="toggle('forage')">
+Forage et équipement
 </div>
 
-<div class="service">
-<h3>Vente pièces eau potable</h3>
+<div id="forage" class="details">
 <div class="slider">
-<img src="pieces1.jpg">
-<img src="pieces2.jpg">
+<img src="Projet.jpg">
+<img src="Projet2.jpg">
+<img src="construction.jpg">
 </div>
-<ul>
-<li>✔ Tuyaux</li>
-<li>✔ Vannes</li>
-<li>✔ Raccords</li>
-<li>✔ Matériel hydraulique</li>
-</ul>
+<p>Forage et installation.</p>
+</div>
+
+<div class="card" onclick="toggle('vente')">
+Vente pièces réseaux
+</div>
+
+<div id="vente" class="details">
+<div class="slider">
+<img src="cataloge-pieces.png">
+<img src="Equipement.jpg">
+</div>
+<p>Vente de matériel professionnel.</p>
 </div>
 
 </div>
 
 <!-- CONTACT -->
-<div class="services" id="contact">
+<div class="section" id="contact">
 <h2>Contact</h2>
 <p>Fès, Maroc</p>
 <p>+212 661 80 88 94</p>
 </div>
 
-<!-- OFFRE -->
-<div class="modal" id="offreModal" onclick="closeOffre()">
-<img src="offre.jpg">
-</div>
-
 <!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/212661808894">💬</a>
+<a href="https://wa.me/212661808894" class="whatsapp">💬</a>
 
+<!-- SCRIPT -->
 <script>
 
 function openMenu(){
-document.getElementById("menu").classList.toggle("active");
+document.getElementById("menu").classList.add("active");
 }
 
-function goSection(id){
-openMenu();
+function closeMenu(){
+document.getElementById("menu").classList.remove("active");
+}
+
+function scrollToSection(id){
 document.getElementById(id).scrollIntoView({behavior:"smooth"});
+closeMenu();
 }
 
-function openOffre(){
-document.getElementById("offreModal").style.display="flex";
-openMenu();
+function goHome(){
+window.scrollTo({top:0,behavior:"smooth"});
+closeMenu();
 }
 
-function closeOffre(){
-document.getElementById("offreModal").style.display="none";
+function toggle(id){
+let el=document.getElementById(id);
+el.style.display = (el.style.display==="block") ? "none" : "block";
 }
 
 </script>
