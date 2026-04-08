@@ -7,7 +7,6 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-
 body{background:#f5f5f5}
 
 /* NAVBAR */
@@ -24,9 +23,7 @@ backdrop-filter:blur(10px);
 z-index:999;
 }
 
-.logo{
-height:50px;
-}
+.logo{height:50px}
 
 /* MENU BUTTON */
 .menu-btn{
@@ -36,10 +33,9 @@ background:rgba(0,0,0,0.5);
 padding:8px 12px;
 border-radius:8px;
 cursor:pointer;
-transition:0.3s;
 }
 
-/* MENU FULL SCREEN */
+/* MENU */
 .menu{
 position:fixed;
 top:0;
@@ -67,14 +63,13 @@ color:gold;
 transform:scale(1.1);
 }
 
-.menu.active{
-right:0;
-}
+.menu.active{right:0}
 
 /* HERO */
 .hero{
 height:100vh;
-background:url("local.png?v=3") center/cover no-repeat;
+position:relative;
+overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -82,7 +77,20 @@ color:white;
 text-align:center;
 }
 
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transition:1s;
+}
+
+.slide.active{opacity:1}
+
 .hero-text{
+position:relative;
+z-index:2;
 background:rgba(0,0,0,0.5);
 padding:20px;
 border-radius:10px;
@@ -121,7 +129,9 @@ width:100%;
 height:180px;
 object-fit:cover;
 border-radius:10px;
+transition:0.3s;
 }
+.gallery img:hover{transform:scale(1.05)}
 
 /* OFFRE */
 .offre img{
@@ -163,7 +173,40 @@ background:#25D366;
 color:white;
 padding:15px;
 border-radius:50%;
-font-size:20px;
+text-decoration:none;
+}
+
+/* MAP */
+.map-box{
+position:relative;
+height:350px;
+border-radius:20px;
+overflow:hidden;
+margin-top:20px;
+}
+
+.map-box iframe{
+width:100%;
+height:100%;
+border:0;
+}
+
+.map-info{
+position:absolute;
+bottom:15px;
+left:15px;
+background:white;
+padding:15px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.map-info a{
+display:inline-block;
+margin-top:8px;
+padding:8px 12px;
+background:gold;
+border-radius:8px;
 text-decoration:none;
 }
 
@@ -184,7 +227,7 @@ transform:translateY(0);
 
 <!-- NAVBAR -->
 <div class="nav">
-<img src="logo-transparent.png?v=3" class="logo">
+<img src="logo-transparent.png?v=4" class="logo">
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </div>
 
@@ -197,8 +240,12 @@ transform:translateY(0);
 <a href="#contact" onclick="closeMenu()">Contact</a>
 </div>
 
-<!-- HERO -->
+<!-- HERO SLIDER -->
 <section class="hero" id="home">
+<img src="local.png?v=4" class="slide active">
+<img src="projet1.jpg?v=4" class="slide">
+<img src="projet3.jpg?v=4" class="slide">
+
 <div class="hero-text">
 <h1>SMERAV</h1>
 <p>Notre expertise, votre réussite</p>
@@ -221,35 +268,35 @@ génie civil et travaux publics.
 
 <div class="service" onclick="show('eau')">Réseaux d'eau potable</div>
 <div id="eau" class="gallery">
-<img src="reseaux-eaux-potable.jpg?v=3">
-<img src="branchement-eaux.jpg?v=3">
-<img src="raccordement-eau.jpg?v=3">
-<img src="detection-des-fuites.jpg?v=3">
-<img src="recherche-fuite.jpg?v=3">
-<img src="reparation-fuites.jpg?v=3">
+<img src="reseaux-eaux-potable.jpg?v=4">
+<img src="branchement-eaux.jpg?v=4">
+<img src="raccordement-eau.jpg?v=4">
+<img src="detection-des-fuites.jpg?v=4">
+<img src="recherche-fuite.jpg?v=4">
+<img src="reparation-fuites.jpg?v=4">
 </div>
 
 <div class="service" onclick="show('assainissement')">Assainissement</div>
 <div id="assainissement" class="gallery">
-<img src="reseaux-assainissement1.jpg?v=3">
-<img src="branchement-assainesement.jpg?v=3">
+<img src="reseaux-assainissement1.jpg?v=4">
+<img src="branchement-assainesement.jpg?v=4">
 </div>
 
 <div class="service" onclick="show('genie')">Génie civil</div>
 <div id="genie" class="gallery">
-<img src="genie-civil.jpg?v=3">
-<img src="genie-civil4.jpg?v=3">
+<img src="genie-civil.jpg?v=4">
+<img src="genie-civil4.jpg?v=4">
 </div>
 
 <div class="service" onclick="show('forage')">Forage et équipement</div>
 <div id="forage" class="gallery">
-<img src="equipement.jpg?v=3">
-<img src="equipement1.jpg?v=3">
+<img src="equipement.jpg?v=4">
+<img src="equipement1.jpg?v=4">
 </div>
 
 <div class="service" onclick="show('vente')">Vente pièces réseaux</div>
 <div id="vente" class="gallery">
-<img src="cataloge.png?v=3">
+<img src="cataloge.png?v=4">
 </div>
 
 </section>
@@ -257,14 +304,14 @@ génie civil et travaux publics.
 <!-- OFFRE -->
 <section class="section offre" id="offre">
 <h2>Offre de Services</h2>
-<img src="offre.png?v=3">
+<img src="offre.png?v=4">
 </section>
 
 <!-- PROJECT -->
 <section class="section projects" id="projects">
 <h2>Nos Projets</h2>
-<img src="projet1.jpg?v=3">
-<img src="projet3.jpg?v=3">
+<img src="projet1.jpg?v=4">
+<img src="projet3.jpg?v=4">
 </section>
 
 <!-- CONTACT -->
@@ -276,6 +323,25 @@ génie civil et travaux publics.
 <button>Envoyer</button>
 <p>📍 Fès Maroc</p>
 <p>📞 +212661808894</p>
+</section>
+
+<!-- GOOGLE MAP -->
+<section class="section">
+<h2>Notre Localisation</h2>
+
+<div class="map-box">
+<iframe src="https://www.google.com/maps?q=Fes,Morocco&output=embed"></iframe>
+
+<div class="map-info">
+<h3>SMERAV</h3>
+<p>📍 Fès, Maroc</p>
+<p>📞 +212661808894</p>
+<a href="https://www.google.com/maps?q=Fes,Morocco" target="_blank">
+Ouvrir Maps
+</a>
+</div>
+
+</div>
 </section>
 
 <!-- WHATSAPP -->
@@ -294,13 +360,20 @@ function show(id){
 document.getElementById(id).classList.toggle("active");
 }
 
-/* Animation Scroll */
-const elements = document.querySelectorAll('.fade');
+/* SLIDER */
+let slides=document.querySelectorAll(".slide");
+let i=0;
+setInterval(()=>{
+slides[i].classList.remove("active");
+i=(i+1)%slides.length;
+slides[i].classList.add("active");
+},4000);
 
+/* SCROLL ANIMATION */
+const elements=document.querySelectorAll('.fade');
 window.addEventListener('scroll',()=>{
 elements.forEach(el=>{
-const top = el.getBoundingClientRect().top;
-if(top < window.innerHeight - 50){
+if(el.getBoundingClientRect().top < window.innerHeight-50){
 el.classList.add('show');
 }
 });
