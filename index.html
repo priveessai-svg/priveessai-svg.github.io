@@ -3,7 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SMERAV</title>
+
+<!-- SEO -->
+<meta name="description" content="SMERAV travaux publics à Fès : réseaux d’eau potable, assainissement, génie civil.">
+<meta name="keywords" content="travaux publics Fès, eau potable Maroc, assainissement Fès">
+
+<!-- SPEED -->
+<link rel="preload" as="image" href="local.png">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
@@ -11,126 +19,109 @@ body{background:#f5f5f5}
 
 /* NAVBAR */
 .nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
+position:fixed;top:0;width:100%;
+display:flex;justify-content:space-between;align-items:center;
 padding:12px 20px;
 background:rgba(0,0,0,0.5);
 backdrop-filter:blur(10px);
 z-index:999;
 }
-
 .logo{height:50px}
-
-.menu-btn{
-font-size:28px;
-color:white;
-background:rgba(0,0,0,0.5);
-padding:8px 12px;
-border-radius:8px;
-cursor:pointer;
-}
+.menu-btn{font-size:28px;color:white;cursor:pointer}
 
 /* OVERLAY */
 .overlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+position:fixed;width:100%;height:100%;
 background:rgba(0,0,0,0.5);
-opacity:0;
-visibility:hidden;
-transition:0.3s;
-z-index:998;
+opacity:0;visibility:hidden;transition:0.3s;
 }
 .overlay.active{opacity:1;visibility:visible}
 
 /* MENU */
 .menu{
-position:fixed;
-top:0;
-right:-280px;
-width:260px;
-height:100%;
+position:fixed;top:0;right:-280px;
+width:260px;height:100%;
 background:black;
-display:flex;
-flex-direction:column;
-padding:30px 20px;
-transition:0.4s;
-z-index:999;
+padding:30px;transition:0.4s;
 }
 .menu.active{right:0}
-
-.close-btn{color:white;font-size:26px;align-self:flex-end;cursor:pointer;margin-bottom:20px;}
-
-.menu a{color:white;font-size:20px;margin:10px 0;text-decoration:none;}
-
-/* DROPDOWN */
-.dropdown-title{color:white;font-size:20px;display:flex;justify-content:space-between;cursor:pointer;margin:10px 0;}
-.dropdown-content{max-height:0;overflow:hidden;transition:0.4s;}
-.dropdown-content a{display:block;color:#ccc;margin:5px 0;}
-.dropdown.active .dropdown-content{max-height:300px;}
+.menu a{color:white;display:block;margin:10px 0;text-decoration:none}
+.close-btn{color:white;font-size:25px;cursor:pointer}
 
 /* HERO */
 .hero{
 height:100vh;
 background:url("local.png?v=6") center/cover no-repeat;
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
-text-align:center;
+display:flex;justify-content:center;align-items:center;
+color:white;text-align:center;
 }
+.hero-text{background:rgba(0,0,0,0.5);padding:20px;border-radius:10px}
 
-.hero-text{
-background:rgba(0,0,0,0.5);
-padding:20px;
+/* SECTION */
+.section{padding:70px 20px;text-align:center}
+
+/* ANIMATION */
+.fade{opacity:0;transform:translateY(20px);transition:0.6s}
+.fade.show{opacity:1;transform:translateY(0)}
+
+/* SERVICES */
+.service{
+background:white;margin:10px auto;padding:15px;border-radius:12px;
+width:90%;max-width:400px;cursor:pointer;
+}
+.gallery{display:none;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.gallery.active{display:grid}
+.gallery img{width:100%;height:180px;object-fit:cover;border-radius:10px}
+
+/* OFFRE */
+.offre img{
+width:90%;
+max-width:800px;
+margin:auto;
+display:block;
 border-radius:10px;
 }
 
-/* SECTION */
-.section{padding:70px 20px;text-align:center;}
+/* PROJECT */
+.projects img{
+width:90%;
+margin:10px auto;
+display:block;
+border-radius:10px;
+}
 
-/* SERVICES */
-.service{background:white;margin:10px auto;padding:15px;border-radius:12px;width:90%;max-width:400px;cursor:pointer;}
-.service:hover{background:#eee}
+/* CONTACT */
+input,textarea{
+width:90%;margin:10px;padding:12px;border:none;background:#eee;border-radius:10px;
+}
+button{
+background:gold;padding:12px 20px;border:none;border-radius:10px;cursor:pointer;
+}
+#successMsg{
+display:none;background:green;color:white;padding:10px;margin-top:10px;border-radius:8px;
+}
 
-.gallery{display:none;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:10px;}
-.gallery.active{display:grid}
-
-.gallery img{width:100%;height:180px;object-fit:cover;border-radius:10px;}
+/* MAP */
+.map-box{height:350px;border-radius:20px;overflow:hidden}
+.map-box iframe{width:100%;height:100%}
 
 /* WHATSAPP */
 .whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-padding:15px;
-border-radius:50%;
-text-decoration:none;
+position:fixed;bottom:20px;right:20px;
+background:#25D366;color:white;padding:15px;border-radius:50%;
 }
 
-/* SUCCESS */
-#successMsg{
-display:none;
-background:green;
-color:white;
-padding:10px;
-margin-top:10px;
-border-radius:8px;
+/* SCROLL TOP */
+.scrollTop{
+position:fixed;bottom:90px;right:20px;
+background:black;color:white;border:none;padding:10px;border-radius:50%;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <div class="nav">
 <img src="logo-transparent.png?v=6" class="logo">
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
@@ -138,30 +129,16 @@ border-radius:8px;
 
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
-<!-- MENU -->
 <div class="menu" id="menu">
 <div class="close-btn" onclick="closeMenu()">✕</div>
-
-<div class="dropdown">
-<div class="dropdown-title" onclick="toggleDropdown(this)">
-Services ⌄
-</div>
-<div class="dropdown-content">
-<a href="#services">Réseaux d'eau potable</a>
-<a href="#services">Assainissement</a>
-<a href="#services">Génie civil</a>
-<a href="#services">Forage et équipement</a>
-<a href="#services">Vente pièces réseaux</a>
-</div>
-</div>
-
+<a href="#services">Services</a>
 <a href="#offre">Offre</a>
 <a href="#projects">Projets</a>
 <a href="#contact">Contact</a>
 </div>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero fade">
 <div class="hero-text">
 <h1>SMERAV</h1>
 <p>Notre expertise, votre réussite</p>
@@ -169,110 +146,64 @@ Services ⌄
 </section>
 
 <!-- ABOUT -->
-<section class="section">
+<section class="section fade">
 <h2>About</h2>
-<p>SMERAV : Société de travaux publics basée à Fès.</p>
+<p>Entreprise de travaux publics à Fès spécialisée en eau et assainissement.</p>
 </section>
 
-<!-- WHY -->
-<section class="section">
-<h2>Pourquoi nous choisir ?</h2>
-<p>✔ Expertise en travaux publics</p>
-<p>✔ Intervention rapide</p>
-<p>✔ Équipe professionnelle</p>
-<p>✔ Satisfaction garantie</p>
-</section>
-
-<!-- SERVICES (كما هو) -->
-<section class="section" id="services">
+<!-- SERVICES -->
+<section class="section fade" id="services">
 <h2>Nos Services</h2>
 
 <div class="service" onclick="show('eau')">Réseaux d'eau potable</div>
 <div id="eau" class="gallery">
 <img src="reseaux-eaux-potable.jpg?v=6">
 <img src="branchement-eaux.jpg?v=6">
-<img src="raccordement-eau.jpg?v=6">
-<img src="detection-des-fuites.jpg?v=6">
-<img src="recherche-fuite.jpg?v=6">
-<img src="reparation-fuites.jpg?v=6">
-</div>
-
-<div class="service" onclick="show('assainissement')">Assainissement</div>
-<div id="assainissement" class="gallery">
-<img src="reseaux-assainissement1.jpg?v=6">
-<img src="branchement-assainesement.jpg?v=6">
-</div>
-
-<div class="service" onclick="show('genie')">Génie civil</div>
-<div id="genie" class="gallery">
-<img src="genie-civil.jpg?v=6">
-<img src="genie-civil4.jpg?v=6">
-</div>
-
-<div class="service" onclick="show('forage')">Forage et équipement</div>
-<div id="forage" class="gallery">
-<img src="equipement.jpg?v=6">
-<img src="equipement1.jpg?v=6">
-</div>
-
-<div class="service" onclick="show('vente')">Vente pièces réseaux</div>
-<div id="vente" class="gallery">
-<img src="cataloge.png?v=6">
 </div>
 
 </section>
 
 <!-- OFFRE -->
-<section class="section offre" id="offre">
+<section class="section offre fade" id="offre">
 <h2>Offre de Services</h2>
 <img src="offre.png?v=6">
 </section>
 
 <!-- PROJECT -->
-<section class="section projects" id="projects">
+<section class="section projects fade" id="projects">
 <h2>Nos Projets</h2>
 <img src="projet1.jpg?v=6">
 <img src="projet3.jpg?v=6">
 </section>
 
-<!-- CTA -->
-<section class="section" style="background:#000;color:white">
-<h2>Besoin d’un devis ?</h2>
-<p>Contactez-nous dès maintenant</p>
-
-<a href="https://wa.me/212661808894?text=Bonjour%20SMERAV%2C%20je%20souhaite%20un%20devis"
-style="background:gold;padding:12px 20px;border-radius:10px;color:black;text-decoration:none;">
-Demander un devis
-</a>
-</section>
-
 <!-- CONTACT -->
-<section class="section" id="contact">
+<section class="section fade" id="contact">
 <h2>Contact</h2>
 
 <form id="contactForm">
-<input type="text" name="name" placeholder="Nom" required>
-<input type="email" name="email" placeholder="Email" required>
-<textarea name="message" placeholder="Message" required></textarea>
+<input name="name" placeholder="Nom" required>
+<input name="email" placeholder="Email" required>
+<textarea name="message" placeholder="Message"></textarea>
 <button>Envoyer</button>
 </form>
 
 <div id="successMsg">Message envoyé avec succès</div>
 
-<p>📍 Fès Maroc</p>
-<p>📞 +212661808894</p>
 </section>
 
 <!-- MAP -->
-<section class="section">
-<h2>Notre Localisation</h2>
-<iframe src="https://www.google.com/maps?q=Fes,Morocco&output=embed" width="100%" height="300"></iframe>
+<section class="section fade">
+<h2>Localisation</h2>
+<div class="map-box">
+<iframe src="https://www.google.com/maps?q=Fes,Morocco&output=embed"></iframe>
+</div>
 </section>
 
 <!-- WHATSAPP -->
-<a class="whatsapp"
-href="https://wa.me/212661808894?text=Bonjour%20SMERAV%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20vos%20services">
-💬</a>
+<a class="whatsapp" href="https://wa.me/212661808894?text=Bonjour%20SMERAV%2C%20je%20souhaite%20un%20devis">💬</a>
+
+<!-- SCROLL TOP -->
+<button class="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
 function toggleMenu(){
@@ -283,17 +214,13 @@ function closeMenu(){
 menu.classList.remove("active");
 overlay.classList.remove("active");
 }
-function toggleDropdown(el){
-el.parentElement.classList.toggle("active");
-}
 function show(id){
 document.getElementById(id).classList.toggle("active");
 }
 
-// CONTACT AJAX
+/* CONTACT */
 document.getElementById("contactForm").addEventListener("submit",function(e){
 e.preventDefault();
-
 fetch("https://formsubmit.co/ajax/sarl.smerav@gmail.com",{
 method:"POST",
 body:new FormData(this)
@@ -301,6 +228,16 @@ body:new FormData(this)
 .then(()=>{
 document.getElementById("successMsg").style.display="block";
 this.reset();
+});
+});
+
+/* ANIMATION */
+const elements=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+elements.forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight-50){
+el.classList.add('show');
+}
 });
 });
 </script>
