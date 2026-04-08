@@ -7,58 +7,15 @@
 
 <style>
 
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
-
-/* HEADER */
-header{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 20px;
-z-index:1000;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
 }
 
-.logo{height:45px;}
-
-/* MENU */
-.menu-btn{font-size:30px;color:white;cursor:pointer;}
-
-.menu{
-position:fixed;
-top:0;
-right:-100%;
-width:100%;
-height:100%;
-background:black;
-color:white;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-transition:0.5s;
-z-index:2000;
-}
-
-.menu.active{right:0;}
-
-.menu a{
-color:white;
-font-size:25px;
-margin:15px;
-text-decoration:none;
-}
-
-.close-menu{
-position:absolute;
-top:20px;
-right:20px;
-font-size:30px;
-cursor:pointer;
+body{
+background:#f5f5f5;
 }
 
 /* HERO */
@@ -66,8 +23,8 @@ cursor:pointer;
 height:100vh;
 background:url("local.png") center/cover no-repeat;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 color:white;
 text-align:center;
 position:relative;
@@ -78,78 +35,150 @@ content:"";
 position:absolute;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.6);
+background:rgba(0,0,0,0.5);
+top:0;
+left:0;
 }
 
 .hero-content{
 position:relative;
 z-index:2;
-animation:fadeUp 1.5s;
+}
+
+.hero h1{font-size:40px;}
+.hero p{margin-top:10px;font-size:18px;}
+
+/* LOGO */
+.logo{
+position:absolute;
+top:20px;
+left:20px;
+z-index:3;
+}
+
+.logo img{
+width:60px;
+}
+
+/* MENU */
+.menu-btn{
+position:absolute;
+top:20px;
+right:20px;
+font-size:30px;
+color:white;
+cursor:pointer;
+z-index:3;
+}
+
+.menu{
+position:fixed;
+top:0;
+right:-100%;
+width:100%;
+height:100%;
+background:black;
+color:white;
+transition:0.5s;
+padding:50px;
+z-index:999;
+overflow-y:auto;
+}
+
+.menu.active{
+right:0;
+}
+
+.menu a{
+display:block;
+margin:20px 0;
+font-size:24px;
+color:white;
+text-decoration:none;
 }
 
 /* SERVICES */
-section{padding:80px 20px;text-align:center;}
-
 .services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+padding:40px 20px;
+text-align:center;
 }
 
-.card{
-background:#f5f5f5;
+.service{
+background:white;
+margin:15px;
 padding:20px;
 border-radius:10px;
 cursor:pointer;
-transition:0.3s;
+box-shadow:0 5px 10px rgba(0,0,0,0.1);
 }
-
-.card:hover{transform:translateY(-5px);}
 
 /* MODAL */
 .modal{
-display:none;
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.8);
-justify-content:center;
+background:rgba(0,0,0,0.9);
+display:none;
+flex-direction:column;
 align-items:center;
-z-index:3000;
+justify-content:center;
+color:white;
+z-index:2000;
 }
 
-.modal-content{
-background:white;
-padding:20px;
-border-radius:10px;
+.slider{
 width:90%;
 max-width:400px;
-text-align:center;
 position:relative;
 }
 
-.modal-img{
+.slider img{
 width:100%;
 border-radius:10px;
-transition:0.5s;
 }
 
-.slider-btn{
-margin:10px;
-padding:8px 15px;
+.slide-title{
+margin-top:10px;
+font-size:18px;
+}
+
+.controls{
+margin-top:10px;
+}
+
+button{
+padding:10px;
+margin:5px;
 border:none;
-background:#007BFF;
+background:#ff7a00;
 color:white;
+cursor:pointer;
 border-radius:5px;
+}
+
+.close{
+position:absolute;
+top:20px;
+right:20px;
+font-size:30px;
 cursor:pointer;
 }
 
-/* ANIMATION */
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(30px);}
-to{opacity:1;transform:translateY(0);}
+/* WHATSAPP */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px;
+border-radius:50%;
+font-size:20px;
+text-decoration:none;
+z-index:3000;
+box-shadow:0 4px 10px rgba(0,0,0,0.3);
 }
 
 </style>
@@ -157,135 +186,153 @@ to{opacity:1;transform:translateY(0);}
 
 <body>
 
-<!-- HEADER -->
-<header>
-<a href="#"><img src="logo-transparent.png" class="logo"></a>
+<!-- HERO -->
+<div class="hero">
+
+<div class="logo">
+<a href="#"><img src="logo.png"></a>
+</div>
+
 <div class="menu-btn" onclick="openMenu()">☰</div>
-</header>
+
+<div class="hero-content">
+<h1>SMERAV</h1>
+<p>Notre expertise, votre réussite</p>
+</div>
+
+</div>
 
 <!-- MENU -->
 <div class="menu" id="menu">
-<div class="close-menu" onclick="closeMenu()">✕</div>
 <a href="#">Accueil</a>
 <a href="#services">Services</a>
 <a href="#contact">Contact</a>
 </div>
 
-<!-- HERO -->
-<section class="hero">
-<div class="hero-content">
-<h1>SMERAV</h1>
-<p>Notre expertise, votre réussite</p>
-</div>
-</section>
-
 <!-- SERVICES -->
-<section id="services">
+<div class="services" id="services">
 <h2>Nos Services</h2>
 
-<div class="services">
-
-<div class="card" onclick="openService('eau')">
-<h3>Réseaux d'eau potable</h3>
-<p>Installation et maintenance</p>
+<div class="service" onclick="openService('eau')">
+Réseaux d'eau potable
 </div>
 
-<div class="card" onclick="openService('assainissement')">
-<h3>Assainissement</h3>
-<p>Travaux complets</p>
+<div class="service" onclick="openService('assainissement')">
+Assainissement
 </div>
 
-<div class="card" onclick="openService('genie')">
-<h3>Génie civil</h3>
-<p>Travaux professionnels</p>
+<div class="service" onclick="openService('genie')">
+Génie civil
 </div>
 
 </div>
-</section>
 
 <!-- CONTACT -->
-<section id="contact">
+<div class="services" id="contact">
 <h2>Contact</h2>
 <p>Fès, Maroc</p>
 <p>+212 661 80 88 94</p>
-</section>
+</div>
 
 <!-- MODAL -->
-<div id="modal" class="modal">
-<div class="modal-content">
+<div class="modal" id="modal">
 
-<span onclick="closeModal()" style="position:absolute;right:15px;top:10px;cursor:pointer;">✕</span>
+<div class="close" onclick="closeModal()">✖</div>
 
 <h2 id="modal-title"></h2>
 <p id="modal-text"></p>
 
-<img id="slide" class="modal-img">
-
-<div>
-<button class="slider-btn" onclick="prevSlide()">⬅</button>
-<button class="slider-btn" onclick="nextSlide()">➡</button>
+<div class="slider">
+<img id="slide-img">
+<div class="slide-title" id="slide-title"></div>
 </div>
 
+<div class="controls">
+<button onclick="prev()">⬅</button>
+<button onclick="next()">➡</button>
 </div>
+
 </div>
+
+<!-- WHATSAPP BUTTON -->
+<a class="whatsapp" href="https://wa.me/212661808894" target="_blank">
+💬
+</a>
 
 <script>
 
-/* MENU */
-function openMenu(){document.getElementById("menu").classList.add("active");}
-function closeMenu(){document.getElementById("menu").classList.remove("active");}
-
-/* SLIDER */
-let images = [];
-let current = 0;
+let images=[];
+let titles=[];
+let current=0;
 let autoSlide;
+
+/* MENU */
+function openMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
 
 /* OPEN SERVICE */
 function openService(type){
 
+current=0;
+
 if(type==="eau"){
-images=["réseaux-d'eaux-potable.jpg","detection-des-fuites.jpg"];
+images=[
+"réseaux-d'eaux-potable.jpg",
+"detection-des-fuites.jpg",
+"local.png"
+];
+
+titles=[
+"Réseaux d'eau potable",
+"Détection des fuites",
+"Projet terrain"
+];
+
 document.getElementById("modal-title").innerText="Réseaux d'eau potable";
-document.getElementById("modal-text").innerText="Installation complète + maintenance.";
+document.getElementById("modal-text").innerText="Installation, maintenance, détection des fuites.";
 }
 
 if(type==="assainissement"){
 images=["réseaux-d'assainissement.jpg"];
+titles=["Travaux assainissement"];
+
 document.getElementById("modal-title").innerText="Assainissement";
-document.getElementById("modal-text").innerText="Travaux d’évacuation.";
+document.getElementById("modal-text").innerText="Réseaux d’évacuation et travaux complets.";
 }
 
 if(type==="genie"){
 images=["genie-civil.jpg"];
-document.getElementById("modal-title").innerText="Génie civil";
-document.getElementById("modal-text").innerText="Travaux de construction.";
-}
+titles=["Génie civil"];
 
-current=0;
-showSlide();
+document.getElementById("modal-title").innerText="Génie civil";
+document.getElementById("modal-text").innerText="Travaux béton et infrastructure.";
+}
 
 document.getElementById("modal").style.display="flex";
 
-/* AUTO SLIDER */
-autoSlide = setInterval(nextSlide,3000);
+showSlide();
+
+clearInterval(autoSlide);
+autoSlide=setInterval(next,3000);
+
 }
 
 /* SHOW */
 function showSlide(){
-document.getElementById("slide").src=images[current];
+document.getElementById("slide-img").src=images[current];
+document.getElementById("slide-title").innerText=titles[current];
 }
 
 /* NEXT */
-function nextSlide(){
-current++;
-if(current>=images.length){current=0;}
+function next(){
+current=(current+1)%images.length;
 showSlide();
 }
 
 /* PREV */
-function prevSlide(){
-current--;
-if(current<0){current=images.length-1;}
+function prev(){
+current=(current-1+images.length)%images.length;
 showSlide();
 }
 
