@@ -8,14 +8,9 @@
 <style>
 
 /* RESET */
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 
-/* NAVBAR */
+/* NAV */
 .nav{
 position:fixed;
 top:0;
@@ -23,20 +18,14 @@ width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 20px;
-background:rgba(0,0,0,0.7);
+padding:15px;
+background:rgba(0,0,0,0.6);
 z-index:1000;
 }
 
-.logo{
-height:50px;
-}
+.logo{height:50px}
 
-.menu-btn{
-font-size:28px;
-color:white;
-cursor:pointer;
-}
+.menu-btn{font-size:30px;color:white;cursor:pointer}
 
 /* MENU */
 .menu{
@@ -46,20 +35,21 @@ right:-100%;
 width:100%;
 height:100vh;
 background:black;
-color:white;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-gap:25px;
+gap:30px;
 font-size:28px;
-transition:0.5s;
+color:white;
+transition:0.4s;
 z-index:2000;
 }
 
-.menu.active{
-right:0;
-}
+.menu.active{right:0}
+
+.menu div{cursor:pointer;transition:0.3s}
+.menu div:hover{color:gold;transform:scale(1.1)}
 
 .close{
 position:absolute;
@@ -69,21 +59,21 @@ font-size:30px;
 cursor:pointer;
 }
 
-/* HERO */
+/* HERO FULL SCREEN */
 .hero{
 height:100vh;
+position:relative;
 background:black;
 display:flex;
 align-items:center;
 justify-content:center;
-position:relative;
-overflow:hidden;
 }
 
 .hero img{
 width:100%;
 height:100%;
-object-fit:contain; /* ✅ الصورة كاملة */
+object-fit:cover;
+opacity:0.6;
 }
 
 .hero-content{
@@ -93,37 +83,55 @@ text-align:center;
 }
 
 .hero-content h1{
-font-size:40px;
+font-size:45px;
 }
 
 .hero-content p{
 margin-top:10px;
+font-size:18px;
 }
 
-/* SERVICES */
+/* SECTION */
 .section{
 padding:60px 20px;
 text-align:center;
 }
 
+h2{margin-bottom:20px}
+
+/* ABOUT */
+.about{
+max-width:800px;
+margin:auto;
+line-height:1.7;
+}
+
+/* CARDS */
 .card{
-background:#f1f1f1;
+background:#f5f5f5;
 margin:15px 0;
 padding:20px;
 border-radius:12px;
 cursor:pointer;
+border-left:5px solid gold;
 }
 
-/* DETAILS */
 .details{
 display:none;
-padding:20px;
+margin-top:10px;
 }
 
-.slider img{
+.details img{
 width:100%;
 border-radius:10px;
-margin-bottom:10px;
+margin:10px 0;
+}
+
+/* PROJECTS */
+.projects img{
+width:100%;
+border-radius:10px;
+margin:10px 0;
 }
 
 /* WHATSAPP */
@@ -137,6 +145,7 @@ padding:15px;
 border-radius:50%;
 font-size:22px;
 text-decoration:none;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
 
 </style>
@@ -153,19 +162,31 @@ text-decoration:none;
 <!-- MENU -->
 <div class="menu" id="menu">
 <div class="close" onclick="closeMenu()">✖</div>
+
 <div onclick="goHome()">Accueil</div>
+<div onclick="scrollToSection('about')">About</div>
 <div onclick="scrollToSection('services')">Services</div>
+<div onclick="scrollToSection('offre')">Offre</div>
+<div onclick="scrollToSection('projects')">Projects</div>
 <div onclick="scrollToSection('contact')">Contact</div>
+
 </div>
 
 <!-- HERO -->
 <div class="hero">
-
 <img src="local.png">
-
 <div class="hero-content">
 <h1>SMERAV</h1>
 <p>Votre expertise, votre réussite</p>
+</div>
+</div>
+
+<!-- ABOUT -->
+<div class="section" id="about">
+<h2>About</h2>
+
+<div class="about">
+SMERAV : Société de Travaux Publique Marocaine, is a company in fes Morocco. Since 2022 she has known how to meet the expectations of its customers and market requirements, constituting the following departments: Road and various networks construction, tourism facilities, large drinking water supply construction, Public works, civil works and major earth works.
 </div>
 
 </div>
@@ -174,69 +195,62 @@ text-decoration:none;
 <div class="section" id="services">
 <h2>Nos Services</h2>
 
-<div class="card" onclick="toggle('eau')">
-Réseaux d'eau potable
-</div>
-
+<!-- EAU -->
+<div class="card" onclick="toggle('eau')">Réseaux d'eau potable</div>
 <div id="eau" class="details">
-<div class="slider">
 <img src="reseaux-eaux-potable.jpg">
 <img src="branchement-eaux.jpg">
 <img src="raccordement-eau.jpg">
-</div>
-<p>Installation, raccordement, maintenance des réseaux.</p>
-</div>
-
-<div class="card" onclick="toggle('assainissement')">
-Assainissement
+<p>Installation, raccordement et maintenance des réseaux d'eau potable.</p>
 </div>
 
+<!-- ASSAINISSEMENT -->
+<div class="card" onclick="toggle('assainissement')">Assainissement</div>
 <div id="assainissement" class="details">
-<div class="slider">
 <img src="reseaux-assainissement1.jpg">
-<img src="branchement-assaineseement.jpg">
+<img src="recherche-fuite.jpg">
 <img src="reparation-fuites.jpg">
-</div>
-<p>Travaux d’assainissement complets.</p>
-</div>
-
-<div class="card" onclick="toggle('genie')">
-Génie civil
+<p>Travaux complets d’assainissement et gestion des eaux usées.</p>
 </div>
 
+<!-- GENIE -->
+<div class="card" onclick="toggle('genie')">Génie civil</div>
 <div id="genie" class="details">
-<div class="slider">
 <img src="genie-civil.jpg">
 <img src="genie-civil4.jpg">
 <img src="construction.jpg">
-</div>
-<p>Travaux professionnels.</p>
-</div>
-
-<div class="card" onclick="toggle('forage')">
-Forage et équipement
+<p>Travaux de construction et génie civil professionnels.</p>
 </div>
 
+<!-- FORAGE -->
+<div class="card" onclick="toggle('forage')">Forage et équipement</div>
 <div id="forage" class="details">
-<div class="slider">
-<img src="Projet.jpg">
-<img src="Projet2.jpg">
-<img src="construction.jpg">
-</div>
-<p>Forage et installation.</p>
+<img src="projet.jpg">
+<img src="projet2.jpg">
+<p>Forage et équipement des installations hydrauliques.</p>
 </div>
 
-<div class="card" onclick="toggle('vente')">
-Vente pièces réseaux
-</div>
-
+<!-- VENTE -->
+<div class="card" onclick="toggle('vente')">Vente pièces réseaux</div>
 <div id="vente" class="details">
-<div class="slider">
 <img src="cataloge-pieces.png">
-<img src="Equipement.jpg">
+<p>Vente de pièces et équipements réseaux eau potable.</p>
 </div>
-<p>Vente de matériel professionnel.</p>
+
 </div>
+
+<!-- OFFRE -->
+<div class="section" id="offre">
+<h2>Offre de Services</h2>
+<img src="offre.png">
+</div>
+
+<!-- PROJECTS -->
+<div class="section projects" id="projects">
+<h2>Nos Projets</h2>
+
+<img src="projet.jpg">
+<img src="projet2.jpg">
 
 </div>
 
@@ -248,7 +262,7 @@ Vente pièces réseaux
 </div>
 
 <!-- WHATSAPP -->
-<a href="https://wa.me/212661808894" class="whatsapp">💬</a>
+<a href="https://wa.me/212661808894?text=Bonjour%20je%20souhaite%20plus%20d'informations" class="whatsapp">💬</a>
 
 <!-- SCRIPT -->
 <script>
