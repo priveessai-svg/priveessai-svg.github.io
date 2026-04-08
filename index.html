@@ -40,31 +40,35 @@ background:linear-gradient(135deg,#0a1f44,#08142c,#000814);
 overflow-x:hidden;
 }
 
-/* glow */
-body::before{
-content:"";
-position:fixed;
-top:-200px;left:-200px;
-width:600px;height:600px;
-background:radial-gradient(circle,rgba(0,150,255,0.3),transparent);
-filter:blur(120px);
-z-index:-1;
-animation:move1 10s infinite alternate;
+/* ===== HERO ANIMATION ===== */
+.hero-text h1{
+opacity:0;
+transform:translateY(40px);
+animation:fadeUp 1s ease forwards;
+animation-delay:0.5s;
 }
-body::after{
-content:"";
-position:fixed;
-bottom:-200px;right:-200px;
-width:600px;height:600px;
-background:radial-gradient(circle,rgba(255,215,0,0.2),transparent);
-filter:blur(120px);
-z-index:-1;
-animation:move2 12s infinite alternate;
+.hero-text p{
+opacity:0;
+transform:translateY(40px);
+animation:fadeUp 1s ease forwards;
+animation-delay:1s;
 }
-@keyframes move1{to{transform:translate(100px,100px)}}
-@keyframes move2{to{transform:translate(-100px,-80px)}}
+@keyframes fadeUp{
+to{opacity:1;transform:translateY(0);}
+}
 
-/* ANIMATION */
+/* ===== BUTTON ANIMATION ===== */
+button,
+a[href*="wa.me"]{
+animation:pulse 2s infinite;
+}
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
+}
+
+/* ===== SCROLL ANIMATION ===== */
 .section{
 opacity:0;
 transform:translateY(50px);
@@ -80,24 +84,7 @@ transform:translateY(0);
 background:rgba(0,0,0,0.85);
 }
 
-/* HOVER */
-.service:hover{
-transform:translateY(-8px);
-box-shadow:0 20px 50px rgba(0,0,0,0.3);
-}
-
-.gallery img,
-.projects img,
-.offre img{
-transition:0.4s;
-}
-.gallery img:hover,
-.projects img:hover,
-.offre img:hover{
-transform:scale(1.05);
-}
-
-/* ===== الكود الأصلي ديالك ===== */
+/* ===== الكود ديالك ===== */
 body{background:#f5f5f5}
 
 /* NAVBAR */
@@ -234,6 +221,7 @@ width:90%;
 max-width:400px;
 cursor:pointer;
 }
+.service:hover{background:#eee}
 
 /* GALLERY */
 .gallery{
@@ -348,7 +336,7 @@ border-radius:8px;
 <h2>SMERAV</h2>
 </div>
 
-<!-- 🔥 هنا الكود ديالك كامل كما هو (ما تبدل حتى حاجة) -->
+<!-- 🔽 هنا الكود ديالك كامل كما هو 🔽 -->
 
 <!-- NAVBAR -->
 <div class="nav">
@@ -525,16 +513,13 @@ function toggleMenu(){
 document.getElementById("menu").classList.toggle("active");
 document.getElementById("overlay").classList.toggle("active");
 }
-
 function closeMenu(){
 document.getElementById("menu").classList.remove("active");
 document.getElementById("overlay").classList.remove("active");
 }
-
 function toggleDropdown(el){
 el.parentElement.classList.toggle("active");
 }
-
 function show(id){
 document.getElementById(id).classList.toggle("active");
 }
@@ -542,12 +527,10 @@ document.getElementById(id).classList.toggle("active");
 /* CONTACT */
 document.getElementById("contactForm").addEventListener("submit",function(e){
 e.preventDefault();
-
 fetch("https://formsubmit.co/ajax/sarl.smerav@gmail.com",{
 method:"POST",
 body:new FormData(this)
-})
-.then(()=>{
+}).then(()=>{
 document.getElementById("successMsg").style.display="block";
 this.reset();
 });
@@ -563,13 +546,9 @@ sec.classList.add("show");
 });
 });
 
-/* NAVBAR SCROLL */
+/* NAVBAR */
 window.addEventListener("scroll",()=>{
-if(window.scrollY>50){
-document.querySelector(".nav").classList.add("scrolled");
-}else{
-document.querySelector(".nav").classList.remove("scrolled");
-}
+document.querySelector(".nav").classList.toggle("scrolled",window.scrollY>50);
 });
 
 </script>
