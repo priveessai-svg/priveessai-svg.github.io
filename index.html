@@ -6,156 +6,91 @@
 <title>SMERAV</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#f5f5f5}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#f5f5f5}
 
-/* HEADER */
-header{
-position:fixed;
-width:100%;
-top:0;
-display:flex;
-justify-content:space-between;
-padding:15px;
-z-index:1000;
-}
-.logo{width:60px}
-.menu-btn{font-size:28px;color:white;cursor:pointer}
-
-/* MENU */
-.menu{
-position:fixed;
-top:0;
-right:-100%;
-width:100%;
-height:100%;
-background:black;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-transition:0.5s;
-}
-.menu a{
-color:white;
-font-size:28px;
-margin:15px;
-text-decoration:none;
-}
-.menu.active{right:0}
-
-/* HERO + SLIDER */
+/* HERO FULL */
 .hero{
-position:relative;
 height:100vh;
+background:url("local.png?v=2") center/cover no-repeat;
 display:flex;
 justify-content:center;
 align-items:center;
 color:white;
 text-align:center;
-overflow:hidden;
 }
-
-.slider{
-position:absolute;
-width:100%;
-height:100%;
-top:0;
-left:0;
-}
-
-.slide{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-opacity:0;
-transition:1s;
-}
-
-.slide.active{opacity:1}
-
 .hero-text{
-position:relative;
-z-index:2;
-background:rgba(0,0,0,0.4);
+background:rgba(0,0,0,0.5);
 padding:20px;
 border-radius:10px;
 }
 
 /* SECTION */
-.section{padding:70px 20px;text-align:center}
+.section{padding:60px 20px;text-align:center}
 
 /* SERVICES */
 .service{
 background:white;
-padding:20px;
-margin:15px;
+margin:10px auto;
+padding:15px;
 border-radius:12px;
+width:90%;
+max-width:400px;
 cursor:pointer;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
 }
+.service:hover{background:#eee}
 
 /* GALLERY */
 .gallery{
 display:none;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:15px;
-padding:20px;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:10px;
+margin-top:10px;
 }
 .gallery.active{display:grid}
 
-.img-box{
-position:relative;
-overflow:hidden;
-border-radius:12px;
-}
-.img-box img{
-width:100%;
-height:220px;
-object-fit:cover;
-}
-.img-box h3{
-position:absolute;
-bottom:0;
-width:100%;
-background:rgba(0,0,0,0.6);
-color:white;
-padding:8px;
-font-size:14px;
-}
-
-/* OFFER */
+/* صور واضحة */
+.gallery img,
+.projects img,
 .offre img{
-width:90%;
-max-width:900px;
-border-radius:15px;
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+display:block;
 }
 
-/* PROJECTS */
-.projects img{
-width:90%;
+/* OFFRE */
+.offre img{
+height:auto;
 max-width:800px;
-margin:10px;
-border-radius:12px;
+margin:auto;
+}
+
+/* PROJECT */
+.projects img{
+height:220px;
 }
 
 /* CONTACT */
-.contact input,.contact textarea{
+input,textarea{
 width:90%;
-padding:15px;
 margin:10px;
+padding:12px;
 border:none;
 background:#eee;
 border-radius:10px;
 }
-.contact button{
+
+button{
 background:gold;
+padding:12px 20px;
 border:none;
-padding:12px 25px;
-border-radius:8px;
+border-radius:10px;
 }
 
-/* WHATSAPP */
+/* WhatsApp */
 .whatsapp{
 position:fixed;
 bottom:20px;
@@ -171,29 +106,8 @@ font-size:20px;
 
 <body>
 
-<!-- HEADER -->
-<header>
-<img src="logo-transparent.png" class="logo">
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-</header>
-
-<!-- MENU -->
-<div class="menu" id="menu">
-<a href="#">Accueil</a>
-<a href="#services">Services</a>
-<a href="#offre">Offre</a>
-<a href="#projets">Projets</a>
-<a href="#contact">Contact</a>
-</div>
-
-<!-- HERO SLIDER -->
+<!-- HERO -->
 <section class="hero">
-<div class="slider">
-<img src="local.png" class="slide active">
-<img src="projet.jpg" class="slide">
-<img src="projet2.jpg" class="slide">
-</div>
-
 <div class="hero-text">
 <h1>SMERAV</h1>
 <p>Notre expertise, votre réussite</p>
@@ -204,94 +118,82 @@ font-size:20px;
 <section class="section">
 <h2>About</h2>
 <p>
-SMERAV : Société de Travaux Publique Marocaine, basée à Fès.
-Depuis 2022, elle répond aux exigences du marché avec expertise en
-réseaux d’eau potable, assainissement, génie civil et grands travaux.
+SMERAV : Société de Travaux Publics basée à Fès,
+spécialisée en réseaux d’eau, assainissement,
+génie civil et travaux publics.
 </p>
 </section>
 
 <!-- SERVICES -->
-<section class="section" id="services">
+<section class="section">
 <h2>Nos Services</h2>
 
-<div class="service" onclick="toggleGallery('eau')">Réseaux d'eau potable</div>
-<div class="gallery" id="eau">
-<div class="img-box"><img src="reseaux-eaux-potable.jpg?v=1"><h3>Réseau eau</h3></div>
-<div class="img-box"><img src="branchementeaux.jpg?v=1"><h3>Branchement</h3></div>
-<div class="img-box"><img src="raccordement-eau.jpg?v=1"><h3>Raccordement</h3></div>
-<div class="img-box"><img src="detection-des-fuites.jpg?v=1"><h3>Détection</h3></div>
-<div class="img-box"><img src="recherche-fuite.jpg?v=1"><h3>Recherche</h3></div>
-<div class="img-box"><img src="reparation-fuites.jpg?v=1"><h3>Réparation</h3></div>
+<div class="service" onclick="show('eau')">Réseaux d'eau potable</div>
+<div id="eau" class="gallery">
+<img src="reseaux-eaux-potable.jpg?v=2" loading="eager">
+<img src="branchementeaux.jpg?v=2" loading="eager">
+<img src="raccordement-eau.jpg?v=2" loading="eager">
+<img src="detection-des-fuites.jpg?v=2" loading="eager">
+<img src="recherche-fuite.jpg?v=2" loading="eager">
+<img src="reparation-fuites.jpg?v=2" loading="eager">
 </div>
 
-<div class="service" onclick="toggleGallery('assainissement')">Assainissement</div>
-<div class="gallery" id="assainissement">
-<div class="img-box"><img src="reseaux-assainissement1.jpg?v=1"><h3>Assainissement</h3></div>
-<div class="img-box"><img src="branchement-assaineseement.jpg?v=1"><h3>Branchement</h3></div>
+<div class="service" onclick="show('assainissement')">Assainissement</div>
+<div id="assainissement" class="gallery">
+<img src="reseaux-assainissement1.jpg?v=2" loading="eager">
+<img src="branchement-assaineseement.jpg?v=2" loading="eager">
 </div>
 
-<div class="service" onclick="toggleGallery('genie')">Génie civil</div>
-<div class="gallery" id="genie">
-<div class="img-box"><img src="genie-civil.jpg?v=1"><h3>Travaux</h3></div>
-<div class="img-box"><img src="genie-civil4.jpg?v=1"><h3>Chantier</h3></div>
+<div class="service" onclick="show('genie')">Génie civil</div>
+<div id="genie" class="gallery">
+<img src="genie-civil.jpg?v=2" loading="eager">
+<img src="genie-civil4.jpg?v=2" loading="eager">
 </div>
 
-<div class="service" onclick="toggleGallery('forage')">Forage et équipement</div>
-<div class="gallery" id="forage">
-<div class="img-box"><img src="equipement.jpg?v=1"><h3>Equipement</h3></div>
-<div class="img-box"><img src="construction.jpg?v=1"><h3>Forage</h3></div>
+<div class="service" onclick="show('forage')">Forage et équipement</div>
+<div id="forage" class="gallery">
+<img src="equipement.jpg?v=2" loading="eager">
+<img src="equipement1.jpg?v=2" loading="eager">
 </div>
 
-<div class="service" onclick="toggleGallery('vente')">Vente pièces réseaux</div>
-<div class="gallery" id="vente">
-<div class="img-box"><img src="catalogue-pieces.png?v=1"><h3>Catalogue</h3></div>
+<div class="service" onclick="show('vente')">Vente pièces réseaux</div>
+<div id="vente" class="gallery">
+<img src="cataloge.png?v=2" loading="eager">
 </div>
 
 </section>
 
 <!-- OFFRE -->
-<section class="section offre" id="offre">
+<section class="section offre">
 <h2>Offre de Services</h2>
-<img src="https://github.com/priveessai-svg/priveessai-svg.github.io/blob/main/offre.png
+<img src="offre.png?v=2" loading="eager">
 </section>
 
 <!-- PROJECTS -->
-<section class="section projects" id="projets">
+<section class="section projects">
 <h2>Nos Projets</h2>
-<img src="projet.jpg?v=1">
-<img src="projet2.jpg?v=1">
+<img src="projet1.jpg?v=2" loading="eager">
+<img src="projet3.jpg?v=2" loading="eager">
 </section>
 
 <!-- CONTACT -->
-<section class="section contact" id="contact">
+<section class="section">
 <h2>Contact</h2>
-<input type="text" placeholder="Nom">
-<input type="email" placeholder="Email">
+<input placeholder="Nom">
+<input placeholder="Email">
 <textarea placeholder="Message"></textarea>
 <button>Envoyer</button>
-<p>📍 Fès, Maroc</p>
-<p>📞 +212 661 80 88 94</p>
+<p>📍 Fès Maroc</p>
+<p>📞 +212661808894</p>
 </section>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/212661808894" class="whatsapp">💬</a>
+<!-- WhatsApp -->
+<a class="whatsapp" href="https://wa.me/212661808894">💬</a>
 
 <script>
-function toggleMenu(){
-document.getElementById("menu").classList.toggle("active");
-}
-
-function toggleGallery(id){
+function show(id){
 document.getElementById(id).classList.toggle("active");
 }
-
-let slides=document.querySelectorAll(".slide");
-let i=0;
-setInterval(()=>{
-slides[i].classList.remove("active");
-i=(i+1)%slides.length;
-slides[i].classList.add("active");
-},3000);
 </script>
 
 </body>
