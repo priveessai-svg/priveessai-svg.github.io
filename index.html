@@ -7,62 +7,13 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#f5f5f5}
 
-/* ===== HERO MODERN ===== */
-.hero{
-height:100vh;
-background:url("local.png?v=6") center/cover no-repeat;
-position:relative;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-color:white;
+/* ===== BACKGROUND LIGHT ===== */
+body{
+background:linear-gradient(120deg,#f5f7fa,#e4ecf7,#ffffff);
 }
 
-.hero::before{
-content:"";
-position:absolute;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.45);
-}
-
-.hero-text{
-position:relative;
-z-index:2;
-max-width:90%;
-}
-
-.hero-text h1{
-font-size:40px;
-font-weight:600;
-margin-bottom:10px;
-}
-
-.hero-text p{
-font-size:16px;
-opacity:0.9;
-margin-bottom:20px;
-}
-
-.hero-btn{
-display:inline-block;
-padding:12px 25px;
-border:1px solid white;
-color:white;
-text-decoration:none;
-border-radius:25px;
-transition:0.3s;
-}
-
-.hero-btn:hover{
-background:white;
-color:black;
-}
-
-/* ===== NAVBAR ===== */
+/* ===== NAVBAR GLASS ===== */
 .nav{
 position:fixed;
 top:0;
@@ -71,120 +22,71 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:12px 20px;
-background:rgba(0,0,0,0.5);
-backdrop-filter:blur(10px);
+background:rgba(255,255,255,0.6);
+backdrop-filter:blur(12px);
 z-index:999;
 }
 
-.logo{height:50px}
-
-.menu-btn{
-font-size:28px;
+/* ===== HERO ===== */
+.hero{
+height:100vh;
+background:url("local.png?v=6") center/cover no-repeat;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
 color:white;
-background:rgba(0,0,0,0.5);
-padding:8px 12px;
-border-radius:8px;
-cursor:pointer;
+position:relative;
 }
 
-/* OVERLAY */
-.overlay{
-position:fixed;
-top:0;
-left:0;
+.hero::before{
+content:"";
+position:absolute;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.5);
-opacity:0;
-visibility:hidden;
-transition:0.3s;
-z-index:998;
-}
-.overlay.active{
-opacity:1;
-visibility:visible;
+background:rgba(0,0,0,0.4);
 }
 
-/* MENU */
-.menu{
-position:fixed;
-top:0;
-right:-280px;
-width:260px;
-height:100%;
-background:black;
-display:flex;
-flex-direction:column;
-padding:30px 20px;
-transition:0.4s;
-z-index:999;
-}
-.menu.active{right:0}
-
-.close-btn{
-color:white;
-font-size:26px;
-align-self:flex-end;
-cursor:pointer;
-margin-bottom:20px;
+.hero-text{
+position:relative;
+z-index:2;
 }
 
-.menu a{
-color:white;
-font-size:20px;
-margin:10px 0;
+.hero-text h1{
+font-size:45px;
+margin-bottom:10px;
+}
+
+.hero-btn{
+background:white;
+color:black;
+padding:12px 25px;
+border-radius:25px;
 text-decoration:none;
 }
 
-/* DROPDOWN */
-.dropdown-title{
-color:white;
-font-size:20px;
-display:flex;
-justify-content:space-between;
-cursor:pointer;
-margin:10px 0;
+/* ===== SERVICES CARDS ===== */
+.service{
+background:white;
+margin:15px auto;
+padding:20px;
+border-radius:20px;
+width:90%;
+max-width:400px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+.service:hover{
+transform:translateY(-10px);
 }
 
-.dropdown-content{
-max-height:0;
-overflow:hidden;
-transition:0.4s;
-}
-
-.dropdown-content a{
-display:block;
-color:#ccc;
-margin:5px 0;
-}
-
-.dropdown.active .dropdown-content{
-max-height:300px;
-}
-
-.dropdown.active .arrow{
-transform:rotate(180deg);
-}
-
-/* SECTION */
+/* ===== SECTION ===== */
 .section{
-padding:70px 20px;
+padding:80px 20px;
 text-align:center;
 }
 
-/* SERVICES */
-.service{
-background:white;
-margin:10px auto;
-padding:15px;
-border-radius:12px;
-width:90%;
-max-width:400px;
-cursor:pointer;
-}
-.service:hover{background:#eee}
-
-/* GALLERY */
+/* ===== GALLERY ===== */
 .gallery{
 display:none;
 grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
@@ -200,72 +102,38 @@ object-fit:cover;
 border-radius:10px;
 }
 
-/* OFFRE */
-.offre img{
-width:90%;
-max-width:800px;
-border-radius:10px;
-}
-
-/* PROJECT */
+/* ===== PROJECT ===== */
 .projects img{
 width:90%;
 margin:10px;
 border-radius:10px;
 }
 
-/* CONTACT */
+/* ===== FORM ===== */
 input,textarea{
 width:90%;
 margin:10px;
 padding:12px;
 border:none;
-background:#eee;
+background:#f0f3f8;
 border-radius:10px;
 }
 
 button{
-background:gold;
+background:black;
+color:white;
 padding:12px 20px;
-border:none;
-border-radius:10px;
+border-radius:25px;
 }
 
-/* MAP */
+/* ===== MAP ===== */
 .map-box{
-position:relative;
 height:350px;
 border-radius:20px;
 overflow:hidden;
-margin-top:20px;
 }
 
-.map-box iframe{
-width:100%;
-height:100%;
-border:0;
-}
-
-.map-info{
-position:absolute;
-bottom:15px;
-left:15px;
-background:white;
-padding:15px;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-
-.map-info a{
-display:inline-block;
-margin-top:8px;
-padding:8px 12px;
-background:gold;
-border-radius:8px;
-text-decoration:none;
-}
-
-/* WHATSAPP */
+/* ===== WHATSAPP ===== */
 .whatsapp{
 position:fixed;
 bottom:20px;
@@ -274,17 +142,6 @@ background:#25D366;
 color:white;
 padding:15px;
 border-radius:50%;
-text-decoration:none;
-}
-
-/* SUCCESS */
-#successMsg{
-display:none;
-background:green;
-color:white;
-padding:10px;
-margin-top:10px;
-border-radius:8px;
 }
 </style>
 </head>
@@ -293,38 +150,11 @@ border-radius:8px;
 
 <!-- NAVBAR -->
 <div class="nav">
-<img src="logo-transparent.png?v=6" class="logo">
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-</div>
-
-<div class="overlay" id="overlay" onclick="closeMenu()"></div>
-
-<!-- MENU -->
-<div class="menu" id="menu">
-
-<div class="close-btn" onclick="closeMenu()">✕</div>
-
-<div class="dropdown">
-<div class="dropdown-title" onclick="toggleDropdown(this)">
-Services <span class="arrow">⌄</span>
-</div>
-<div class="dropdown-content">
-<a href="#services" onclick="closeMenu()">Réseaux d'eau potable</a>
-<a href="#services" onclick="closeMenu()">Assainissement</a>
-<a href="#services" onclick="closeMenu()">Génie civil</a>
-<a href="#services" onclick="closeMenu()">Forage et équipement</a>
-<a href="#services" onclick="closeMenu()">Vente pièces réseaux</a>
-</div>
-</div>
-
-<a href="#offre" onclick="closeMenu()">Offre</a>
-<a href="#projects" onclick="closeMenu()">Projets</a>
-<a href="#contact" onclick="closeMenu()">Contact</a>
-
+<img src="logo-transparent.png?v=6" style="height:50px">
 </div>
 
 <!-- HERO -->
-<section class="hero" id="home">
+<section class="hero">
 <div class="hero-text">
 <h1>SMERAV</h1>
 <p>Solutions complètes pour l’eau et l’assainissement</p>
@@ -436,25 +266,10 @@ href="https://wa.me/212661808894?text=Bonjour%20SMERAV">
 💬</a>
 
 <script>
-function toggleMenu(){
-document.getElementById("menu").classList.toggle("active");
-document.getElementById("overlay").classList.toggle("active");
-}
-
-function closeMenu(){
-document.getElementById("menu").classList.remove("active");
-document.getElementById("overlay").classList.remove("active");
-}
-
-function toggleDropdown(el){
-el.parentElement.classList.toggle("active");
-}
-
 function show(id){
 document.getElementById(id).classList.toggle("active");
 }
 
-/* CONTACT */
 document.getElementById("contactForm").addEventListener("submit",function(e){
 e.preventDefault();
 
