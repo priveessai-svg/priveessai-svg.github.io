@@ -31,24 +31,22 @@ animation:spin 1s linear infinite;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ===== HERO ANIMATION ===== */
+/* HERO ANIMATION */
 .hero-text h1{
 opacity:0;
 transform:translateY(40px);
-animation:fadeUp 1s ease forwards;
-animation-delay:0.5s;
+animation:fadeUp 1s forwards 0.5s;
 }
 .hero-text p{
 opacity:0;
 transform:translateY(40px);
-animation:fadeUp 1s ease forwards;
-animation-delay:1s;
+animation:fadeUp 1s forwards 1s;
 }
 @keyframes fadeUp{
 to{opacity:1;transform:translateY(0);}
 }
 
-/* ===== BUTTON PULSE ===== */
+/* BUTTON */
 button,
 a[href*="wa.me"]{
 animation:pulse 2s infinite;
@@ -59,14 +57,11 @@ animation:pulse 2s infinite;
 100%{transform:scale(1);}
 }
 
-/* ===== MENU ANIMATION ===== */
+/* MENU ANIMATION */
 .menu a{
-position:relative;
 opacity:0;
 transform:translateX(30px);
 }
-
-/* stagger */
 .menu.active a{
 animation:menuFade 0.5s forwards;
 }
@@ -77,32 +72,15 @@ animation:menuFade 0.5s forwards;
 .menu.active a:nth-child(5){animation-delay:0.6s;}
 
 @keyframes menuFade{
-to{
-opacity:1;
-transform:translateX(0);
-}
+to{opacity:1;transform:translateX(0);}
 }
 
-/* hover effect */
-.menu a::after{
-content:"";
-position:absolute;
-bottom:-3px;
-left:0;
-width:0;
-height:2px;
-background:gold;
-transition:0.3s;
-}
-.menu a:hover::after{
-width:100%;
-}
 .menu a:hover{
 color:gold;
 transform:translateX(5px);
 }
 
-/* ===== SCROLL ANIMATION ===== */
+/* SCROLL */
 .section{
 opacity:0;
 transform:translateY(50px);
@@ -113,10 +91,9 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* ===== الكود ديالك ===== */
+/* ===== ORIGINAL ===== */
 body{background:#f5f5f5}
 
-/* NAVBAR */
 .nav{
 position:fixed;
 top:0;
@@ -141,22 +118,17 @@ border-radius:8px;
 cursor:pointer;
 }
 
-/* OVERLAY */
 .overlay{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+top:0;left:0;
+width:100%;height:100%;
 background:rgba(0,0,0,0.5);
-opacity:0;
-visibility:hidden;
+opacity:0;visibility:hidden;
 transition:0.3s;
 z-index:998;
 }
 .overlay.active{opacity:1;visibility:visible}
 
-/* MENU */
 .menu{
 position:fixed;
 top:0;
@@ -187,7 +159,28 @@ margin:10px 0;
 text-decoration:none;
 }
 
-/* HERO */
+.dropdown-title{
+color:white;
+font-size:20px;
+display:flex;
+justify-content:space-between;
+cursor:pointer;
+margin:10px 0;
+}
+
+.dropdown-content{
+max-height:0;
+overflow:hidden;
+transition:0.4s;
+}
+.dropdown-content a{
+display:block;
+color:#ccc;
+margin:5px 0;
+}
+.dropdown.active .dropdown-content{max-height:300px}
+.dropdown.active .arrow{transform:rotate(180deg)}
+
 .hero{
 height:100vh;
 background:url("local.png?v=6") center/cover no-repeat;
@@ -204,13 +197,11 @@ padding:20px;
 border-radius:10px;
 }
 
-/* SECTION */
 .section{
 padding:70px 20px;
 text-align:center;
 }
 
-/* SERVICES */
 .service{
 background:white;
 margin:10px auto;
@@ -220,9 +211,7 @@ width:90%;
 max-width:400px;
 cursor:pointer;
 }
-.service:hover{background:#eee}
 
-/* GALLERY */
 .gallery{
 display:none;
 grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
@@ -238,21 +227,18 @@ object-fit:cover;
 border-radius:10px;
 }
 
-/* OFFRE */
 .offre img{
 width:90%;
 max-width:800px;
 border-radius:10px;
 }
 
-/* PROJECT */
 .projects img{
 width:90%;
 margin:10px;
 border-radius:10px;
 }
 
-/* CONTACT */
 input,textarea{
 width:90%;
 margin:10px;
@@ -269,7 +255,6 @@ border:none;
 border-radius:10px;
 }
 
-/* MAP */
 .map-box{
 position:relative;
 height:350px;
@@ -277,14 +262,21 @@ border-radius:20px;
 overflow:hidden;
 margin-top:20px;
 }
-
 .map-box iframe{
 width:100%;
 height:100%;
 border:0;
 }
 
-/* WHATSAPP */
+.map-info{
+position:absolute;
+bottom:15px;
+left:15px;
+background:white;
+padding:15px;
+border-radius:12px;
+}
+
 .whatsapp{
 position:fixed;
 bottom:20px;
@@ -296,7 +288,6 @@ border-radius:50%;
 text-decoration:none;
 }
 
-/* SUCCESS */
 #successMsg{
 display:none;
 background:green;
@@ -313,7 +304,45 @@ border-radius:8px;
 <!-- LOADER -->
 <div id="loader"><div class="spinner"></div></div>
 
-<!-- (خلي HTML ديالك كامل كما هو هنا) -->
+<!-- NAVBAR -->
+<div class="nav">
+<img src="logo-transparent.png?v=6" class="logo">
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<!-- MENU -->
+<div class="menu" id="menu">
+<div class="close-btn" onclick="closeMenu()">✕</div>
+
+<div class="dropdown">
+<div class="dropdown-title" onclick="toggleDropdown(this)">
+Services <span class="arrow">⌄</span>
+</div>
+<div class="dropdown-content">
+<a href="#services" onclick="closeMenu()">Réseaux d'eau potable</a>
+<a href="#services" onclick="closeMenu()">Assainissement</a>
+<a href="#services" onclick="closeMenu()">Génie civil</a>
+<a href="#services" onclick="closeMenu()">Forage et équipement</a>
+<a href="#services" onclick="closeMenu()">Vente pièces réseaux</a>
+</div>
+</div>
+
+<a href="#offre" onclick="closeMenu()">Offre</a>
+<a href="#projects" onclick="closeMenu()">Projets</a>
+<a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="hero-text">
+<h1>SMERAV</h1>
+<p>Notre expertise, votre réussite</p>
+</div>
+</section>
+
+<!-- باقي الكود ديالك كما هو (services, contact, map...) -->
 
 <script>
 
@@ -338,8 +367,10 @@ function show(id){
 document.getElementById(id).classList.toggle("active");
 }
 
-/* CONTACT */
-document.getElementById("contactForm").addEventListener("submit",function(e){
+/* CONTACT FIX */
+const form = document.getElementById("contactForm");
+if(form){
+form.addEventListener("submit",function(e){
 e.preventDefault();
 fetch("https://formsubmit.co/ajax/sarl.smerav@gmail.com",{
 method:"POST",
@@ -349,6 +380,7 @@ document.getElementById("successMsg").style.display="block";
 this.reset();
 });
 });
+}
 
 /* SCROLL */
 const sections=document.querySelectorAll(".section");
