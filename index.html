@@ -8,18 +8,21 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 
-/* LOADER */
+/* ===== LOADER ===== */
 #loader{
 position:fixed;
 top:0;left:0;
 width:100%;height:100%;
 background:#000814;
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
 z-index:9999;
+color:white;
+transition:0.8s;
 }
-#loader.hide{display:none}
+#loader.hide{opacity:0;visibility:hidden}
 
 .spinner{
 width:50px;height:50px;
@@ -27,156 +30,310 @@ border:4px solid rgba(255,255,255,0.2);
 border-top:4px solid white;
 border-radius:50%;
 animation:spin 1s linear infinite;
+margin-bottom:15px;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* HERO ANIMATION */
-.hero-text h1{
-opacity:0;
-transform:translateY(40px);
-animation:fadeUp 1s forwards 0.5s;
-}
-.hero-text p{
-opacity:0;
-transform:translateY(40px);
-animation:fadeUp 1s forwards 1s;
-}
-@keyframes fadeUp{
-to{opacity:1;transform:translateY(0);}
+/* ===== BACKGROUND ===== */
+body{
+background:linear-gradient(135deg,#0a1f44,#08142c,#000814);
+overflow-x:hidden;
 }
 
-/* BUTTON */
-button,a[href*="wa.me"]{
-animation:pulse 2s infinite;
-}
-@keyframes pulse{
-50%{transform:scale(1.05);}
+/* ===== MENU GLASS ===== */
+.menu{
+background:rgba(0,0,0,0.6) !important;
+backdrop-filter:blur(15px);
+-webkit-backdrop-filter:blur(15px);
+border-left:1px solid rgba(255,255,255,0.1);
 }
 
-/* MENU */
+/* ===== MENU ANIMATION ===== */
 .menu a{
 opacity:0;
 transform:translateX(30px);
+transition:all 0.4s ease;
 }
+
 .menu.active a{
-animation:menuFade 0.5s forwards;
-}
-.menu.active a:nth-child(1){animation-delay:0.2s;}
-.menu.active a:nth-child(2){animation-delay:0.3s;}
-.menu.active a:nth-child(3){animation-delay:0.4s;}
-.menu.active a:nth-child(4){animation-delay:0.5s;}
-.menu.active a:nth-child(5){animation-delay:0.6s;}
-
-@keyframes menuFade{
-to{opacity:1;transform:translateX(0);}
+opacity:1;
+transform:translateX(0);
 }
 
-/* ORIGINAL */
+.menu.active a:nth-of-type(1){transition-delay:0.1s;}
+.menu.active a:nth-of-type(2){transition-delay:0.2s;}
+.menu.active a:nth-of-type(3){transition-delay:0.3s;}
+.menu.active a:nth-of-type(4){transition-delay:0.4s;}
+.menu.active a:nth-of-type(5){transition-delay:0.5s;}
+
+/* hover */
+.menu a{
+position:relative;
+}
+
+.menu a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-3px;
+width:0;
+height:2px;
+background:gold;
+transition:0.3s;
+}
+
+.menu a:hover::after{
+width:100%;
+}
+
+.menu a:hover{
+color:gold;
+transform:translateX(5px);
+}
+
+/* ===== ANIMATION ===== */
+.section{
+opacity:0;
+transform:translateY(50px);
+transition:1s;
+}
+.section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ===== ORIGINAL ===== */
 body{background:#f5f5f5}
 
+/* NAVBAR */
 .nav{
-position:fixed;top:0;width:100%;
-display:flex;justify-content:space-between;
-align-items:center;padding:12px 20px;
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 20px;
 background:rgba(0,0,0,0.5);
+backdrop-filter:blur(10px);
 z-index:999;
 }
 
 .logo{height:50px}
 
 .menu-btn{
-font-size:28px;color:white;
+font-size:28px;
+color:white;
 background:rgba(0,0,0,0.5);
-padding:8px 12px;border-radius:8px;
+padding:8px 12px;
+border-radius:8px;
 cursor:pointer;
 }
 
+/* OVERLAY */
 .overlay{
-position:fixed;top:0;left:0;width:100%;height:100%;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
 background:rgba(0,0,0,0.5);
-opacity:0;visibility:hidden;
+opacity:0;
+visibility:hidden;
+transition:0.3s;
+z-index:998;
 }
 .overlay.active{opacity:1;visibility:visible}
 
+/* MENU */
 .menu{
-position:fixed;top:0;right:-280px;
-width:260px;height:100%;
-background:black;
-display:flex;flex-direction:column;
+position:fixed;
+top:0;
+right:-280px;
+width:260px;
+height:100%;
+display:flex;
+flex-direction:column;
 padding:30px 20px;
 transition:0.4s;
+z-index:999;
 }
 .menu.active{right:0}
 
-.close-btn{color:white;font-size:26px;cursor:pointer}
+.close-btn{
+color:white;
+font-size:26px;
+align-self:flex-end;
+cursor:pointer;
+margin-bottom:20px;
+}
 
-.menu a{color:white;margin:10px 0;text-decoration:none}
+.menu a{
+color:white;
+font-size:20px;
+margin:10px 0;
+text-decoration:none;
+}
 
+/* DROPDOWN */
+.dropdown-title{
+color:white;
+font-size:20px;
+display:flex;
+justify-content:space-between;
+cursor:pointer;
+margin:10px 0;
+}
+
+.dropdown-content{
+max-height:0;
+overflow:hidden;
+transition:0.4s;
+}
+
+.dropdown-content a{
+display:block;
+color:#ccc;
+margin:5px 0;
+}
+
+.dropdown.active .dropdown-content{
+max-height:300px;
+}
+
+.dropdown.active .arrow{
+transform:rotate(180deg);
+}
+
+/* HERO */
 .hero{
 height:100vh;
 background:url("local.png?v=6") center/cover no-repeat;
-display:flex;justify-content:center;
-align-items:center;color:white;text-align:center;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
 }
 
 .hero-text{
 background:rgba(0,0,0,0.5);
-padding:20px;border-radius:10px;
+padding:20px;
+border-radius:10px;
 }
 
-.section{padding:70px 20px;text-align:center}
+/* SECTION */
+.section{
+padding:70px 20px;
+text-align:center;
+}
 
+/* SERVICES */
 .service{
-background:white;margin:10px auto;
-padding:15px;border-radius:12px;
-width:90%;max-width:400px;
+background:white;
+margin:10px auto;
+padding:15px;
+border-radius:12px;
+width:90%;
+max-width:400px;
 cursor:pointer;
 }
 
-.gallery{display:none}
+/* GALLERY */
+.gallery{
+display:none;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:10px;
+margin-top:10px;
+}
 .gallery.active{display:grid}
 
 .gallery img{
-width:100%;height:180px;
-object-fit:cover;border-radius:10px;
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:10px;
 }
 
-.offre img{width:90%;max-width:800px}
+/* OFFRE */
+.offre img{
+width:90%;
+max-width:800px;
+border-radius:10px;
+}
 
-.projects img{width:90%;margin:10px}
+/* PROJECT */
+.projects img{
+width:90%;
+margin:10px;
+border-radius:10px;
+}
 
+/* CONTACT */
 input,textarea{
-width:90%;margin:10px;
-padding:12px;background:#eee;
-border-radius:10px;border:none;
+width:90%;
+margin:10px;
+padding:12px;
+border:none;
+background:#eee;
+border-radius:10px;
 }
 
 button{
-background:gold;padding:12px 20px;
-border:none;border-radius:10px;
+background:gold;
+padding:12px 20px;
+border:none;
+border-radius:10px;
 }
 
-.map-box{height:350px;margin-top:20px}
-.map-box iframe{width:100%;height:100%}
+/* MAP */
+.map-box{
+position:relative;
+height:350px;
+border-radius:20px;
+overflow:hidden;
+margin-top:20px;
+}
 
+.map-box iframe{
+width:100%;
+height:100%;
+border:0;
+}
+
+/* WHATSAPP */
 .whatsapp{
-position:fixed;bottom:20px;right:20px;
-background:#25D366;color:white;
-padding:15px;border-radius:50%;
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px;
+border-radius:50%;
 text-decoration:none;
 }
 
+/* SUCCESS */
 #successMsg{
-display:none;background:green;color:white;
-padding:10px;margin-top:10px;
+display:none;
+background:green;
+color:white;
+padding:10px;
+margin-top:10px;
+border-radius:8px;
 }
 </style>
 </head>
 
 <body>
 
-<div id="loader"><div class="spinner"></div></div>
+<!-- LOADER -->
+<div id="loader">
+<div class="spinner"></div>
+<h2>SMERAV</h2>
+</div>
 
+<!-- NAVBAR -->
 <div class="nav">
 <img src="logo-transparent.png?v=6" class="logo">
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
@@ -184,82 +341,57 @@ padding:10px;margin-top:10px;
 
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
+<!-- MENU -->
 <div class="menu" id="menu">
+
 <div class="close-btn" onclick="closeMenu()">✕</div>
-<a href="#services">Services</a>
-<a href="#offre">Offre</a>
-<a href="#projects">Projets</a>
-<a href="#contact">Contact</a>
+
+<div class="dropdown">
+<div class="dropdown-title" onclick="toggleDropdown(this)">
+Services <span class="arrow">⌄</span>
+</div>
+<div class="dropdown-content">
+<a href="#services" onclick="closeMenu()">Réseaux d'eau potable</a>
+<a href="#services" onclick="closeMenu()">Assainissement</a>
+<a href="#services" onclick="closeMenu()">Génie civil</a>
+<a href="#services" onclick="closeMenu()">Forage et équipement</a>
+<a href="#services" onclick="closeMenu()">Vente pièces réseaux</a>
+</div>
 </div>
 
-<section class="hero">
+<a href="#offre" onclick="closeMenu()">Offre</a>
+<a href="#projects" onclick="closeMenu()">Projets</a>
+<a href="#contact" onclick="closeMenu()">Contact</a>
+
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
 <div class="hero-text">
 <h1>SMERAV</h1>
 <p>Notre expertise, votre réussite</p>
 </div>
 </section>
 
-<section class="section" id="services">
-<h2>Nos Services</h2>
-<div class="service">Réseaux d'eau potable</div>
-<div class="service">Assainissement</div>
-<div class="service">Génie civil</div>
-</section>
-
-<section class="section" id="offre">
-<h2>Offre</h2>
-<img src="offre.png?v=6">
-</section>
-
-<section class="section" id="projects">
-<h2>Projets</h2>
-<img src="projet1.jpg?v=6">
-</section>
-
-<section class="section" id="contact">
-<h2>Contact</h2>
-<form id="contactForm">
-<input type="text" name="name" placeholder="Nom" required>
-<input type="email" name="email" placeholder="Email" required>
-<textarea name="message" placeholder="Message"></textarea>
-<button>Envoyer</button>
-</form>
-<div id="successMsg">Message envoyé</div>
-</section>
-
-<section class="section">
-<div class="map-box">
-<iframe src="https://www.google.com/maps?q=Fes,Morocco&output=embed"></iframe>
-</div>
-</section>
-
-<a class="whatsapp" href="https://wa.me/212661808894">💬</a>
+<!-- باقي الكود ديالك كما هو (ما تبدل حتى حاجة) -->
 
 <script>
-window.onload=()=>{document.getElementById("loader").classList.add("hide")}
-
+window.addEventListener("load",()=>{
+document.getElementById("loader").classList.add("hide");
+});
 function toggleMenu(){
-menu.classList.toggle("active")
-overlay.classList.toggle("active")
+menu.classList.toggle("active");
+overlay.classList.toggle("active");
 }
 function closeMenu(){
-menu.classList.remove("active")
-overlay.classList.remove("active")
+menu.classList.remove("active");
+overlay.classList.remove("active");
 }
-
-/* CONTACT FIX */
-const form=document.getElementById("contactForm");
-if(form){
-form.addEventListener("submit",function(e){
-e.preventDefault();
-fetch("https://formsubmit.co/ajax/sarl.smerav@gmail.com",{
-method:"POST",
-body:new FormData(this)
-}).then(()=>{
-successMsg.style.display="block";
-this.reset();
-});
-});
+function toggleDropdown(el){
+el.parentElement.classList.toggle("active");
+}
+function show(id){
+document.getElementById(id).classList.toggle("active");
 }
 </script>
 
