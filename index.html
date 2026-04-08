@@ -3,22 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SMERAV</title>
+
+<title>SMERAV - Travaux & Réseaux</title>
+<meta name="description" content="SMERAV - Travaux publics, réseaux d’eau potable et assainissement au Maroc">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
 body{margin:0;font-family:Arial;background:#f4f6f9}
 
+/* HEADER */
 header{
 background:linear-gradient(90deg,#004080,#ff7a00);
 color:white;
-padding:60px;
+padding:50px 20px;
 text-align:center
 }
 
+.logo{
+width:80px;
+margin-bottom:10px
+}
+
+/* NAV */
 nav{
 background:white;
 padding:15px;
-text-align:center
+text-align:center;
+box-shadow:0 2px 10px rgba(0,0,0,0.1)
 }
 
 nav a{
@@ -28,6 +40,18 @@ text-decoration:none;
 font-weight:bold
 }
 
+/* BUTTON */
+.btn{
+display:inline-block;
+margin-top:15px;
+padding:10px 20px;
+background:#ff7a00;
+color:white;
+border-radius:5px;
+text-decoration:none
+}
+
+/* SECTION */
 .section{
 padding:50px;
 text-align:center
@@ -35,24 +59,64 @@ text-align:center
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:20px;
-max-width:1000px;
+max-width:1100px;
 margin:auto
 }
 
 .card{
 background:white;
-padding:15px;
+padding:20px;
 border-radius:10px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1)
 }
 
-.card img{
-width:100%;
-border-radius:10px
+/* PROJECTS */
+.project{
+position:relative;
+overflow:hidden;
+border-radius:10px;
 }
 
+.project img{
+width:100%;
+transition:0.5s;
+}
+
+.project:hover img{
+transform:scale(1.1)
+}
+
+.overlay{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+background:rgba(0,0,0,0.6);
+color:white;
+padding:15px;
+opacity:0;
+transition:0.5s;
+}
+
+.project:hover .overlay{
+opacity:1
+}
+
+/* ANIMATION */
+.fade{
+opacity:0;
+transform:translateY(20px);
+transition:0.6s;
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* FOOTER */
 footer{
 background:#004080;
 color:white;
@@ -66,8 +130,10 @@ padding:20px
 <body>
 
 <header>
+<img src="logo.png" class="logo">
 <h1>SMERAV</h1>
 <p>Travaux • Eau potable • Assainissement</p>
+<a class="btn" href="https://wa.me/212661808894">Demander un devis</a>
 </header>
 
 <nav>
@@ -77,22 +143,25 @@ padding:20px
 </nav>
 
 <!-- SERVICES -->
-<section class="section" id="services">
+<section class="section fade" id="services">
 <h2>Nos Services</h2>
 
 <div class="grid">
 
 <div class="card">
+<i class="fas fa-tint"></i>
 <h3>Réseaux d’eau potable</h3>
 <p>Installation complète des conduites</p>
 </div>
 
 <div class="card">
+<i class="fas fa-water"></i>
 <h3>Assainissement</h3>
 <p>Travaux et installations complètes</p>
 </div>
 
 <div class="card">
+<i class="fas fa-tools"></i>
 <h3>Génie civil</h3>
 <p>Travaux professionnels</p>
 </div>
@@ -101,52 +170,40 @@ padding:20px
 </section>
 
 <!-- PROJECTS -->
-<section class="section" id="projects">
-<h2>Nos <section class="section" id="projects">
+<section class="section fade" id="projects">
 <h2>Nos Réalisations</h2>
 
 <div class="grid">
 
-<div class="card">
+<div class="project">
 <img src="réseaux-d'eaux-potable.jpg">
-<p>Réseaux d’eau potable - Fès</p>
+<div class="overlay">
+<h3>Réseaux d’eau potable</h3>
+<p>Fès</p>
+</div>
 </div>
 
-<div class="card">
+<div class="project">
 <img src="réseaux-d'assainissement.jpg">
-<p>Travaux assainissement</p>
+<div class="overlay">
+<h3>Assainissement</h3>
+<p>Travaux professionnels</p>
+</div>
 </div>
 
-<div class="card">
+<div class="project">
 <img src="genie-civil.jpg">
-<p>Travaux génie civil</p>
+<div class="overlay">
+<h3>Génie civil</h3>
+<p>Chantier Maroc</p>
 </div>
-
-</div>
-</section>
-
-<div class="grid">
-
-<div class="card">
-<img src="reseaux-eau.jpg">
-<p>Réseaux d’eau potable - Fès</p>
-</div>
-
-<div class="card">
-<img src="assainissement.jpg">
-<p>Travaux assainissement</p>
-</div>
-
-<div class="card">
-<img src="genie-civil.jpg">
-<p>Travaux génie civil</p>
 </div>
 
 </div>
 </section>
 
 <!-- CONTACT -->
-<section class="section" id="contact">
+<section class="section fade" id="contact">
 <h2>Contact</h2>
 
 <p>📍 Fès, Maroc</p>
@@ -171,6 +228,16 @@ border-radius:50px;text-decoration:none;">
 <footer>
 © 2026 SMERAV
 </footer>
+
+<script>
+window.addEventListener("scroll",()=>{
+document.querySelectorAll(".fade").forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight){
+el.classList.add("show")
+}
+})
+})
+</script>
 
 </body>
 </html>
