@@ -25,7 +25,6 @@ z-index:999;
 
 .logo{height:50px}
 
-/* MENU BUTTON */
 .menu-btn{
 font-size:28px;
 color:white;
@@ -53,7 +52,7 @@ opacity:1;
 visibility:visible;
 }
 
-/* SIDE MENU */
+/* MENU */
 .menu{
 position:fixed;
 top:0;
@@ -117,7 +116,7 @@ transform:rotate(180deg);
 /* HERO */
 .hero{
 height:100vh;
-background:url("local.png?v=5") center/cover no-repeat;
+background:url("local.png?v=6") center/cover no-repeat;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -196,6 +195,40 @@ border:none;
 border-radius:10px;
 }
 
+/* MAP */
+.map-box{
+position:relative;
+height:350px;
+border-radius:20px;
+overflow:hidden;
+margin-top:20px;
+}
+
+.map-box iframe{
+width:100%;
+height:100%;
+border:0;
+}
+
+.map-info{
+position:absolute;
+bottom:15px;
+left:15px;
+background:white;
+padding:15px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.map-info a{
+display:inline-block;
+margin-top:8px;
+padding:8px 12px;
+background:gold;
+border-radius:8px;
+text-decoration:none;
+}
+
 /* WHATSAPP */
 .whatsapp{
 position:fixed;
@@ -214,7 +247,7 @@ text-decoration:none;
 
 <!-- NAVBAR -->
 <div class="nav">
-<img src="logo-transparent.png?v=5" class="logo">
+<img src="logo-transparent.png?v=6" class="logo">
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </div>
 
@@ -262,41 +295,41 @@ génie civil et travaux publics.
 </p>
 </section>
 
-<!-- SERVICES (كما هو بدون تغيير) -->
+<!-- SERVICES -->
 <section class="section" id="services">
 <h2>Nos Services</h2>
 
 <div class="service" onclick="show('eau')">Réseaux d'eau potable</div>
 <div id="eau" class="gallery">
-<img src="reseaux-eaux-potable.jpg?v=5">
-<img src="branchement-eaux.jpg?v=5">
-<img src="raccordement-eau.jpg?v=5">
-<img src="detection-des-fuites.jpg?v=5">
-<img src="recherche-fuite.jpg?v=5">
-<img src="reparation-fuites.jpg?v=5">
+<img src="reseaux-eaux-potable.jpg?v=6">
+<img src="branchement-eaux.jpg?v=6">
+<img src="raccordement-eau.jpg?v=6">
+<img src="detection-des-fuites.jpg?v=6">
+<img src="recherche-fuite.jpg?v=6">
+<img src="reparation-fuites.jpg?v=6">
 </div>
 
 <div class="service" onclick="show('assainissement')">Assainissement</div>
 <div id="assainissement" class="gallery">
-<img src="reseaux-assainissement1.jpg?v=5">
-<img src="branchement-assainesement.jpg?v=5">
+<img src="reseaux-assainissement1.jpg?v=6">
+<img src="branchement-assainesement.jpg?v=6">
 </div>
 
 <div class="service" onclick="show('genie')">Génie civil</div>
 <div id="genie" class="gallery">
-<img src="genie-civil.jpg?v=5">
-<img src="genie-civil4.jpg?v=5">
+<img src="genie-civil.jpg?v=6">
+<img src="genie-civil4.jpg?v=6">
 </div>
 
 <div class="service" onclick="show('forage')">Forage et équipement</div>
 <div id="forage" class="gallery">
-<img src="equipement.jpg?v=5">
-<img src="equipement1.jpg?v=5">
+<img src="equipement.jpg?v=6">
+<img src="equipement1.jpg?v=6">
 </div>
 
 <div class="service" onclick="show('vente')">Vente pièces réseaux</div>
 <div id="vente" class="gallery">
-<img src="cataloge.png?v=5">
+<img src="cataloge.png?v=6">
 </div>
 
 </section>
@@ -304,14 +337,14 @@ génie civil et travaux publics.
 <!-- OFFRE -->
 <section class="section offre" id="offre">
 <h2>Offre de Services</h2>
-<img src="offre.png?v=5">
+<img src="offre.png?v=6">
 </section>
 
 <!-- PROJECT -->
 <section class="section projects" id="projects">
 <h2>Nos Projets</h2>
-<img src="projet1.jpg?v=5">
-<img src="projet3.jpg?v=5">
+<img src="projet1.jpg?v=6">
+<img src="projet3.jpg?v=6">
 </section>
 
 <!-- CONTACT -->
@@ -325,6 +358,26 @@ génie civil et travaux publics.
 <p>📞 +212661808894</p>
 </section>
 
+<!-- GOOGLE MAP -->
+<section class="section">
+<h2>Notre Localisation</h2>
+
+<div class="map-box">
+<iframe src="https://www.google.com/maps?q=Fes,Morocco&output=embed"></iframe>
+
+<div class="map-info">
+<h3>SMERAV</h3>
+<p>📍 Fès, Maroc</p>
+<p>📞 +212661808894</p>
+<a href="https://www.google.com/maps?q=Fes,Morocco" target="_blank">
+Ouvrir Maps
+</a>
+</div>
+
+</div>
+</section>
+
+<!-- WHATSAPP -->
 <a class="whatsapp" href="https://wa.me/212661808894">💬</a>
 
 <script>
