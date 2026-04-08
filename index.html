@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SMERAV</title>
 
+<!-- SEO -->
+<meta name="description" content="SMERAV travaux publics Fès Maroc réseaux eau potable assainissement">
+<meta name="keywords" content="SMERAV, travaux publics Maroc, eau potable, assainissement">
+<meta name="robots" content="index, follow">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#f5f5f5}
@@ -12,95 +17,57 @@ body{background:#f5f5f5}
 /* NAV */
 .nav{
 position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
+top:0;width:100%;
+display:flex;justify-content:space-between;align-items:center;
 padding:12px 20px;
 background:rgba(0,0,0,0.5);
-backdrop-filter:blur(10px);
 z-index:999;
 }
 .logo{height:50px}
 .menu-btn{
-font-size:28px;
-color:white;
-background:rgba(0,0,0,0.5);
-padding:8px 12px;
-border-radius:8px;
-cursor:pointer;
+font-size:28px;color:white;cursor:pointer;
 }
+
+/* MENU */
+.menu{
+position:fixed;
+top:0;right:-280px;
+width:260px;height:100%;
+background:black;
+padding:20px;
+transition:0.4s;
+z-index:1000;
+}
+.menu.active{right:0}
+
+.menu a{color:white;display:block;margin:10px 0;text-decoration:none}
+
+.dropdown-content{display:none}
+.dropdown.active .dropdown-content{display:block}
 
 /* OVERLAY */
 .overlay{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+width:100%;height:100%;
 background:rgba(0,0,0,0.5);
-opacity:0;
-visibility:hidden;
-transition:0.3s;
+opacity:0;visibility:hidden;
 }
 .overlay.active{opacity:1;visibility:visible}
-
-/* MENU SIDE */
-.menu{
-position:fixed;
-top:0;
-right:-280px;
-width:260px;
-height:100%;
-background:black;
-padding:30px;
-transition:0.4s;
-z-index:999;
-}
-.menu.active{right:0}
-
-.menu a{
-display:block;
-color:white;
-margin:15px 0;
-text-decoration:none;
-}
-
-.close-btn{
-color:white;
-font-size:24px;
-cursor:pointer;
-}
-
-/* DROPDOWN */
-.dropdown-content{
-display:none;
-}
-.dropdown.active .dropdown-content{
-display:block;
-}
 
 /* HERO */
 .hero{
 height:100vh;
-background:url("local.png?v=7") center/cover no-repeat;
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
+background:url("local.png") center/cover no-repeat;
+display:flex;align-items:center;justify-content:center;
+color:white;text-align:center;
 }
 .hero-text{
 background:rgba(0,0,0,0.5);
-padding:20px;
-border-radius:10px;
+padding:20px;border-radius:10px;
 }
 
 /* SECTION */
-.section{
-padding:70px 20px;
-text-align:center;
-}
+.section{padding:70px 20px;text-align:center}
 
 /* SERVICES */
 .service{
@@ -108,88 +75,27 @@ background:white;
 margin:10px auto;
 padding:15px;
 border-radius:12px;
-width:90%;
-max-width:400px;
+width:90%;max-width:400px;
 cursor:pointer;
 }
-.gallery{
-display:none;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:10px;
-margin-top:10px;
-}
+.gallery{display:none;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
 .gallery.active{display:grid}
-.gallery img{
-width:100%;
-height:180px;
-object-fit:cover;
-border-radius:10px;
-}
-
-/* OFFRE */
-.offre img{
-width:90%;
-max-width:800px;
-border-radius:10px;
-}
-
-/* PROJECT */
-.projects img{
-width:90%;
-margin:10px;
-border-radius:10px;
-}
+.gallery img{width:100%;height:180px;object-fit:cover;border-radius:10px}
 
 /* CONTACT */
 input,textarea{
-width:90%;
-margin:10px;
-padding:12px;
-border:none;
-background:#eee;
-border-radius:10px;
+width:90%;margin:10px;padding:10px;border:none;background:#eee;border-radius:8px
 }
-button{
-background:gold;
-padding:12px 20px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-}
-
-/* SUCCESS */
-#successMsg{
-display:none;
-color:white;
-background:green;
-padding:10px;
-border-radius:8px;
-margin-top:10px;
-}
+button{background:gold;padding:10px 20px;border:none;border-radius:8px}
 
 /* MAP */
-.map-box{
-height:350px;
-border-radius:20px;
-overflow:hidden;
-margin-top:20px;
-}
-.map-box iframe{
-width:100%;
-height:100%;
-border:0;
-}
+.map-box{height:350px;border-radius:20px;overflow:hidden}
+.map-box iframe{width:100%;height:100%}
 
 /* WHATSAPP */
 .whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-padding:15px;
-border-radius:50%;
-text-decoration:none;
+position:fixed;bottom:20px;right:20px;
+background:#25D366;color:white;padding:15px;border-radius:50%;
 }
 </style>
 </head>
@@ -198,19 +104,21 @@ text-decoration:none;
 
 <!-- NAV -->
 <div class="nav">
-<img src="logo-transparent.png?v=7" class="logo">
+<img src="logo-transparent.png" class="logo">
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </div>
 
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
+<!-- MENU -->
 <div class="menu" id="menu">
-<div class="close-btn" onclick="closeMenu()">✕</div>
+<div onclick="closeMenu()" style="color:white;font-size:20px">✕</div>
 
 <div onclick="toggleDropdown(this)">Services</div>
 <div class="dropdown-content">
-<a href="#services">Eau potable</a>
+<a href="#services">Réseaux eau potable</a>
 <a href="#services">Assainissement</a>
+<a href="#services">Génie civil</a>
 </div>
 
 <a href="#offre">Offre</a>
@@ -237,31 +145,18 @@ text-decoration:none;
 <img src="raccordement-eau.jpg">
 </div>
 
-<div class="service" onclick="show('ass')">Assainissement</div>
-<div id="ass" class="gallery">
+<div class="service" onclick="show('assainissement')">Assainissement</div>
+<div id="assainissement" class="gallery">
 <img src="reseaux-assainissement1.jpg">
 </div>
 
-</section>
-
-<!-- OFFRE -->
-<section class="section offre" id="offre">
-<h2>Offre de Services</h2>
-<img src="offre.png">
-</section>
-
-<!-- PROJECT -->
-<section class="section projects" id="projects">
-<h2>Nos Projets</h2>
-<img src="projet1.jpg">
-<img src="projet3.jpg">
 </section>
 
 <!-- CONTACT -->
 <section class="section" id="contact">
 <h2>Contact</h2>
 
-<form id="contactForm" action="https://formsubmit.co/sarl.smerav@gmail.com" method="POST">
+<form action="https://formsubmit.co/sarl.smerav@gmail.com" method="POST">
 <input type="text" name="name" placeholder="Nom" required>
 <input type="email" name="email" placeholder="Email" required>
 <textarea name="message" placeholder="Message" required></textarea>
@@ -270,21 +165,19 @@ text-decoration:none;
 <input type="hidden" name="_captcha" value="false">
 </form>
 
-<div id="successMsg">Message envoyé avec succès</div>
-
 <p>📍 Fès Maroc</p>
 <p>📞 +212661808894</p>
 </section>
 
 <!-- MAP -->
 <section class="section">
-<h2>Notre Localisation</h2>
+<h2>Localisation</h2>
 <div class="map-box">
 <iframe src="https://www.google.com/maps?q=Fes,Morocco&output=embed"></iframe>
 </div>
 </section>
 
-<a class="whatsapp" href="#">💬</a>
+<a href="#" class="whatsapp">💬</a>
 
 <script>
 function toggleMenu(){
@@ -301,13 +194,6 @@ el.nextElementSibling.classList.toggle("active");
 function show(id){
 document.getElementById(id).classList.toggle("active");
 }
-
-// success message
-document.getElementById("contactForm").addEventListener("submit", ()=>{
-setTimeout(()=>{
-document.getElementById("successMsg").style.display="block";
-},500);
-});
 </script>
 
 </body>
