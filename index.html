@@ -3,239 +3,266 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SMERAV — Travaux publics à Fès | Réseaux d'eau, assainissement, génie civil</title>
-<meta name="description" content="SMERAV, société de travaux publics à Fès : réseaux divers, réseaux d'eau potable, assainissement, génie civil, forage et vente de pièces hydrauliques et pièces spéciales. Devis gratuit.">
-<meta property="og:title" content="SMERAV — Notre expertise, votre réussite">
-<meta property="og:description" content="Réseaux d'eau potable, assainissement, génie civil, forage et fourniture de pièces hydrauliques à Fès.">
-<meta property="og:image" content="https://smerav.ma/logo-transparent.png">
+<title>SMERAV — Travaux publics à Fès | Réseaux d'eau potable, assainissement, génie civil</title>
+<meta name="description" content="SMERAV, travaux publics et réseaux à Fès : réseaux d'eau potable, assainissement, génie civil, forage et vente de pièces réseaux. Devis gratuit : +212 6 61 80 88 94.">
+<meta property="og:title" content="SMERAV — Des solutions durables pour l'eau et l'avenir">
+<meta property="og:description" content="Réseaux d'eau potable, assainissement, génie civil, forage et pièces réseaux à Fès.">
+<meta property="og:image" content="hero-smerav.jpg">
 <link rel="icon" href="smerav-emblem.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#0B2550; --navy-2:#1A3A6E; --blue:#1F4A8C;
-  --orange:#F17C0A; --orange-2:#D96A00;
-  --ground:#F3F1EC; --sand:#E6E1D6; --line:#DCD7CC;
-  --ink:#0B2550; --muted:#4A5877; --on-dark:#C9D6DE;
-  --display:'Barlow Condensed',system-ui,sans-serif;
-  --body:'Source Sans 3',system-ui,sans-serif;
-  --wrap:1280px;
+  --navy:#0B2550; --navy-2:#12336B; --navy-3:#1B437F;
+  --orange:#F7810F; --orange-h:#FF9330;
+  --bg:#F5F7FB; --line:#E3E8F0;
+  --ink:#0B2550; --muted:#5B6782; --on-dark:#CAD6E6;
+  --font:'Poppins',system-ui,sans-serif;
+  --wrap:1440px; --r:14px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:var(--body);font-size:17px;line-height:1.6;color:var(--ink);background:var(--ground)}
+body{margin:0;font-family:var(--font);font-size:16px;line-height:1.6;color:var(--ink);background:#fff}
 img{max-width:100%;display:block}
-a{color:var(--blue);text-decoration:none}
-a:hover{color:var(--navy)}
-h1,h2,h3{font-family:var(--display);font-weight:700;text-transform:uppercase;line-height:1;margin:0;letter-spacing:.01em}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{margin:0;line-height:1.15;font-weight:700}
 p{margin:0}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
-.eyebrow{font-size:14px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--blue)}
-.section{padding:104px 0}
-.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:48px;margin-bottom:56px}
-.section-head h2{font-size:clamp(38px,5vw,60px);margin-top:12px}
-.section-head p{max-width:420px;color:var(--muted);font-size:18px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:6px;font-weight:700;font-size:17px;border:2px solid transparent;cursor:pointer;font-family:var(--body);transition:background .15s,color .15s}
-.btn-orange{background:var(--orange);color:var(--navy)}
-.btn-orange:hover{background:#FF8F24;color:var(--navy)}
+.kicker{font-size:13px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--on-dark)}
+.kicker.dark{color:var(--muted)}
+.hl{color:var(--orange)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:12px 28px;border-radius:999px;font-family:var(--font);font-weight:600;font-size:16px;border:2px solid transparent;cursor:pointer;transition:background .15s,color .15s,border-color .15s;white-space:nowrap}
+.btn svg{width:20px;height:20px;flex-shrink:0}
+.btn-orange{background:var(--orange);color:#fff}
+.btn-orange:hover{background:var(--orange-h)}
+.btn-line{border-color:rgba(255,255,255,.85);color:#fff;background:transparent}
+.btn-line:hover{background:#fff;color:var(--navy)}
 .btn-navy{background:var(--navy);color:#fff}
-.btn-navy:hover{background:var(--navy-2);color:#fff}
-.btn-ghost{border-color:rgba(255,255,255,.6);color:#fff}
-.btn-ghost:hover{background:#fff;color:var(--navy)}
-.btn svg{width:20px;height:20px}
+.btn-navy:hover{background:var(--navy-2)}
+.btn-orange.btn-dark-text{color:var(--navy)}
 
-/* HEADER */
-.header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #E3E6EE}
-.header .wrap{height:88px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+/* ========== HEADER ========== */
+.header{position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 2px 18px rgba(11,37,80,.08)}
+.header .wrap{height:84px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .brand{display:flex;align-items:center;gap:12px}
-.brand .emb{height:56px;width:auto}
-.brand .word{height:24px;width:auto}
-.nav{display:flex;align-items:center;gap:32px;font-weight:600;font-size:16px}
-.nav a{color:var(--muted)}
-.nav a:hover{color:var(--navy)}
-.nav .btn{color:var(--navy);min-height:46px;padding:10px 20px}
-.menu-btn{display:none;background:none;border:0;width:48px;height:48px;color:var(--navy);cursor:pointer}
+.brand .emb{height:58px;width:auto}
+.brand-txt{display:flex;flex-direction:column;gap:4px}
+.brand .word{height:30px;width:auto}
+.brand small{font-size:7.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);font-weight:500;white-space:nowrap;border-bottom:2px solid;border-image:linear-gradient(90deg,var(--navy) 50%,var(--orange) 50%) 1;padding-bottom:3px}
+.nav{display:flex;align-items:center;gap:34px;font-weight:500;font-size:15px}
+.nav a{position:relative;padding:6px 0;color:var(--navy)}
+.nav a.active{font-weight:600}
+.nav a.active::after,.nav a:hover::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:3px;border-radius:2px;background:var(--orange)}
+.header .btn{min-height:46px;padding:10px 26px}
+.menu-btn{display:none;background:none;border:0;width:48px;height:48px;color:var(--navy);cursor:pointer;align-items:center;justify-content:center}
 
-/* HERO */
-.hero{position:relative;min-height:calc(100vh - 88px);max-height:900px;display:flex;align-items:center;color:#fff;background:var(--navy);overflow:hidden}
-.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,37,80,.92) 0%,rgba(11,37,80,.75) 45%,rgba(11,37,80,.35) 100%)}
-.hero .wrap{position:relative;z-index:1;width:100%;padding-top:80px;padding-bottom:80px}
-.hero-kicker{font-size:14px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);display:block;font-family:var(--body);margin-bottom:24px}
-.hero h1{font-size:clamp(52px,8vw,104px);line-height:.92;max-width:780px}
-.hero p{max-width:600px;margin-top:28px;font-size:20px;color:#DCE4EC}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:16px;margin-top:36px}
-.hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:56px}
-.hero-tags span{padding:8px 14px;border:1px solid rgba(255,255,255,.3);border-radius:999px;font-size:14px;font-weight:600;color:#E8EEF4;background:rgba(11,37,80,.4)}
+/* ========== HERO ========== */
+.hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
+.hero-img{position:absolute;top:0;right:0;bottom:0;width:70%;background:url(hero-smerav.jpg) 100% 50%/cover no-repeat}
+.hero-img::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(11,37,80,.85) 18%,rgba(11,37,80,.25) 42%,rgba(11,37,80,0) 60%)}
+.hero .wrap{position:relative;z-index:1;padding-top:64px;padding-bottom:150px}
+.hero-text{max-width:700px}
+.hero h1{font-size:clamp(36px,4vw,54px);letter-spacing:-.01em;margin:22px 0 22px}
+.hero h1 .hl{display:block}
+.hero p.lead{font-size:17px;color:#E4EBF5;max-width:540px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:18px;margin-top:32px}
+.feats{display:flex;flex-wrap:wrap;row-gap:14px;margin-top:40px}
+.feat{display:flex;align-items:center;gap:12px;padding:4px 18px;border-left:1px solid rgba(255,255,255,.22);font-size:14px;line-height:1.35}
+.feat:first-child{padding-left:0;border-left:0}
+.feat svg{width:34px;height:34px;flex-shrink:0}
 
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:start}
-.about h2{font-size:clamp(38px,5vw,56px);margin:12px 0 24px}
-.about-lead{font-size:19px;color:var(--muted)}
-.points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
-.point{border-top:3px solid var(--navy);padding-top:16px}
-.point h3{font-size:26px;margin-bottom:6px}
-.point p{color:var(--muted);font-size:16px}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:72px;background:var(--navy);border-radius:12px;color:#fff;overflow:hidden}
-.stat{padding:32px 28px;border-right:1px solid rgba(255,255,255,.12)}
-.stat:last-child{border-right:0}
-.stat b{display:block;font-family:var(--display);font-size:52px;line-height:1;color:var(--orange)}
-.stat span{display:block;margin-top:8px;color:var(--on-dark);font-size:16px}
-
-/* SERVICES */
-.services{background:#fff}
-.svc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.svc{display:flex;flex-direction:column;background:var(--ground);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.svc-img{aspect-ratio:16/10;background:var(--navy-2);position:relative}
+/* ========== SERVICES (cards over hero) ========== */
+.services{position:relative;z-index:2;margin-top:-118px;padding-bottom:0}
+.svc-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px}
+.svc{background:#fff;border-radius:var(--r);box-shadow:0 10px 30px rgba(11,37,80,.14);overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.svc:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(11,37,80,.2)}
+.svc-img{aspect-ratio:2.85/1;background:var(--navy-3);overflow:hidden}
 .svc-img img{width:100%;height:100%;object-fit:cover}
-.svc-num{position:absolute;top:16px;left:16px;background:var(--orange);color:var(--navy);font-family:var(--display);font-weight:700;font-size:18px;padding:4px 10px;border-radius:4px}
-.svc-body{padding:28px;display:flex;flex-direction:column;gap:14px;flex-grow:1}
-.svc h3{font-size:30px}
-.svc p{color:var(--muted);font-size:16px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
-.chips span{font-size:13px;font-weight:600;padding:5px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--navy)}
-.svc-icon{display:flex;align-items:center;justify-content:center;height:100%}
-.svc-icon svg{width:96px;height:96px}
+.svc-body{position:relative;display:grid;grid-template-columns:40px 1fr;align-content:start;gap:6px 12px;padding:20px 16px 52px;flex-grow:1}
+.svc-ic{grid-row:1/3;width:36px;height:36px;margin-top:2px}
+.svc h3{font-size:16px;font-weight:600;align-self:center}
+.svc p{font-size:13px;color:var(--muted);line-height:1.55}
+.svc .go{position:absolute;right:16px;bottom:14px;width:32px;height:32px;border-radius:50%;border:1.5px solid var(--navy);display:flex;align-items:center;justify-content:center;color:var(--navy);transition:.15s}
+.svc:hover .go{background:var(--orange);border-color:var(--orange);color:#fff}
+.svc .go svg{width:16px;height:16px}
 
-/* FOURNITURE */
-.supply{background:var(--sand)}
-.supply-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:center}
-.supply h2{font-size:clamp(38px,5vw,56px);margin:12px 0 22px}
-.supply p.lead{color:var(--muted);font-size:18px;margin-bottom:28px}
+/* ========== RÉALISATIONS ========== */
+.real{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;margin-top:-60px;padding:110px 0 46px}
+.real .wrap{display:grid;grid-template-columns:400px 1fr;gap:40px;align-items:center}
+.real h2{font-size:clamp(28px,2.6vw,34px);font-weight:600;margin:16px 0 26px}
+.real .btn{min-height:44px;padding:9px 24px;font-weight:500;font-size:15px}
+.carousel{display:flex;align-items:center;gap:14px;min-width:0}
+.track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;flex:1;min-width:0}
+.track::-webkit-scrollbar{display:none}
+.rcard{flex:0 0 calc((100% - 48px)/4);scroll-snap-align:start;margin:0}
+.rcard .ph{aspect-ratio:1.7/1;border-radius:6px;overflow:hidden;background:var(--navy-3)}
+.rcard img{width:100%;height:100%;object-fit:cover}
+.rcard figcaption{margin-top:10px;font-size:13px;font-weight:600}
+.rcard .loc{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:400;color:var(--on-dark);margin-top:2px}
+.rcard .loc svg{width:13px;height:13px;color:var(--orange)}
+.arrow{flex-shrink:0;width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,255,255,.6);background:transparent;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s}
+.arrow:hover{background:#fff;color:var(--navy)}
+.arrow svg{width:20px;height:20px}
+
+/* ========== STATS BAR ========== */
+.stats{background:#fff;border-bottom:1px solid var(--line)}
+.stats .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:26px;padding-bottom:26px;flex-wrap:wrap}
+.stat-list{display:flex;flex:1;flex-wrap:wrap;row-gap:16px}
+.stat{display:flex;align-items:center;gap:12px;padding:6px 24px;border-left:1px solid var(--line)}
+.stat:first-child{padding-left:0;border-left:0}
+.stat svg{width:38px;height:38px;color:var(--orange);flex-shrink:0}
+.stat b{display:block;font-size:18px;white-space:nowrap;font-weight:600;line-height:1.2}
+.stat span{color:var(--muted);font-size:14px;white-space:nowrap}
+.stats-cta{display:flex;align-items:center;gap:16px}
+.wa-btn{width:52px;height:52px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center}
+.wa-btn svg{width:28px;height:28px}
+
+/* ========== GENERIC SECTIONS ========== */
+.section{padding:100px 0}
+.bg-soft{background:var(--bg)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:48px}
+.head h2{font-size:clamp(28px,3vw,40px);font-weight:600;margin-top:14px;max-width:720px}
+.head p{max-width:420px;color:var(--muted)}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center}
+.about h2{font-size:clamp(28px,3vw,40px);font-weight:600;margin:14px 0 20px}
+.about .lead{color:var(--muted);font-size:17px}
+.points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.point{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.point .ic{width:46px;height:46px;border-radius:12px;background:#FFF1E3;color:var(--orange);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.point .ic svg{width:24px;height:24px}
+.point h3{font-size:17px;font-weight:600;margin-bottom:4px}
+.point p{font-size:14px;color:var(--muted)}
+
+/* pièces */
+.parts-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:64px;align-items:center}
+.parts-grid h2{font-size:clamp(28px,3vw,40px);font-weight:600;margin:14px 0 18px}
+.parts-grid .lead{color:var(--muted);margin-bottom:28px}
 .parts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.part{background:#fff;border-radius:10px;padding:22px}
-.part h3{font-size:22px;margin-bottom:6px}
-.part p{font-size:15px;color:var(--muted)}
-.offer{margin-top:48px;display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;background:var(--navy);color:#fff;border-radius:12px;padding:28px 32px}
-.offer img{width:120px;height:120px;object-fit:cover;border-radius:8px;background:var(--navy-2)}
-.offer h3{font-size:30px;margin-bottom:8px}
-.offer p{color:var(--on-dark)}
+.part{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px}
+.part h3{font-size:16px;font-weight:600;margin-bottom:2px}
+.part p{font-size:13.5px;color:var(--muted)}
 
-/* STEPS */
-.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;counter-reset:s}
-.step{position:relative;padding-top:64px}
-.step::before{counter-increment:s;content:"0" counter(s);position:absolute;top:0;left:0;font-family:var(--display);font-weight:700;font-size:44px;color:var(--orange);line-height:1}
-.step::after{content:"";position:absolute;top:22px;left:72px;right:-12px;height:2px;background:var(--line)}
-.step:last-child::after{display:none}
-.step h3{font-size:28px;margin-bottom:10px}
-.step p{color:var(--muted);font-size:16px}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;counter-reset:s}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px 24px;position:relative}
+.step::before{counter-increment:s;content:"0" counter(s);display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:var(--navy);color:#fff;font-weight:600;margin-bottom:18px}
+.step h3{font-size:18px;font-weight:600;margin-bottom:8px}
+.step p{font-size:14.5px;color:var(--muted)}
 
-/* PROJECTS */
-.projects{background:var(--navy);color:#fff}
-.projects .eyebrow{color:var(--orange)}
-.projects .section-head p{color:var(--on-dark)}
-.proj-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-.proj{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:var(--navy-2)}
-.proj img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.proj:hover img{transform:scale(1.03)}
-.proj figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 28px;background:linear-gradient(0deg,rgba(11,37,80,.9),rgba(11,37,80,0));font-family:var(--display);font-size:28px;font-weight:700;text-transform:uppercase}
-figure.proj{margin:0}
-
-/* SECTORS */
-.sectors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-.sector{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px}
-.sector .ic{width:52px;height:52px;border-radius:10px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
-.sector .ic svg{width:28px;height:28px}
-.sector h3{font-size:26px;margin-bottom:8px}
-.sector p{color:var(--muted);font-size:16px}
-.zone{margin-top:28px;display:inline-flex;align-items:center;gap:10px;font-weight:700;color:var(--navy)}
+/* sectors */
+.sectors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.sector{border-radius:var(--r);padding:28px;background:var(--navy);color:#fff}
+.sector svg{width:40px;height:40px;color:var(--orange);margin-bottom:16px}
+.sector h3{font-size:18px;font-weight:600;margin-bottom:8px}
+.sector p{font-size:14.5px;color:var(--on-dark)}
+.zone{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-weight:600}
 .zone svg{width:22px;height:22px;color:var(--orange)}
 
-/* CLIENTS */
-.clients{background:#fff;padding:72px 0}
-.clients h2{font-size:34px;text-align:center;margin-bottom:36px}
-.logos{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:20px;align-items:center}
-.logos div{height:84px;display:flex;align-items:center;justify-content:center;padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff}
-.logos img{max-height:60px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.8;transition:.2s}
+/* clients */
+.clients{padding:64px 0;border-top:1px solid var(--line)}
+.clients h2{text-align:center;font-size:24px;font-weight:600;margin-bottom:30px}
+.logos{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:16px}
+.logos div{height:80px;border:1px solid var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;padding:10px;background:#fff}
+.logos img{max-height:58px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.75;transition:.2s}
 .logos div:hover img{filter:none;opacity:1}
 
-/* FAQ */
-.faq-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:72px;align-items:start}
-.faq h2{font-size:clamp(38px,5vw,56px);margin-top:12px}
-.faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 0;font-weight:700;font-size:19px}
+/* faq */
+.faq-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:64px;align-items:start}
+.faq h2{font-size:clamp(28px,3vw,40px);font-weight:600;margin-top:14px}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;padding:0 22px}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 0;font-weight:600}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-family:var(--display);font-size:32px;color:var(--orange);line-height:1}
+.faq summary::after{content:"+";flex-shrink:0;width:30px;height:30px;border-radius:50%;background:#FFF1E3;color:var(--orange);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:500}
 .faq details[open] summary::after{content:"–"}
-.faq details p{padding:0 0 22px;color:var(--muted)}
+.faq details p{padding:0 0 18px;color:var(--muted)}
 
-/* CONTACT */
-.contact{background:var(--navy);color:#fff}
-.contact .eyebrow{color:var(--orange)}
+/* contact */
+.contact{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:#fff}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
-.contact h2{font-size:clamp(38px,5vw,56px);margin:12px 0 20px}
-.contact .lead{color:var(--on-dark);font-size:18px;margin-bottom:32px}
-.info{display:flex;flex-direction:column;gap:18px;margin-bottom:28px}
+.contact-grid>*,.about-grid>*,.parts-grid>*,.faq-grid>*{min-width:0}
+.info span{overflow-wrap:anywhere}
+.contact h2{font-size:clamp(28px,3vw,40px);font-weight:600;margin:14px 0 14px}
+.contact .lead{color:var(--on-dark);margin-bottom:30px}
+.info{display:flex;flex-direction:column;gap:18px;margin-bottom:26px}
 .info div{display:flex;gap:14px;align-items:flex-start}
-.info svg{width:24px;height:24px;flex-shrink:0;color:var(--orange);margin-top:2px}
-.info a{color:#fff}
-.info small{display:block;color:var(--on-dark);font-size:14px}
-.map{border-radius:12px;overflow:hidden;height:260px;background:var(--navy-2)}
+.info .ic{width:44px;height:44px;border-radius:50%;background:rgba(247,129,15,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.info svg{width:22px;height:22px;color:var(--orange)}
+.info small{display:block;color:var(--on-dark);font-size:13px}
+.map{border-radius:var(--r);overflow:hidden;height:250px;background:var(--navy-3)}
 .map iframe{width:100%;height:100%;border:0}
-.map-link{display:inline-block;margin-top:12px;color:var(--orange);font-weight:700}
-.form{background:#fff;color:var(--ink);border-radius:12px;padding:36px;display:flex;flex-direction:column;gap:18px}
-.form h3{font-size:32px}
-.field{display:flex;flex-direction:column;gap:6px}
-.field label{font-weight:700;font-size:15px}
-.field input,.field select,.field textarea{font:inherit;font-size:16px;padding:13px 14px;border:1px solid #B9C0CF;border-radius:6px;background:#fff;color:var(--ink);min-height:48px}
-.field input:focus,.field select:focus,.field textarea:focus{outline:3px solid rgba(241,124,10,.35);border-color:var(--orange)}
-.field textarea{min-height:120px;resize:vertical}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.form .note{font-size:14px;color:var(--muted)}
+.map-link{display:inline-block;margin-top:12px;color:var(--orange);font-weight:600}
+.form{background:#fff;color:var(--ink);border-radius:18px;padding:34px;display:flex;flex-direction:column;gap:16px}
+.form h3{font-size:24px;font-weight:600}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field input,.field select,.field textarea{width:100%;min-width:0}
+.field label{font-weight:600;font-size:14px}
+.field input,.field select,.field textarea{font:inherit;font-size:15px;padding:12px 14px;border:1px solid #C3CBDA;border-radius:10px;background:#fff;color:var(--ink);min-height:48px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:3px solid rgba(247,129,15,.3);border-color:var(--orange)}
+.field textarea{min-height:110px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form .note{font-size:13px;color:var(--muted)}
 
-/* FOOTER */
-.footer{background:#071A3A;color:var(--on-dark);padding:64px 0 32px;font-size:16px}
-.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:48px}
-.foot-logo{display:inline-block;background:#fff;border-radius:10px;padding:14px 18px;margin-bottom:16px}
-.foot-logo img{width:200px}
-.footer h4{color:#fff;margin:0 0 14px;font-size:16px}
-.footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
-.footer a{color:var(--on-dark)}
+/* footer */
+.footer{background:#071A3A;color:var(--on-dark);padding:60px 0 28px;font-size:15px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:44px}
+.foot-logo{display:inline-block;background:#fff;border-radius:12px;padding:12px 16px;margin-bottom:16px}
+.foot-logo img{width:190px}
+.footer h4{color:#fff;font-size:16px;font-weight:600;margin-bottom:14px}
+.footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
 .footer a:hover{color:#fff}
-.foot-bottom{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:14px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot-bottom{margin-top:44px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);font-size:13px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
-/* WHATSAPP FLOAT */
-.wa{position:fixed;right:22px;bottom:22px;z-index:60;width:60px;height:60px;border-radius:50%;background:#1FAF5A;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
-.wa svg{width:32px;height:32px}
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.wa-float svg{width:30px;height:30px}
 
-/* RESPONSIVE */
-@media (max-width:1080px){
-  .svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .steps,.sectors{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .step::after{display:none}
+/* ========== RESPONSIVE ========== */
+@media (max-width:1200px){
+  .svc-row{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .real .wrap{grid-template-columns:1fr}
+  .rcard{flex-basis:calc((100% - 32px)/3)}
+  .stat{padding:6px 24px}
   .logos{grid-template-columns:repeat(5,minmax(0,1fr))}
-  .about-grid,.supply-grid,.faq-grid,.contact-grid{grid-template-columns:1fr;gap:48px}
-  .foot-grid{grid-template-columns:1fr 1fr}
 }
-@media (max-width:900px){
-  .nav{display:none;position:absolute;top:88px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:8px 24px 24px;border-bottom:1px solid #E3E6EE}
+@media (max-width:1024px){
+  .nav{display:none;position:absolute;top:84px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:6px 24px 20px;box-shadow:0 12px 20px rgba(11,37,80,.1)}
   .nav.open{display:flex}
-  .nav a{padding:14px 0;border-bottom:1px solid #EEF0F4}
-  .nav .btn{margin-top:14px;border-bottom:0}
-  .menu-btn{display:flex;align-items:center;justify-content:center}
-  .section-head{flex-direction:column;align-items:flex-start;gap:16px}
+  .nav a{padding:14px 0;border-bottom:1px solid #EEF1F6}
+  .nav a::after{display:none}
+  .menu-btn{display:flex}
+  .header .btn-call{display:none}
+  .hero-img{width:100%;opacity:.45}
+  .hero-img::before{background:linear-gradient(90deg,var(--navy) 0%,rgba(11,37,80,.6) 100%)}
+  .about-grid,.parts-grid,.faq-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
+  .steps,.sectors{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .head{flex-direction:column;align-items:flex-start;gap:14px}
+  .stats .wrap{flex-direction:column;align-items:flex-start}
 }
-@media (max-width:640px){
-  body{font-size:16px}
-  .section{padding:72px 0}
+@media (max-width:680px){
   .header .wrap{height:72px}
   .nav{top:72px}
-  .brand .emb{height:44px}.brand .word{height:19px}
-  .hero{min-height:auto}
-  .hero p{font-size:18px}
-  .svc-grid,.steps,.sectors,.points,.proj-grid,.parts,.row2{grid-template-columns:1fr}
+  .brand .emb{height:44px}.brand .word{height:22px}.brand small{display:none}
+  .hero .wrap{padding-top:44px;padding-bottom:130px}
+  .feats{gap:16px 0}
+  .feat{width:50%;border-left:0;padding:0 8px 0 0}
+  .svc-row{grid-template-columns:1fr}
+  .rcard{flex-basis:78%}
+  .real .arrow{display:none}
+  .stat-list{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:100%}
+  .stat{border-left:0;padding:0}
+  .stat svg{width:38px;height:38px}
+  .stat b,.stat span{white-space:normal}
+  .section{padding:72px 0}
+  .points,.parts,.steps,.sectors,.row2{grid-template-columns:1fr}
   .parts{grid-template-columns:1fr 1fr}
-  .stats{grid-template-columns:1fr 1fr}
-  .stat:nth-child(2){border-right:0}
-  .stat{border-bottom:1px solid rgba(255,255,255,.12)}
   .logos{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .offer{grid-template-columns:1fr;text-align:left}
-  .offer img{display:none}
   .form{padding:24px}
   .foot-grid{grid-template-columns:1fr}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.proj img{transition:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.svc{transition:none}}
 </style>
 </head>
 <body>
@@ -245,165 +272,189 @@ figure.proj{margin:0}
   <div class="wrap">
     <a href="#" class="brand" aria-label="SMERAV – Accueil">
       <img class="emb" src="smerav-emblem.png" alt="">
-      <img class="word" src="smerav-wordmark.png" alt="SMERAV">
+      <span class="brand-txt">
+        <img class="word" src="smerav-wordmark.png" alt="SMERAV">
+        <small>Société Marocaine d'Eaux et Réseaux d'Assainissement Variés</small>
+      </span>
     </a>
     <button class="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <nav class="nav" id="nav">
+      <a href="#" class="active">Accueil</a>
       <a href="#apropos">À propos</a>
-      <a href="#services">Services</a>
-      <a href="#fourniture">Fournitures</a>
-      <a href="#projets">Projets</a>
+      <a href="#services">Nos services</a>
+      <a href="#realisations">Nos réalisations</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
-      <a href="#contact" class="btn btn-orange">Demander un devis</a>
     </nav>
+    <a class="btn btn-orange btn-call" href="tel:+212661808894">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+      +212 6 61 80 88 94</a>
   </div>
 </header>
 
 <main>
-<!-- ================= HERO (vidéo) ================= -->
+<!-- ================= HERO ================= -->
 <section class="hero">
-  <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-    <source src="water.mp4" type="video/mp4">
-  </video>
+  <div class="hero-img" role="img" aria-label="Chantier SMERAV : pelle mécanique, technicien et pose de conduite d'eau à Fès"></div>
   <div class="wrap">
-    <h1><span class="hero-kicker">Travaux publics à Fès · Réseaux d'eau · Assainissement</span>Notre expertise, votre réussite.</h1>
-    <p>Société de travaux publics basée à Fès : réseaux divers, eau potable, assainissement, génie civil, forage et fourniture de pièces hydrauliques — de la conception à la mise en service.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-orange" href="https://wa.me/212661808894?text=Bonjour%20SMERAV%2C%20je%20souhaite%20un%20devis." target="_blank" rel="noopener">Demander un devis
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="btn btn-ghost" href="#services">Nos services</a>
-    </div>
-    <div class="hero-tags">
-      <span>Réseaux divers</span><span>Eau potable</span><span>Assainissement</span><span>Génie civil</span><span>Forage</span><span>Pièces hydrauliques</span>
-    </div>
-  </div>
-</section>
-
-<!-- ================= À PROPOS ================= -->
-<section class="section about" id="apropos">
-  <div class="wrap">
-    <div class="about-grid">
-      <div>
-        <div class="eyebrow">Qui sommes-nous</div>
-        <h2>Une équipe qui maîtrise le terrain</h2>
-        <p class="about-lead">Société de travaux publics basée à Fès, spécialisée dans les réseaux d'eau, l'assainissement et le génie civil. De la conception à la mise en service, SMERAV accompagne collectivités, promoteurs et industriels sur l'ensemble de leurs infrastructures hydrauliques — avec la rigueur d'une équipe qui maîtrise le terrain.</p>
+    <div class="hero-text">
+      <div class="kicker">Travaux publics &amp; réseaux</div>
+      <h1>Des solutions durables <span class="hl">pour l'eau et l'avenir</span></h1>
+      <p class="lead">SMERAV, votre partenaire de confiance pour la réalisation de projets dans les réseaux d'eau potable, d'assainissement et travaux divers, au service du développement durable du Maroc.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-orange" href="#services">Découvrir nos services
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-line" href="#contact">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.2 1.1 4.2 2.9 5.6L4 21l4.6-2.5c1.1.3 2.2.5 3.4.5 5.5 0 10-3.6 10-8s-4.5-8-10-8zm-4 9a1.2 1.2 0 1 1 0-2.4A1.2 1.2 0 0 1 8 12zm4 0a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4zm4 0a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4z"/></svg>
+          Nous contacter</a>
       </div>
-      <div class="points">
-        <div class="point"><h3>Expertise reconnue</h3><p>Un savoir-faire éprouvé sur les chantiers de travaux publics.</p></div>
-        <div class="point"><h3>Intervention rapide</h3><p>Réactivité sur site, du diagnostic à la réparation.</p></div>
-        <div class="point"><h3>Équipe professionnelle</h3><p>Des techniciens qualifiés et un matériel adapté.</p></div>
-        <div class="point"><h3>Satisfaction garantie</h3><p>Un engagement de qualité à chaque étape du projet.</p></div>
+      <div class="feats">
+        <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>Expertise<br>terrain</div>
+        <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Qualité<br>d'exécution</div>
+        <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.5-3.6 3.2-6 6.5-6s6 2.4 6.5 6"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14c2.5 0 4.2 1.8 4.5 4.5"/></svg>Équipe<br>qualifiée</div>
+        <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20c0-9 6-14 15-15-1 9-6 15-15 15z"/><path d="M5 20l8-8"/></svg>Engagement<br>durable</div>
       </div>
-    </div>
-    <div class="stats">
-      <div class="stat"><b>Fès</b><span>Basés au cœur du Maroc</span></div>
-      <div class="stat"><b>24/7</b><span>Réactivité chantier</span></div>
-      <div class="stat"><b>05+</b><span>Domaines d'expertise</span></div>
-      <div class="stat"><b>100%</b><span>Satisfaction visée</span></div>
     </div>
   </div>
 </section>
 
 <!-- ================= SERVICES ================= -->
-<section class="section services" id="services">
+<section class="services" id="services" aria-label="Nos services">
   <div class="wrap">
-    <div class="section-head">
-      <div><div class="eyebrow">Nos services</div><h2>Une offre complète, du réseau neuf à l'entretien</h2></div>
-      <p>Une offre complète pour les infrastructures d'eau et de génie civil, du réseau neuf à l'entretien.</p>
-    </div>
-    <div class="svc-grid">
-      <article class="svc">
-        <div class="svc-img"><div class="svc-icon" aria-hidden="true">
-          <svg viewBox="0 0 96 96" fill="none" stroke-linecap="round"><path d="M8 30h80" stroke="#F17C0A" stroke-width="8"/><path d="M8 50h80" stroke="#8FB3C6" stroke-width="8"/><path d="M8 70h80" stroke="#FFFFFF" stroke-width="8"/><circle cx="30" cy="30" r="7" fill="#0B2550" stroke="#fff" stroke-width="3"/><circle cx="64" cy="50" r="7" fill="#0B2550" stroke="#fff" stroke-width="3"/><circle cx="44" cy="70" r="7" fill="#0B2550" stroke="#F17C0A" stroke-width="3"/></svg>
-        </div><span class="svc-num">01</span></div>
+    <div class="svc-row">
+      <a class="svc" href="#contact">
+        <div class="svc-img"><img src="svc-1.jpg" alt="Conduite d'eau potable" loading="lazy"></div>
         <div class="svc-body">
-          <h3>Réseaux divers</h3>
-          <p>Tranchées, fourreaux et chambres pour réseaux secs : électricité, télécom, éclairage public et gaz.</p>
-          <div class="chips"><span>Tranchées</span><span>Fourreaux</span><span>Chambres</span></div>
-        </div>
-      </article>
-      <article class="svc">
-        <div class="svc-img"><img src="reseaux-eaux-potable.jpg?v=6" alt="Pose d'un réseau d'eau potable par SMERAV" loading="lazy"><span class="svc-num">02</span></div>
-        <div class="svc-body">
+          <svg class="svc-ic" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4s11 12 11 20a11 11 0 0 1-22 0C9 16 20 4 20 4z" fill="#1E6FD9"/><path d="M15 25a5 5 0 0 0 5 5" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
           <h3>Réseaux d'eau potable</h3>
-          <p>Conception, pose et raccordement de réseaux d'eau potable, avec détection et réparation de fuites.</p>
-          <div class="chips"><span>Branchements</span><span>Raccordements</span><span>Détection de fuites</span><span>Réparation</span></div>
+          <p>Pose de conduits, recherche et réparation des fuites, branchement.</p>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
-      </article>
-      <article class="svc">
-        <div class="svc-img"><img src="reseaux-assainissement1.jpg?v=6" alt="Travaux de réseau d'assainissement" loading="lazy"><span class="svc-num">03</span></div>
+      </a>
+      <a class="svc" href="#contact">
+        <div class="svc-img"><img src="svc-2.jpg" alt="Buses d'assainissement" loading="lazy"></div>
         <div class="svc-body">
-          <h3>Assainissement</h3>
-          <p>Réalisation de réseaux d'assainissement et de branchements pour collectivités et projets immobiliers.</p>
-          <div class="chips"><span>Réseaux</span><span>Branchements</span></div>
+          <svg class="svc-ic" viewBox="0 0 40 40" fill="none" stroke="#F7810F" stroke-width="3" aria-hidden="true"><circle cx="20" cy="9" r="4.5"/><circle cx="9" cy="30" r="4.5"/><circle cx="31" cy="30" r="4.5"/><path d="M17.5 13l-6 13M22.5 13l6 13M13.5 30h13"/></svg>
+          <h3>Réseaux d'assainissement</h3>
+          <p>Réalisation et entretien des réseaux d'assainissement.</p>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
-      </article>
-      <article class="svc">
-        <div class="svc-img"><img src="genie-civil.jpg?v=6" alt="Ouvrage en béton – génie civil" loading="lazy"><span class="svc-num">04</span></div>
+      </a>
+      <a class="svc" href="#contact">
+        <div class="svc-img"><img src="svc-3.jpg" alt="Structure en béton – génie civil" loading="lazy"></div>
         <div class="svc-body">
+          <svg class="svc-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1E6FD9" d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm9.4 5l-2-.3a7.6 7.6 0 0 1-.7 1.7l1.2 1.6-1.9 1.9-1.6-1.2c-.5.3-1.1.6-1.7.7l-.3 2h-2.8l-.3-2a7.6 7.6 0 0 1-1.7-.7l-1.6 1.2-1.9-1.9 1.2-1.6a7.6 7.6 0 0 1-.7-1.7l-2-.3v-2.8l2-.3c.2-.6.4-1.2.7-1.7L4.2 6.7l1.9-1.9 1.6 1.2c.5-.3 1.1-.6 1.7-.7l.3-2h2.8l.3 2c.6.2 1.2.4 1.7.7l1.6-1.2 1.9 1.9-1.2 1.6c.3.5.6 1.1.7 1.7l2 .3z"/></svg>
           <h3>Génie civil</h3>
-          <p>Ouvrages en béton et travaux de génie civil liés aux infrastructures hydrauliques et aux réseaux.</p>
-          <div class="chips"><span>Ouvrages béton</span><span>Structures</span></div>
+          <p>Travaux de génie civil et aménagements divers.</p>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
-      </article>
-      <article class="svc">
-        <div class="svc-img"><img src="equipement.jpg?v=6" alt="Forage et équipement de puits" loading="lazy"><span class="svc-num">05</span></div>
+      </a>
+      <a class="svc" href="#contact">
+        <div class="svc-img"><img src="svc-4.jpg" alt="Foreuse – forage de puits" loading="lazy"></div>
         <div class="svc-body">
+          <svg class="svc-ic" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4s11 12 11 20a11 11 0 0 1-22 0C9 16 20 4 20 4z" fill="#1E6FD9"/><path d="M20 13s5 5.5 5 9a5 5 0 0 1-10 0c0-3.5 5-9 5-9z" fill="#fff"/></svg>
           <h3>Forage et équipement</h3>
-          <p>Forage et équipement de puits : installation, pompage et mise en service des ouvrages.</p>
-          <div class="chips"><span>Forage</span><span>Équipement</span><span>Mise en service</span></div>
+          <p>Forage de puits, équipement et mise en service.</p>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
-      </article>
-      <article class="svc">
-        <div class="svc-img"><img src="cataloge.png?v=6" alt="Pièces hydrauliques et accessoires de réseaux" loading="lazy"><span class="svc-num">06</span></div>
+      </a>
+      <a class="svc" href="#pieces">
+        <div class="svc-img"><img src="svc-5.jpg" alt="Raccords et pièces réseaux" loading="lazy"></div>
         <div class="svc-body">
-          <h3>Vente de pièces réseaux</h3>
-          <p>Fourniture de pièces hydrauliques, pièces spéciales et accessoires pour réseaux d'eau potable et d'assainissement.</p>
-          <div class="chips"><span>Pièces réseaux</span><span>Accessoires</span><span>Catalogue</span></div>
+          <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="#F7810F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h3l2.6 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.5L22 8H6"/><circle cx="9.5" cy="20.5" r="1.4" fill="#F7810F"/><circle cx="18" cy="20.5" r="1.4" fill="#F7810F"/></svg>
+          <h3>Vente pièces réseaux</h3>
+          <p>Fourniture de pièces et accessoires pour réseaux.</p>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
-      </article>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ================= FOURNITURE ================= -->
-<section class="section supply" id="fourniture">
+<!-- ================= RÉALISATIONS ================= -->
+<section class="real" id="realisations">
   <div class="wrap">
-    <div class="supply-grid">
-      <div>
-        <div class="eyebrow">Fournisseur</div>
-        <h2>Pièces hydrauliques &amp; pièces spéciales d'eau potable</h2>
-        <p class="lead">Pièces et accessoires pour réseaux d'eau potable et d'assainissement, pour les professionnels comme pour les particuliers. Conseil technique et devis gratuit.</p>
-        <a class="btn btn-navy" href="https://wa.me/212661808894?text=Bonjour%20SMERAV%2C%20je%20souhaite%20une%20cotation%20pour%20des%20pi%C3%A8ces%20hydrauliques." target="_blank" rel="noopener">Demander une cotation</a>
-      </div>
-      <div class="parts">
-        <div class="part"><h3>Vannes</h3><p>Robinets-vannes, vannes papillon</p></div>
-        <div class="part"><h3>Raccords</h3><p>Tés, coudes, cônes, manchons</p></div>
-        <div class="part"><h3>Brides</h3><p>Brides, joints, boulonnerie</p></div>
-        <div class="part"><h3>Ventouses</h3><p>Purge d'air, vidanges</p></div>
-        <div class="part"><h3>Compteurs</h3><p>Compteurs et regards</p></div>
-        <div class="part"><h3>Pièces spéciales</h3><p>Fonte ductile, sur mesure</p></div>
-      </div>
+    <div>
+      <div class="kicker">Nos réalisations</div>
+      <h2>Des projets concrets<br>au service des <span class="hl">territoires</span></h2>
+      <a class="btn btn-line" href="#contact">Voir toutes nos réalisations
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
-    <div class="offer">
-      <img src="offre.png?v=6" alt="" loading="lazy">
-      <div>
-        <h3>Offre de services</h3>
-        <p>Découvrez le détail de nos prestations et demandez un devis adapté à votre projet. Réponse rapide, chiffrage clair.</p>
+    <div class="carousel">
+      <button class="arrow" data-dir="-1" aria-label="Réalisations précédentes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <div class="track" id="track">
+        <figure class="rcard"><div class="ph"><img src="real-1.jpg" alt="Pose d'une conduite d'eau potable en tranchée" loading="lazy"></div><figcaption>Réseau d'eau potable<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
+        <figure class="rcard"><div class="ph"><img src="real-2.jpg" alt="Pose de buses d'assainissement" loading="lazy"></div><figcaption>Réseau d'assainissement<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
+        <figure class="rcard"><div class="ph"><img src="real-3.jpg" alt="Ouvrage en béton armé" loading="lazy"></div><figcaption>Génie civil<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
+        <figure class="rcard"><div class="ph"><img src="real-4.jpg" alt="Forage de puits" loading="lazy"></div><figcaption>Forage et équipement<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
+        <figure class="rcard"><div class="ph"><img src="projet1.jpg" alt="Travaux de réseau SMERAV" loading="lazy"></div><figcaption>Travaux de réseau<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
+        <figure class="rcard"><div class="ph"><img src="projet3.jpg" alt="Chantier d'infrastructure SMERAV" loading="lazy"></div><figcaption>Chantier d'infrastructure<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
       </div>
-      <a class="btn btn-orange" href="https://wa.me/212661808894?text=Bonjour%20SMERAV%2C%20je%20souhaite%20recevoir%20votre%20offre%20de%20services." target="_blank" rel="noopener">Recevoir l'offre</a>
+      <button class="arrow" data-dir="1" aria-label="Réalisations suivantes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats" aria-label="SMERAV en chiffres">
+  <div class="wrap">
+    <div class="stat-list">
+      <div class="stat"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34h36v4H6z"/><path d="M10 34c0-8 6-15 14-15s14 7 14 15"/><path d="M20 19v-6h8v6M24 13v12"/></svg><div><b>+ de 7</b><span>Collaborateurs</span></div></div>
+      <div class="stat"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8M18 22h14M18 28h14M18 34h8"/></svg><div><b>+ 50</b><span>Projets réalisés</span></div></div>
+      <div class="stat"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22l8-8 6 3 6-5 6 5 6-3 8 8"/><path d="M12 22l9 9c1.5 1.5 3.5 1.5 5 0l2-2M16 26l6 6M20 22l8 8M26 18l8 8-6 6"/></svg><div><b>100%</b><span>Engagement qualité</span></div></div>
+      <div class="stat"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="12" r="5"/><circle cx="11" cy="17" r="4"/><circle cx="37" cy="17" r="4"/><path d="M15 40V28c0-4 4-8 9-8s9 4 9 8v12M4 38v-8c0-3 3-6 7-6M44 38v-8c0-3-3-6-7-6"/></svg><div><b>Des partenaires</b><span>de confiance</span></div></div>
+    </div>
+    <div class="stats-cta">
+      <a class="btn btn-orange" href="tel:+212661808894"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>+212 6 61 80 88 94</a>
+      <a class="wa-btn" href="https://wa.me/212661808894?text=Bonjour%20SMERAV" target="_blank" rel="noopener" aria-label="WhatsApp SMERAV"><svg viewBox="0 0 32 32" fill="#fff"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7a10.7 10.7 0 0 1-5.5-1.5l-.4-.2-3.9 1 1-3.8-.2-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.4 6.4 0 0 0 1.3 3.4 14.7 14.7 0 0 0 5.7 5c2.1.9 2.9 1 4 .8a3.4 3.4 0 0 0 2.2-1.6 2.8 2.8 0 0 0 .2-1.6c-.1-.2-.3-.3-.6-.4z"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= À PROPOS ================= -->
+<section class="section about bg-soft" id="apropos">
+  <div class="wrap about-grid">
+    <div>
+      <div class="kicker dark">Qui sommes-nous</div>
+      <h2>Une équipe qui maîtrise <span class="hl">le terrain</span></h2>
+      <p class="lead">Société de travaux publics basée à Fès, spécialisée dans les réseaux d'eau, l'assainissement et le génie civil. De la conception à la mise en service, SMERAV accompagne collectivités, promoteurs et industriels sur l'ensemble de leurs infrastructures hydrauliques — avec la rigueur d'une équipe qui maîtrise le terrain.</p>
+    </div>
+    <div class="points">
+      <div class="point"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></div><h3>Expertise reconnue</h3><p>Un savoir-faire éprouvé sur les chantiers de travaux publics.</p></div>
+      <div class="point"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><h3>Intervention rapide</h3><p>Réactivité sur site 24/7, du diagnostic à la réparation.</p></div>
+      <div class="point"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.5-3.6 3.2-6 6.5-6s6 2.4 6.5 6"/><circle cx="17" cy="9" r="2.5"/></svg></div><h3>Équipe professionnelle</h3><p>Des techniciens qualifiés et un matériel adapté.</p></div>
+      <div class="point"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div><h3>Satisfaction garantie</h3><p>Un engagement de qualité à chaque étape du projet.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PIÈCES ================= -->
+<section class="section" id="pieces">
+  <div class="wrap parts-grid">
+    <div>
+      <div class="kicker dark">Vente pièces réseaux</div>
+      <h2>Pièces hydrauliques &amp; <span class="hl">pièces spéciales</span></h2>
+      <p class="lead">Fourniture de pièces et accessoires pour réseaux d'eau potable et d'assainissement, pour les professionnels comme pour les particuliers. Conseil technique et devis gratuit.</p>
+      <a class="btn btn-navy" href="https://wa.me/212661808894?text=Bonjour%20SMERAV%2C%20je%20souhaite%20une%20cotation%20pour%20des%20pi%C3%A8ces%20r%C3%A9seaux." target="_blank" rel="noopener">Demander une cotation</a>
+    </div>
+    <div class="parts">
+      <div class="part"><h3>Vannes</h3><p>Robinets-vannes, vannes papillon</p></div>
+      <div class="part"><h3>Raccords</h3><p>Tés, coudes, cônes, manchons</p></div>
+      <div class="part"><h3>Brides</h3><p>Brides, joints, boulonnerie</p></div>
+      <div class="part"><h3>Ventouses</h3><p>Purge d'air, vidanges</p></div>
+      <div class="part"><h3>Compteurs</h3><p>Compteurs et regards</p></div>
+      <div class="part"><h3>Pièces spéciales</h3><p>Fonte ductile, sur mesure</p></div>
     </div>
   </div>
 </section>
 
 <!-- ================= MÉTHODE ================= -->
-<section class="section" id="methode">
+<section class="section bg-soft" id="methode">
   <div class="wrap">
-    <div class="section-head">
-      <div><div class="eyebrow">Comment nous travaillons</div><h2>Quatre étapes, un seul interlocuteur</h2></div>
+    <div class="head">
+      <div><div class="kicker dark">Comment nous travaillons</div><h2>Quatre étapes, <span class="hl">un seul interlocuteur</span></h2></div>
       <p>Du premier contact à la mise en service, un suivi clair à chaque étape.</p>
     </div>
     <div class="steps">
@@ -415,40 +466,24 @@ figure.proj{margin:0}
   </div>
 </section>
 
-<!-- ================= PROJETS ================= -->
-<section class="section projects" id="projets">
-  <div class="wrap">
-    <div class="section-head">
-      <div><div class="eyebrow">Nos projets</div><h2>Sur le terrain, à Fès et sa région</h2></div>
-      <p>Quelques-unes de nos réalisations en réseaux et infrastructures.</p>
-    </div>
-    <div class="proj-grid">
-      <figure class="proj"><img src="projet1.jpg?v=6" alt="Travaux de réseau réalisés par SMERAV" loading="lazy"><figcaption>Travaux de réseau</figcaption></figure>
-      <figure class="proj"><img src="projet3.jpg?v=6" alt="Chantier d'infrastructure SMERAV" loading="lazy"><figcaption>Chantier d'infrastructure</figcaption></figure>
-    </div>
-  </div>
-</section>
-
 <!-- ================= SECTEURS ================= -->
 <section class="section" id="secteurs">
   <div class="wrap">
-    <div class="section-head">
-      <div><div class="eyebrow">Nos secteurs d'intervention</div><h2>Nous travaillons pour</h2></div>
-    </div>
+    <div class="head"><div><div class="kicker dark">Nos secteurs d'intervention</div><h2>Nous travaillons <span class="hl">pour</span></h2></div></div>
     <div class="sectors">
-      <div class="sector"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg></div><h3>Collectivités</h3><p>Communes et régies pour les réseaux publics d'eau et d'assainissement.</p></div>
-      <div class="sector"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l6-4v17M10 21h10V11l-6-3M7 10v.01M7 14v.01M14 14h2M14 17h2"/></svg></div><h3>Promoteurs immobiliers</h3><p>Viabilisation et raccordement des lotissements et résidences.</p></div>
-      <div class="sector"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l5 3v-3l5 3v-3l5 3V4h3v17z"/></svg></div><h3>Industriels</h3><p>Réseaux techniques, forage et ouvrages de génie civil sur sites industriels.</p></div>
-      <div class="sector"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7M5 10v10h14V10"/><path d="M12 13s2.5 2.6 2.5 4.3a2.5 2.5 0 0 1-5 0C9.5 15.6 12 13 12 13z"/></svg></div><h3>Particuliers</h3><p>Branchements, détection de fuites et petits travaux hydrauliques.</p></div>
+      <div class="sector"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg><h3>Collectivités</h3><p>Communes et régies pour les réseaux publics d'eau et d'assainissement.</p></div>
+      <div class="sector"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l6-4v17M10 21h10V11l-6-3M14 14h2M14 17h2"/></svg><h3>Promoteurs immobiliers</h3><p>Viabilisation et raccordement des lotissements et résidences.</p></div>
+      <div class="sector"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l5 3v-3l5 3v-3l5 3V4h3v17z"/></svg><h3>Industriels</h3><p>Réseaux techniques, forage et ouvrages de génie civil sur sites industriels.</p></div>
+      <div class="sector"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7M5 10v10h14V10"/></svg><h3>Particuliers</h3><p>Branchements, détection de fuites et petits travaux hydrauliques.</p></div>
     </div>
-    <div class="zone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Zone d'intervention : Fès et sa région</div>
+    <div class="zone"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Zone d'intervention : Fès et sa région</div>
   </div>
 </section>
 
 <!-- ================= CLIENTS ================= -->
-<section class="clients" aria-labelledby="clients-t">
+<section class="clients" aria-labelledby="cl-t">
   <div class="wrap">
-    <h2 id="clients-t">Ils nous font confiance</h2>
+    <h2 id="cl-t">Ils nous font <span class="hl">confiance</span></h2>
     <div class="logos">
       <div><img src="client1.png" alt="Logo client" loading="lazy"></div>
       <div><img src="client2.jpg" alt="Logo client" loading="lazy"></div>
@@ -464,19 +499,16 @@ figure.proj{margin:0}
 </section>
 
 <!-- ================= FAQ ================= -->
-<section class="section faq" id="faq">
+<section class="section faq bg-soft" id="faq">
   <div class="wrap faq-grid">
-    <div>
-      <div class="eyebrow">FAQ</div>
-      <h2>Vous vous demandez…</h2>
-    </div>
+    <div><div class="kicker dark">FAQ</div><h2>Vous vous <span class="hl">demandez…</span></h2></div>
     <div>
       <details open><summary>Le devis est-il gratuit ?</summary><p>Oui. Nous étudions votre demande et vous transmettons un devis détaillé et sans engagement, adapté à votre projet.</p></details>
       <details><summary>Dans quelle zone intervenez-vous ?</summary><p>Nous intervenons principalement à Fès et dans sa région. Pour un projet en dehors de cette zone, contactez-nous pour en discuter.</p></details>
       <details><summary>Réalisez-vous la détection et la réparation de fuites ?</summary><p>Oui, la recherche, la détection et la réparation de fuites sur les réseaux d'eau potable font partie de nos prestations courantes.</p></details>
       <details><summary>Travaillez-vous avec les collectivités et les promoteurs ?</summary><p>Absolument. Nous accompagnons les collectivités, les promoteurs immobiliers, les industriels et les particuliers sur leurs projets d'infrastructure.</p></details>
-      <details><summary>Vendez-vous des pièces hydrauliques ?</summary><p>Oui. Nous fournissons des pièces hydrauliques, pièces spéciales et accessoires pour réseaux d'eau potable et d'assainissement. Demandez-nous une cotation.</p></details>
-      <details><summary>Comment vous contacter rapidement ?</summary><p>Le plus simple est de nous écrire sur WhatsApp ou de nous appeler au +212 661 808 894. Vous pouvez aussi remplir le formulaire de devis ci-dessous.</p></details>
+      <details><summary>Vendez-vous des pièces réseaux ?</summary><p>Oui. Nous fournissons des pièces hydrauliques, pièces spéciales et accessoires pour réseaux d'eau potable et d'assainissement.</p></details>
+      <details><summary>Comment vous contacter rapidement ?</summary><p>Le plus simple est de nous écrire sur WhatsApp ou de nous appeler au +212 6 61 80 88 94. Vous pouvez aussi remplir le formulaire de devis ci-dessous.</p></details>
     </div>
   </div>
 </section>
@@ -485,20 +517,17 @@ figure.proj{margin:0}
 <section class="section contact" id="contact">
   <div class="wrap contact-grid">
     <div>
-      <div class="eyebrow">Contact</div>
-      <h2>Besoin d'un devis ou d'un conseil ?</h2>
+      <div class="kicker">Contact</div>
+      <h2>Besoin d'un devis ou <span class="hl">d'un conseil ?</span></h2>
       <p class="lead">Notre équipe vous répond rapidement.</p>
       <div class="info">
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><span><small>Adresse</small>Riad Zaytoune N°121, Rte Ain Chkef, Mag N°1<br>Fès-Médina, Fès 30000 — Maroc</span></div>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span><small>Téléphone / WhatsApp</small><a href="tel:+212661808894">+212 661 808 894</a></span></div>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span><small>E-mail</small><a href="mailto:sarl.smerav@gmail.com">sarl.smerav@gmail.com</a></span></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></span><span><small>Adresse</small>Riad Zaytoune N°121, Rte Ain Chkef, Mag N°1<br>Fès-Médina, Fès 30000 — Maroc</span></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><span><small>Téléphone / WhatsApp</small><a href="tel:+212661808894">+212 6 61 80 88 94</a></span></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span><small>E-mail</small><a href="mailto:sarl.smerav@gmail.com">sarl.smerav@gmail.com</a></span></div>
       </div>
-      <div class="map">
-        <iframe title="Localisation SMERAV à Fès" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=SMERAV%20Riad%20Zaytoune%20Route%20Ain%20Chkef%20F%C3%A8s&z=16&ie=UTF8&iwloc=&output=embed"></iframe>
-      </div>
+      <div class="map"><iframe title="Localisation SMERAV à Fès" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=SMERAV%20Riad%20Zaytoune%20Route%20Ain%20Chkef%20F%C3%A8s&z=16&ie=UTF8&iwloc=&output=embed"></iframe></div>
       <a class="map-link" href="https://maps.google.com/?q=SMERAV%20Riad%20Zaytoune%20Route%20Ain%20Chkef%20F%C3%A8s" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
     </div>
-
     <form class="form" id="devis">
       <h3>Demande de devis</h3>
       <div class="row2">
@@ -507,13 +536,12 @@ figure.proj{margin:0}
       </div>
       <div class="field"><label for="service">Service concerné</label>
         <select id="service" name="service">
-          <option>Réseaux divers</option>
           <option>Réseaux d'eau potable</option>
-          <option>Assainissement</option>
+          <option>Réseaux d'assainissement</option>
           <option>Génie civil</option>
           <option>Forage et équipement</option>
-          <option>Pièces hydrauliques / pièces spéciales</option>
-          <option>Autre</option>
+          <option>Vente pièces réseaux</option>
+          <option>Travaux divers / autre</option>
         </select>
       </div>
       <div class="field"><label for="msg">Votre message</label><textarea id="msg" name="msg" placeholder="Décrivez votre projet : lieu, nature des travaux, délais…"></textarea></div>
@@ -531,35 +559,28 @@ figure.proj{margin:0}
     <div class="foot-grid">
       <div>
         <div class="foot-logo"><img src="smerav-logo.png" alt="SMERAV – Société Marocaine d'Eaux et Réseaux d'Assainissement Variés"></div>
-        <p>Notre expertise, votre réussite.<br>Réseaux d'eau · Assainissement · Génie civil</p>
+        <p>Des solutions durables pour l'eau et l'avenir.</p>
       </div>
-      <div>
-        <h4>Services</h4>
-        <ul><li><a href="#services">Réseaux divers</a></li><li><a href="#services">Eau potable</a></li><li><a href="#services">Assainissement</a></li><li><a href="#services">Génie civil &amp; forage</a></li><li><a href="#fourniture">Pièces hydrauliques</a></li></ul>
-      </div>
-      <div>
-        <h4>Navigation</h4>
-        <ul><li><a href="#apropos">À propos</a></li><li><a href="#projets">Projets</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li><li><a href="https://wa.me/212661808894" target="_blank" rel="noopener">WhatsApp</a></li></ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul><li>Rte Ain Chkef, Fès-Médina 30000, Maroc</li><li><a href="tel:+212661808894">+212 661 808 894</a></li><li><a href="mailto:sarl.smerav@gmail.com">sarl.smerav@gmail.com</a></li></ul>
-      </div>
+      <div><h4>Nos services</h4><ul><li><a href="#services">Réseaux d'eau potable</a></li><li><a href="#services">Assainissement</a></li><li><a href="#services">Génie civil</a></li><li><a href="#services">Forage et équipement</a></li><li><a href="#pieces">Vente pièces réseaux</a></li></ul></div>
+      <div><h4>Navigation</h4><ul><li><a href="#apropos">À propos</a></li><li><a href="#realisations">Nos réalisations</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>Rte Ain Chkef, Fès-Médina 30000, Maroc</li><li><a href="tel:+212661808894">+212 6 61 80 88 94</a></li><li><a href="mailto:sarl.smerav@gmail.com">sarl.smerav@gmail.com</a></li></ul></div>
     </div>
-    <div class="foot-bottom"><span>© <span id="y">2026</span> SMERAV — Tous droits réservés.</span><span>Fès, Maroc</span></div>
+    <div class="foot-bottom"><span>© <span id="y">2026</span> SMERAV — Tous droits réservés.</span><span>Travaux publics &amp; réseaux · Fès</span></div>
   </div>
 </footer>
 
-<a class="wa" href="https://wa.me/212661808894?text=Bonjour%20SMERAV" target="_blank" rel="noopener" aria-label="Écrire à SMERAV sur WhatsApp">
+<a class="wa-float" href="https://wa.me/212661808894?text=Bonjour%20SMERAV" target="_blank" rel="noopener" aria-label="Écrire à SMERAV sur WhatsApp">
   <svg viewBox="0 0 32 32" fill="#fff"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7a10.7 10.7 0 0 1-5.5-1.5l-.4-.2-3.9 1 1-3.8-.2-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.4 6.4 0 0 0 1.3 3.4 14.7 14.7 0 0 0 5.7 5c2.1.9 2.9 1 4 .8a3.4 3.4 0 0 0 2.2-1.6 2.8 2.8 0 0 0 .2-1.6c-.1-.2-.3-.3-.6-.4z"/></svg>
 </a>
 
 <script>
-  // Menu mobile
   var btn=document.querySelector('.menu-btn'),nav=document.getElementById('nav');
   btn.addEventListener('click',function(){var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
   nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');btn.setAttribute('aria-expanded','false')}});
-  // Formulaire -> WhatsApp
+  var track=document.getElementById('track');
+  document.querySelectorAll('.arrow').forEach(function(a){a.addEventListener('click',function(){
+    var card=track.querySelector('.rcard');track.scrollBy({left:(card.offsetWidth+16)*+a.dataset.dir,behavior:'smooth'});
+  })});
   document.getElementById('devis').addEventListener('submit',function(e){
     e.preventDefault();var f=e.target;
     var t='Bonjour SMERAV,\n\nNom : '+f.nom.value+'\nTéléphone : '+f.tel.value+'\nService : '+f.service.value+'\n\n'+f.msg.value;
