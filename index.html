@@ -164,10 +164,14 @@ p{margin:0}
 /* clients */
 .clients{padding:64px 0;border-top:1px solid var(--line)}
 .clients h2{text-align:center;font-size:24px;font-weight:600;margin-bottom:30px}
-.logos{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:16px}
-.logos div{height:80px;border:1px solid var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;padding:10px;background:#fff}
-.logos img{max-height:58px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.75;transition:.2s}
-.logos div:hover img{filter:none;opacity:1}
+.marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.logos{display:flex;gap:20px;width:max-content;animation:defile 35s linear infinite}
+.marquee:hover .logos{animation-play-state:paused}
+.logos div{flex:0 0 auto;width:190px;height:110px;border:1px solid var(--line);border-radius:14px;display:flex;align-items:center;justify-content:center;padding:14px;background:#fff;box-shadow:0 4px 14px rgba(11,37,80,.06);transition:transform .2s,box-shadow .2s}
+.logos div:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(11,37,80,.12)}
+.logos img{max-height:80px;max-width:100%;width:auto;object-fit:contain}
+@keyframes defile{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.logos{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.logos [aria-hidden]{display:none}.marquee{-webkit-mask-image:none;mask-image:none}}
 
 /* faq */
 .faq-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:64px;align-items:start}
@@ -227,7 +231,6 @@ p{margin:0}
   .real .wrap{grid-template-columns:1fr}
   .rcard{flex-basis:calc((100% - 32px)/3)}
   .stat{padding:6px 24px}
-  .logos{grid-template-columns:repeat(5,minmax(0,1fr))}
 }
 @media (max-width:1024px){
   .nav{display:none;position:absolute;top:84px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:6px 24px 20px;box-shadow:0 12px 20px rgba(11,37,80,.1)}
@@ -264,7 +267,8 @@ p{margin:0}
   .section{padding:72px 0}
   .points,.parts,.steps,.sectors,.row2{grid-template-columns:1fr}
   .parts{grid-template-columns:1fr 1fr}
-  .logos{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .logos div{width:150px;height:92px}
+  .logos{animation-duration:28s}
   .form{padding:24px}
   .foot-grid{grid-template-columns:1fr}
 }
@@ -533,6 +537,7 @@ dialog.gal::backdrop{background:rgba(7,26,58,.75)}
 <section class="clients" aria-labelledby="cl-t">
   <div class="wrap">
     <h2 id="cl-t">Ils nous font <span class="hl">confiance</span></h2>
+    <div class="marquee">
     <div class="logos">
       <div><img src="client1.png" alt="Logo client" loading="lazy"></div>
       <div><img src="client2.jpg" alt="Logo client" loading="lazy"></div>
@@ -543,6 +548,7 @@ dialog.gal::backdrop{background:rgba(7,26,58,.75)}
       <div><img src="client7.jpg" alt="Logo client" loading="lazy"></div>
       <div><img src="client8.png" alt="Logo client" loading="lazy"></div>
       <div><img src="client9.png" alt="Logo client" loading="lazy"></div>
+    </div>
     </div>
   </div>
 </section>
@@ -718,6 +724,10 @@ dialog.gal::backdrop{background:rgba(7,26,58,.75)}
     if(el.tagName==='FIGURE')el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openSvc(el.dataset.svc)}});
   });
   var h=location.hash.match(/^#service-(\w+)/);if(h)openSvc(h[1]);
+
+  // Logos clients : défilement continu (on duplique la liste)
+  (function(){var l=document.querySelector('.logos');if(!l)return;
+    Array.prototype.slice.call(l.children).forEach(function(n){var c=n.cloneNode(true);c.setAttribute('aria-hidden','true');c.querySelector('img').alt='';l.appendChild(c)});})();
   document.getElementById('y').textContent=new Date().getFullYear();
 </script>
 </body>
