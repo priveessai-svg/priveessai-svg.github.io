@@ -220,7 +220,10 @@ p{margin:0}
 
 /* ========== RESPONSIVE ========== */
 @media (max-width:1200px){
-  .svc-row{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .svc-row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 4px 18px;margin:-4px -4px 0}
+  .svc-row::-webkit-scrollbar{display:none}
+  .svc{flex:0 0 270px;scroll-snap-align:start}
+  .svc:hover{transform:none}
   .real .wrap{grid-template-columns:1fr}
   .rcard{flex-basis:calc((100% - 32px)/3)}
   .stat{padding:6px 24px}
@@ -233,8 +236,10 @@ p{margin:0}
   .nav a::after{display:none}
   .menu-btn{display:flex}
   .header .btn-call{display:none}
-  .hero-img{width:100%;opacity:.45}
-  .hero-img::before{background:linear-gradient(90deg,var(--navy) 0%,rgba(11,37,80,.6) 100%)}
+  .hero{display:flex;flex-direction:column}
+  .hero-img{position:relative;top:auto;right:auto;bottom:auto;width:100%;aspect-ratio:1692/864;background-position:center}
+  .hero-img::before{background:linear-gradient(0deg,var(--navy) 0%,rgba(11,37,80,0) 30%)}
+  .hero .wrap{padding-top:12px;width:100%}
   .about-grid,.parts-grid,.faq-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
   .steps,.sectors{grid-template-columns:repeat(2,minmax(0,1fr))}
   .foot-grid{grid-template-columns:1fr 1fr}
@@ -245,10 +250,11 @@ p{margin:0}
   .header .wrap{height:72px}
   .nav{top:72px}
   .brand .emb{height:44px}.brand .word{height:22px}.brand small{display:none}
-  .hero .wrap{padding-top:44px;padding-bottom:130px}
+  .hero .wrap{padding-top:8px;padding-bottom:130px}
+  .hero-img{aspect-ratio:1.45/1;background-position:72% center}
   .feats{gap:16px 0}
   .feat{width:50%;border-left:0;padding:0 8px 0 0}
-  .svc-row{grid-template-columns:1fr}
+  .svc{flex-basis:80%}
   .rcard{flex-basis:78%}
   .real .arrow{display:none}
   .stat-list{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:100%}
