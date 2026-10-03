@@ -7,7 +7,7 @@
 <meta name="description" content="SMERAV, travaux publics et réseaux à Fès : réseaux d'eau potable, assainissement, génie civil, forage et vente de pièces réseaux. Devis gratuit : +212 6 61 80 88 94.">
 <meta property="og:title" content="SMERAV — Des solutions durables pour l'eau et l'avenir">
 <meta property="og:description" content="Réseaux d'eau potable, assainissement, génie civil, forage et pièces réseaux à Fès.">
-<meta property="og:image" content="hero-smerav.jpg">
+<meta property="og:image" content="https://smerav.ma/hero-smerav.jpg">
 <link rel="icon" href="smerav-emblem.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,8 +59,9 @@ p{margin:0}
 
 /* ========== HERO ========== */
 .hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
-.hero-img{position:absolute;top:0;right:0;bottom:0;width:70%;background:url(hero-smerav.jpg) 100% 50%/cover no-repeat}
-.hero-img::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(11,37,80,.85) 18%,rgba(11,37,80,.25) 42%,rgba(11,37,80,0) 60%)}
+.hero-img{position:absolute;top:0;right:0;bottom:0;width:58%;overflow:hidden;background:url(hero-video.jpg) center/cover no-repeat}
+.hero-img video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%}
+.hero-img::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--navy) 0%,rgba(11,37,80,.6) 14%,rgba(11,37,80,0) 34%)}
 .hero .wrap{position:relative;z-index:1;padding-top:64px;padding-bottom:150px}
 .hero-text{max-width:700px}
 .hero h1{font-size:clamp(36px,4vw,54px);letter-spacing:-.01em;margin:22px 0 22px}
@@ -240,7 +241,7 @@ p{margin:0}
   .menu-btn{display:flex}
   .header .btn-call{display:none}
   .hero{display:flex;flex-direction:column}
-  .hero-img{position:relative;top:auto;right:auto;bottom:auto;width:100%;aspect-ratio:1692/864;background-position:center}
+  .hero-img{position:relative;top:auto;right:auto;bottom:auto;width:100%;aspect-ratio:16/10}
   .hero-img::before{background:linear-gradient(0deg,var(--navy) 0%,rgba(11,37,80,0) 30%)}
   .hero .wrap{padding-top:12px;width:100%}
   .about-grid,.parts-grid,.faq-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
@@ -254,7 +255,7 @@ p{margin:0}
   .nav{top:72px}
   .brand .emb{height:44px}.brand .word{height:22px}.brand small{display:none}
   .hero .wrap{padding-top:8px;padding-bottom:130px}
-  .hero-img{aspect-ratio:1.45/1;background-position:72% center}
+  .hero-img{aspect-ratio:1/1}
   .feats{gap:16px 0}
   .feat{width:50%;border-left:0;padding:0 8px 0 0}
   .svc{flex-basis:80%}
@@ -345,7 +346,7 @@ dialog.gal::backdrop{background:rgba(7,26,58,.75)}
 <main>
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="hero-img" role="img" aria-label="Chantier SMERAV : pelle mécanique, technicien et pose de conduite d'eau à Fès"></div>
+  <div class="hero-img"><video autoplay muted loop playsinline preload="auto" poster="hero-video.jpg" aria-label="Chantier SMERAV : pelle mécanique, technicien et conduite d'eau"><source src="hero-video.mp4" type="video/mp4"></video></div>
   <div class="wrap">
     <div class="hero-text">
       <div class="kicker">Travaux publics &amp; réseaux</div>
