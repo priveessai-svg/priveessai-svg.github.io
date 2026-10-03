@@ -268,6 +268,44 @@ p{margin:0}
   .form{padding:24px}
   .foot-grid{grid-template-columns:1fr}
 }
+
+/* ========== GALERIE SERVICE (modal) ========== */
+.rcard{cursor:pointer}
+.rcard:focus-visible,.svc:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.svc-more{grid-column:2;font-size:12.5px;font-weight:600;color:var(--orange);margin-top:4px}
+dialog.gal{width:min(1040px,94vw);max-height:92vh;padding:0;border:0;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.4);overflow:hidden;color:var(--ink)}
+dialog.gal::backdrop{background:rgba(7,26,58,.75)}
+.gal-wrap{display:flex;flex-direction:column;max-height:92vh}
+.gal-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 24px;background:var(--navy);color:#fff}
+.gal-head h2{font-size:22px;font-weight:600}
+.gal-head .kicker{font-size:11px;margin-bottom:4px}
+.gal-close{flex-shrink:0;width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,255,255,.6);background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.gal-close:hover{background:#fff;color:var(--navy)}
+.gal-close svg{width:20px;height:20px}
+.gal-body{overflow-y:auto;padding:24px}
+.gal-intro{color:var(--muted);font-size:16px;margin-bottom:14px}
+.gal-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.gal-chips span{font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:#FFF1E3;color:#B85A00}
+.gal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.gal-item{margin:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+.gal-item a{display:block;background:#EDF1F7}
+.gal-item img{width:100%;height:280px;object-fit:contain}
+.gal-item figcaption{padding:16px 18px 18px}
+.gal-item h3{font-size:16px;font-weight:600;margin-bottom:6px}
+.gal-item p{font-size:14px;color:var(--muted)}
+.gal-foot{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end;padding:16px 24px;border-top:1px solid var(--line);background:#fff}
+.gal-foot .btn{min-height:46px}
+.btn-outline{border-color:var(--navy);color:var(--navy)}
+.btn-outline:hover{background:var(--navy);color:#fff}
+@media (max-width:680px){
+  dialog.gal{width:100vw;max-width:100vw;height:100vh;max-height:100vh;border-radius:0}
+  .gal-wrap{height:100vh;max-height:100vh}
+  .gal-head{padding:14px 16px}.gal-head h2{font-size:18px}
+  .gal-body{padding:16px}
+  .gal-grid{grid-template-columns:1fr}
+  .gal-item img{height:240px}
+  .gal-foot{padding:12px 16px}.gal-foot .btn{flex:1}
+}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.svc{transition:none}}
 </style>
 </head>
@@ -330,48 +368,53 @@ p{margin:0}
 <section class="services" id="services" aria-label="Nos services">
   <div class="wrap">
     <div class="svc-row">
-      <a class="svc" href="#contact">
+      <a class="svc" href="#service-eau" data-svc="eau">
         <div class="svc-img"><img src="svc-1.jpg" alt="Conduite d'eau potable" loading="lazy"></div>
         <div class="svc-body">
           <svg class="svc-ic" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4s11 12 11 20a11 11 0 0 1-22 0C9 16 20 4 20 4z" fill="#1E6FD9"/><path d="M15 25a5 5 0 0 0 5 5" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
           <h3>Réseaux d'eau potable</h3>
           <p>Pose de conduits, recherche et réparation des fuites, branchement.</p>
+          <span class="svc-more">Voir les photos &amp; détails</span>
           <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
       </a>
-      <a class="svc" href="#contact">
+      <a class="svc" href="#service-assainissement" data-svc="assainissement">
         <div class="svc-img"><img src="svc-2.jpg" alt="Buses d'assainissement" loading="lazy"></div>
         <div class="svc-body">
           <svg class="svc-ic" viewBox="0 0 40 40" fill="none" stroke="#F7810F" stroke-width="3" aria-hidden="true"><circle cx="20" cy="9" r="4.5"/><circle cx="9" cy="30" r="4.5"/><circle cx="31" cy="30" r="4.5"/><path d="M17.5 13l-6 13M22.5 13l6 13M13.5 30h13"/></svg>
           <h3>Réseaux d'assainissement</h3>
           <p>Réalisation et entretien des réseaux d'assainissement.</p>
+          <span class="svc-more">Voir les photos &amp; détails</span>
           <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
       </a>
-      <a class="svc" href="#contact">
+      <a class="svc" href="#service-genie" data-svc="genie">
         <div class="svc-img"><img src="svc-3.jpg" alt="Structure en béton – génie civil" loading="lazy"></div>
         <div class="svc-body">
           <svg class="svc-ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1E6FD9" d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm9.4 5l-2-.3a7.6 7.6 0 0 1-.7 1.7l1.2 1.6-1.9 1.9-1.6-1.2c-.5.3-1.1.6-1.7.7l-.3 2h-2.8l-.3-2a7.6 7.6 0 0 1-1.7-.7l-1.6 1.2-1.9-1.9 1.2-1.6a7.6 7.6 0 0 1-.7-1.7l-2-.3v-2.8l2-.3c.2-.6.4-1.2.7-1.7L4.2 6.7l1.9-1.9 1.6 1.2c.5-.3 1.1-.6 1.7-.7l.3-2h2.8l.3 2c.6.2 1.2.4 1.7.7l1.6-1.2 1.9 1.9-1.2 1.6c.3.5.6 1.1.7 1.7l2 .3z"/></svg>
           <h3>Génie civil</h3>
           <p>Travaux de génie civil et aménagements divers.</p>
+          <span class="svc-more">Voir les photos &amp; détails</span>
           <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
       </a>
-      <a class="svc" href="#contact">
+      <a class="svc" href="#service-forage" data-svc="forage">
         <div class="svc-img"><img src="svc-4.jpg" alt="Foreuse – forage de puits" loading="lazy"></div>
         <div class="svc-body">
           <svg class="svc-ic" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4s11 12 11 20a11 11 0 0 1-22 0C9 16 20 4 20 4z" fill="#1E6FD9"/><path d="M20 13s5 5.5 5 9a5 5 0 0 1-10 0c0-3.5 5-9 5-9z" fill="#fff"/></svg>
           <h3>Forage et équipement</h3>
           <p>Forage de puits, équipement et mise en service.</p>
+          <span class="svc-more">Voir les photos &amp; détails</span>
           <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
       </a>
-      <a class="svc" href="#pieces">
+      <a class="svc" href="#service-pieces" data-svc="pieces">
         <div class="svc-img"><img src="svc-5.jpg" alt="Raccords et pièces réseaux" loading="lazy"></div>
         <div class="svc-body">
           <svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="#F7810F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h3l2.6 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.5L22 8H6"/><circle cx="9.5" cy="20.5" r="1.4" fill="#F7810F"/><circle cx="18" cy="20.5" r="1.4" fill="#F7810F"/></svg>
           <h3>Vente pièces réseaux</h3>
           <p>Fourniture de pièces et accessoires pour réseaux.</p>
+          <span class="svc-more">Voir les photos &amp; détails</span>
           <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
       </a>
@@ -391,12 +434,12 @@ p{margin:0}
     <div class="carousel">
       <button class="arrow" data-dir="-1" aria-label="Réalisations précédentes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
       <div class="track" id="track">
-        <figure class="rcard"><div class="ph"><img src="real-1.jpg" alt="Pose d'une conduite d'eau potable en tranchée" loading="lazy"></div><figcaption>Réseau d'eau potable<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
-        <figure class="rcard"><div class="ph"><img src="real-2.jpg" alt="Pose de buses d'assainissement" loading="lazy"></div><figcaption>Réseau d'assainissement<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
-        <figure class="rcard"><div class="ph"><img src="real-3.jpg" alt="Ouvrage en béton armé" loading="lazy"></div><figcaption>Génie civil<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
-        <figure class="rcard"><div class="ph"><img src="real-4.jpg" alt="Forage de puits" loading="lazy"></div><figcaption>Forage et équipement<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
-        <figure class="rcard"><div class="ph"><img src="projet1.jpg" alt="Travaux de réseau SMERAV" loading="lazy"></div><figcaption>Travaux de réseau<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
-        <figure class="rcard"><div class="ph"><img src="projet3.jpg" alt="Chantier d'infrastructure SMERAV" loading="lazy"></div><figcaption>Chantier d'infrastructure<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
+        <figure class="rcard" data-svc="eau" tabindex="0" role="button"><div class="ph"><img src="real-1.jpg" alt="Pose d'une conduite d'eau potable en tranchée" loading="lazy"></div><figcaption>Réseau d'eau potable<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
+        <figure class="rcard" data-svc="assainissement" tabindex="0" role="button"><div class="ph"><img src="real-2.jpg" alt="Pose de buses d'assainissement" loading="lazy"></div><figcaption>Réseau d'assainissement<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
+        <figure class="rcard" data-svc="genie" tabindex="0" role="button"><div class="ph"><img src="real-3.jpg" alt="Ouvrage en béton armé" loading="lazy"></div><figcaption>Génie civil<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
+        <figure class="rcard" data-svc="forage" tabindex="0" role="button"><div class="ph"><img src="real-4.jpg" alt="Forage de puits" loading="lazy"></div><figcaption>Forage et équipement<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
+        <figure class="rcard" data-svc="eau" tabindex="0" role="button"><div class="ph"><img src="projet1.jpg" alt="Travaux de réseau SMERAV" loading="lazy"></div><figcaption>Travaux de réseau<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
+        <figure class="rcard" data-svc="eau" tabindex="0" role="button"><div class="ph"><img src="projet3.jpg" alt="Chantier d'infrastructure SMERAV" loading="lazy"></div><figcaption>Chantier d'infrastructure<span class="loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Fès</span></figcaption></figure>
       </div>
       <button class="arrow" data-dir="1" aria-label="Réalisations suivantes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
@@ -575,6 +618,26 @@ p{margin:0}
   </div>
 </footer>
 
+
+<!-- ================= GALERIE SERVICE ================= -->
+<dialog class="gal" id="gal" aria-labelledby="gal-title">
+  <div class="gal-wrap">
+    <div class="gal-head">
+      <div><div class="kicker">Nos services</div><h2 id="gal-title"></h2></div>
+      <button class="gal-close" type="button" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="gal-body">
+      <p class="gal-intro" id="gal-intro"></p>
+      <div class="gal-chips" id="gal-chips"></div>
+      <div class="gal-grid" id="gal-grid"></div>
+    </div>
+    <div class="gal-foot">
+      <a class="btn btn-outline" href="tel:+212661808894">Appeler</a>
+      <a class="btn btn-orange" id="gal-devis" href="https://wa.me/212661808894" target="_blank" rel="noopener">Demander un devis</a>
+    </div>
+  </div>
+</dialog>
+
 <a class="wa-float" href="https://wa.me/212661808894?text=Bonjour%20SMERAV" target="_blank" rel="noopener" aria-label="Écrire à SMERAV sur WhatsApp">
   <svg viewBox="0 0 32 32" fill="#fff"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7a10.7 10.7 0 0 1-5.5-1.5l-.4-.2-3.9 1 1-3.8-.2-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.4 6.4 0 0 0 1.3 3.4 14.7 14.7 0 0 0 5.7 5c2.1.9 2.9 1 4 .8a3.4 3.4 0 0 0 2.2-1.6 2.8 2.8 0 0 0 .2-1.6c-.1-.2-.3-.3-.6-.4z"/></svg>
 </a>
@@ -592,6 +655,69 @@ p{margin:0}
     var t='Bonjour SMERAV,\n\nNom : '+f.nom.value+'\nTéléphone : '+f.tel.value+'\nService : '+f.service.value+'\n\n'+f.msg.value;
     window.open('https://wa.me/212661808894?text='+encodeURIComponent(t),'_blank');
   });
+
+  // ===== Galerie par service =====
+  var SERVICES={
+    eau:{t:"Réseaux d'eau potable",
+      i:"Conception, pose et raccordement de réseaux d'eau potable, avec recherche, détection et réparation de fuites — pour collectivités, promoteurs et particuliers.",
+      c:["Pose de conduites","Branchements","Raccordements","Détection de fuites","Réparation"],
+      p:[["reseaux-eaux-potable.jpg","Schéma d'un réseau d'eau potable","Vue d'ensemble d'un réseau de distribution : conduite principale, vannes de sectionnement, branchements particuliers et bouches à clé jusqu'au compteur."],
+         ["raccordement-eau.jpg","Raccordement sur conduite existante","Intervention en fouille pour raccorder un nouveau branchement ou une extension de réseau sur une conduite en service."],
+         ["raccoredement-eau.jpg","Vannes et pièces de raccordement","Mise en place de robinets-vannes et de pièces spéciales en fonte ductile pour piloter et sectionner le réseau."],
+         ["projet1.jpg","Renouvellement du réseau en ville","Chantier de renouvellement du réseau d'eau potable en milieu urbain, avec signalisation et engins adaptés."],
+         ["projet3.jpg","Stabilisateurs de pression","Chantier clôturé et sécurisé pour la fourniture et la mise en place de stabilisateurs de pression aval sur le réseau."],
+         ["recherche-fuite.jpg","Recherche de fuites","Localisation des pertes d'eau sur les conduites pour limiter le gaspillage et les dégâts."],
+         ["detection-des-fuites.jpg","Détection des fuites","Écoute du réseau au détecteur pour repérer précisément la fuite avant d'ouvrir la chaussée."],
+         ["reparation-fuites.jpg","Réparation de conduite","Pose de manchons de réparation sur le tronçon endommagé, puis remise en eau du réseau."]]},
+    assainissement:{t:"Réseaux d'assainissement",
+      i:"Réalisation et entretien de réseaux d'assainissement et de branchements pour collectivités, projets immobiliers et particuliers.",
+      c:["Collecteurs","Branchements","Regards","Entretien"],
+      p:[["reseaux-assainissement1.jpg","Schéma d'un branchement d'assainissement","Du bâtiment jusqu'au collecteur public : regard de façade, canalisations, coudes et raccordement au réseau."],
+         ["branchement-assainesement.jpg","Pose de canalisations PVC","Canalisations et pièces de branchement en PVC posées en tranchée, avec une pente maîtrisée pour un bon écoulement."],
+         ["real-2.jpg","Collecteurs en buses béton","Pose de buses de grand diamètre pour les collecteurs d'eaux usées et pluviales."]]},
+    genie:{t:"Génie civil",
+      i:"Ouvrages en béton et travaux de génie civil liés aux infrastructures hydrauliques, aux réseaux et aux aménagements divers.",
+      c:["Ouvrages béton","Chambres de vannes","Structures","Aménagements"],
+      p:[["genie-civil4.jpg","Ferraillage d'un radier","Mise en place des armatures avant le coulage du béton d'un ouvrage."],
+         ["equipement.jpg","Chambre de vannes en béton armé","Construction d'une chambre en béton qui accueille les vannes et pièces du réseau."],
+         ["real-3.jpg","Fondations en béton armé","Réalisation de fondations et de structures en béton sur chantier."],
+         ["genie-civil.jpg","Encadrement de chantier","Des équipes et des engins encadrés pour des travaux réalisés dans les règles et dans les délais."]]},
+    forage:{t:"Forage et équipement",
+      i:"Forage et équipement de puits : installation, pompage et mise en service des ouvrages.",
+      c:["Forage","Pompage","Équipement","Mise en service"],
+      p:[["real-4.jpg","Forage de puits","Foration du puits et essais pour capter la ressource en eau."],
+         ["equipement1.jpg","Équipement hydraulique","Installation des vannes, clapets et tuyauteries nécessaires à l'exploitation de l'ouvrage."],
+         ["equipement.jpg","Raccordement et mise en service","Raccordement de l'ouvrage au réseau, contrôles et mise en eau."]]},
+    pieces:{t:"Vente pièces réseaux",
+      i:"Fourniture de pièces hydrauliques, pièces spéciales et accessoires pour réseaux d'eau potable et d'assainissement. Produits en stock, prêts à expédier.",
+      c:["Vannes","Fonte ductile","Raccords PVC","Brides & adaptateurs"],
+      p:[["cataloge.png","Catalogue commercial","Vannes, raccords en fonte ductile, raccords PVC, adaptateurs et brides : nos familles de produits en stock."],
+         ["svc-5.jpg","Raccords PVC","Tés, coudes et manchons pour réseaux d'eau potable et d'assainissement."],
+         ["raccoredement-eau.jpg","Robinetterie et pièces spéciales","Robinets-vannes et pièces en fonte ductile pour la distribution d'eau."]]}
+  };
+  var gal=document.getElementById('gal'),lastFocus=null;
+  function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML}
+  function openSvc(k){
+    var d=SERVICES[k];if(!d)return;lastFocus=document.activeElement;
+    document.getElementById('gal-title').textContent=d.t;
+    document.getElementById('gal-intro').textContent=d.i;
+    document.getElementById('gal-chips').innerHTML=d.c.map(function(c){return '<span>'+esc(c)+'</span>'}).join('');
+    document.getElementById('gal-grid').innerHTML=d.p.map(function(x){
+      return '<figure class="gal-item"><a href="'+x[0]+'" target="_blank" rel="noopener" aria-label="Agrandir : '+esc(x[1])+'"><img src="'+x[0]+'" alt="'+esc(x[1])+'" loading="lazy"></a><figcaption><h3>'+esc(x[1])+'</h3><p>'+esc(x[2])+'</p></figcaption></figure>'}).join('');
+    document.getElementById('gal-devis').href='https://wa.me/212661808894?text='+encodeURIComponent('Bonjour SMERAV, je souhaite un devis pour : '+d.t);
+    gal.querySelector('.gal-body').scrollTop=0;
+    if(gal.showModal){gal.showModal()}else{gal.setAttribute('open','')}
+    document.body.style.overflow='hidden';
+  }
+  function closeSvc(){if(gal.close){gal.close()}else{gal.removeAttribute('open')}}
+  gal.addEventListener('close',function(){document.body.style.overflow='';if(lastFocus)lastFocus.focus()});
+  gal.querySelector('.gal-close').addEventListener('click',closeSvc);
+  gal.addEventListener('click',function(e){if(e.target===gal)closeSvc()});
+  document.querySelectorAll('[data-svc]').forEach(function(el){
+    el.addEventListener('click',function(e){e.preventDefault();openSvc(el.dataset.svc)});
+    if(el.tagName==='FIGURE')el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openSvc(el.dataset.svc)}});
+  });
+  var h=location.hash.match(/^#service-(\w+)/);if(h)openSvc(h[1]);
   document.getElementById('y').textContent=new Date().getFullYear();
 </script>
 </body>
